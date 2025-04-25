@@ -40,21 +40,28 @@
             button1 = new Button();
             panel5 = new Panel();
             button4 = new Button();
+            tabControl1 = new TabControl();
+            tabPage2 = new TabPage();
+            moonTextBox1 = new ReaLTaiizor.Controls.MoonTextBox();
+            flowLayoutPanel2 = new FlowLayoutPanel();
+            panel6 = new Panel();
+            button5 = new Button();
             panel4 = new Panel();
             button3 = new Button();
-            metroTabControl1 = new ReaLTaiizor.Controls.MetroTabControl();
-            tabPage1 = new TabPage();
-            textBox1 = new TextBox();
-            tabPage2 = new TabPage();
+            panel7 = new Panel();
+            button6 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             flowLayoutPanel1.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
             panel5.SuspendLayout();
+            tabControl1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            panel6.SuspendLayout();
             panel4.SuspendLayout();
-            metroTabControl1.SuspendLayout();
-            tabPage1.SuspendLayout();
+            panel7.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -118,8 +125,8 @@
             flowLayoutPanel1.BackColor = Color.FromArgb(23, 24, 29);
             flowLayoutPanel1.Controls.Add(panel3);
             flowLayoutPanel1.Controls.Add(panel2);
-            flowLayoutPanel1.Controls.Add(panel5);
-            flowLayoutPanel1.Controls.Add(panel4);
+            flowLayoutPanel1.Controls.Add(panel6);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 37);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -179,7 +186,7 @@
             // panel5
             // 
             panel5.Controls.Add(button4);
-            panel5.Location = new Point(3, 175);
+            panel5.Location = new Point(3, 23);
             panel5.Name = "panel5";
             panel5.Size = new Size(334, 70);
             panel5.TabIndex = 5;
@@ -200,13 +207,92 @@
             button4.TextAlign = ContentAlignment.MiddleLeft;
             button4.UseVisualStyleBackColor = false;
             // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Dock = DockStyle.Fill;
+            tabControl1.Location = new Point(339, 37);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(1063, 821);
+            tabControl1.TabIndex = 2;
+            tabControl1.MouseDoubleClick += tabControl1_MouseDoubleClick_1;
+            // 
+            // tabPage2
+            // 
+            tabPage2.BorderStyle = BorderStyle.FixedSingle;
+            tabPage2.Controls.Add(moonTextBox1);
+            tabPage2.Font = new Font("JetBrains Mono", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            tabPage2.ForeColor = SystemColors.Desktop;
+            tabPage2.Location = new Point(4, 26);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(1055, 791);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Untitled*";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // moonTextBox1
+            // 
+            moonTextBox1.BackColor = Color.FromArgb(235, 235, 235);
+            moonTextBox1.BorderColor = Color.LightGray;
+            moonTextBox1.BorderStyle = BorderStyle.FixedSingle;
+            moonTextBox1.Dock = DockStyle.Fill;
+            moonTextBox1.Font = new Font("JetBrains Mono", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            moonTextBox1.ForeColor = Color.Black;
+            moonTextBox1.Location = new Point(3, 3);
+            moonTextBox1.Multiline = true;
+            moonTextBox1.Name = "moonTextBox1";
+            moonTextBox1.ScrollBars = ScrollBars.Both;
+            moonTextBox1.Size = new Size(1047, 783);
+            moonTextBox1.TabIndex = 10;
+            moonTextBox1.Text = "Your Text Here!";
+            moonTextBox1.WordWrap = false;
+            // 
+            // flowLayoutPanel2
+            // 
+            flowLayoutPanel2.BackColor = Color.FromArgb(23, 24, 29);
+            flowLayoutPanel2.Controls.Add(panel5);
+            flowLayoutPanel2.Controls.Add(panel4);
+            flowLayoutPanel2.Controls.Add(panel7);
+            flowLayoutPanel2.Location = new Point(3, 251);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Padding = new Padding(0, 20, 0, 0);
+            flowLayoutPanel2.Size = new Size(338, 337);
+            flowLayoutPanel2.TabIndex = 11;
+            flowLayoutPanel2.Paint += flowLayoutPanel2_Paint;
+            // 
+            // panel6
+            // 
+            panel6.Controls.Add(button5);
+            panel6.Location = new Point(3, 175);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(340, 70);
+            panel6.TabIndex = 6;
+            // 
+            // button5
+            // 
+            button5.BackColor = Color.FromArgb(23, 24, 29);
+            button5.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button5.ForeColor = Color.White;
+            button5.Image = (Image)resources.GetObject("button5.Image");
+            button5.ImageAlign = ContentAlignment.MiddleLeft;
+            button5.Location = new Point(-11, -8);
+            button5.Name = "button5";
+            button5.Padding = new Padding(25, 0, 0, 0);
+            button5.Size = new Size(360, 87);
+            button5.TabIndex = 0;
+            button5.Text = "            Info";
+            button5.TextAlign = ContentAlignment.MiddleLeft;
+            button5.UseVisualStyleBackColor = false;
+            // 
             // panel4
             // 
             panel4.Controls.Add(button3);
-            panel4.Location = new Point(3, 251);
+            panel4.Location = new Point(3, 99);
             panel4.Name = "panel4";
             panel4.Size = new Size(334, 70);
-            panel4.TabIndex = 4;
+            panel4.TabIndex = 6;
             // 
             // button3
             // 
@@ -218,75 +304,42 @@
             button3.Location = new Point(-11, -8);
             button3.Name = "button3";
             button3.Padding = new Padding(25, 0, 0, 0);
-            button3.Size = new Size(360, 87);
+            button3.Size = new Size(360, 89);
             button3.TabIndex = 0;
-            button3.Text = "            About";
+            button3.Text = "            Open File";
             button3.TextAlign = ContentAlignment.MiddleLeft;
             button3.UseVisualStyleBackColor = false;
             // 
-            // metroTabControl1
+            // panel7
             // 
-            metroTabControl1.AnimateEasingType = ReaLTaiizor.Enum.Metro.EasingType.CubeOut;
-            metroTabControl1.AnimateTime = 200;
-            metroTabControl1.BackgroundColor = Color.White;
-            metroTabControl1.Controls.Add(tabPage1);
-            metroTabControl1.Controls.Add(tabPage2);
-            metroTabControl1.ControlsVisible = true;
-            metroTabControl1.Dock = DockStyle.Fill;
-            metroTabControl1.IsDerivedStyle = true;
-            metroTabControl1.ItemSize = new Size(100, 38);
-            metroTabControl1.Location = new Point(339, 37);
-            metroTabControl1.MCursor = Cursors.Hand;
-            metroTabControl1.Name = "metroTabControl1";
-            metroTabControl1.SelectedIndex = 0;
-            metroTabControl1.SelectedTextColor = Color.White;
-            metroTabControl1.Size = new Size(1063, 821);
-            metroTabControl1.SizeMode = TabSizeMode.Fixed;
-            metroTabControl1.Speed = 100;
-            metroTabControl1.Style = ReaLTaiizor.Enum.Metro.Style.Light;
-            metroTabControl1.StyleManager = null;
-            metroTabControl1.TabIndex = 2;
-            metroTabControl1.ThemeAuthor = "Taiizor";
-            metroTabControl1.ThemeName = "MetroLight";
-            metroTabControl1.UnselectedTextColor = Color.Gray;
+            panel7.Controls.Add(button6);
+            panel7.Location = new Point(3, 175);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(334, 70);
+            panel7.TabIndex = 7;
             // 
-            // tabPage1
+            // button6
             // 
-            tabPage1.Controls.Add(textBox1);
-            tabPage1.Location = new Point(4, 42);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1055, 775);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "tabPage1";
-            tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(3, 3);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.ScrollBars = ScrollBars.Both;
-            textBox1.Size = new Size(1045, 769);
-            textBox1.TabIndex = 0;
-            textBox1.WordWrap = false;
-            // 
-            // tabPage2
-            // 
-            tabPage2.Location = new Point(4, 42);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1051, 775);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "tabPage2";
-            tabPage2.UseVisualStyleBackColor = true;
+            button6.BackColor = Color.FromArgb(23, 24, 29);
+            button6.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button6.ForeColor = Color.White;
+            button6.Image = (Image)resources.GetObject("button6.Image");
+            button6.ImageAlign = ContentAlignment.MiddleLeft;
+            button6.Location = new Point(-11, -8);
+            button6.Name = "button6";
+            button6.Padding = new Padding(25, 0, 0, 0);
+            button6.Size = new Size(360, 89);
+            button6.TabIndex = 0;
+            button6.Text = "            New File";
+            button6.TextAlign = ContentAlignment.MiddleLeft;
+            button6.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1402, 858);
-            Controls.Add(metroTabControl1);
+            Controls.Add(tabControl1);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(panel1);
             Font = new Font("Segoe UI Semibold", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -301,10 +354,13 @@
             panel3.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel5.ResumeLayout(false);
+            tabControl1.ResumeLayout(false);
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            panel6.ResumeLayout(false);
             panel4.ResumeLayout(false);
-            metroTabControl1.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
-            tabPage1.PerformLayout();
+            panel7.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -318,15 +374,19 @@
         private Panel panel2;
         private Panel panel3;
         private Button button2;
-        private Panel panel4;
-        private Button button3;
         private Panel panel5;
         private Button button4;
         private ReaLTaiizor.Controls.NightControlBox nightControlBox1;
         private SlantedTabControl slantedTabControl1;
-        private ReaLTaiizor.Controls.MetroTabControl metroTabControl1;
-        private TabPage tabPage1;
-        private TextBox textBox1;
+        private TabControl tabControl1;
         private TabPage tabPage2;
+        private ReaLTaiizor.Controls.MoonTextBox moonTextBox1;
+        private FlowLayoutPanel flowLayoutPanel2;
+        private Panel panel6;
+        private Button button5;
+        private Panel panel4;
+        private Button button3;
+        private Panel panel7;
+        private Button button6;
     }
 }
