@@ -110,9 +110,9 @@
             controlbar.EnableMinimizeColor = Color.FromArgb(160, 160, 160);
             controlbar.Location = new Point(1433, 0);
             controlbar.MaximizeHoverColor = Color.FromArgb(15, 255, 255, 255);
-            controlbar.MaximizeHoverForeColor = Color.White;
+            controlbar.MaximizeHoverForeColor = SystemColors.WindowFrame;
             controlbar.MinimizeHoverColor = Color.FromArgb(15, 255, 255, 255);
-            controlbar.MinimizeHoverForeColor = Color.White;
+            controlbar.MinimizeHoverForeColor = SystemColors.WindowFrame;
             controlbar.Name = "controlbar";
             controlbar.Size = new Size(139, 31);
             controlbar.TabIndex = 2;
@@ -137,6 +137,8 @@
             mainbutton_picbox.TabIndex = 1;
             mainbutton_picbox.TabStop = false;
             mainbutton_picbox.Click += mainbutton_picbox_Click;
+            mainbutton_picbox.MouseLeave += mainbutton_picbox_MouseLeave;
+            mainbutton_picbox.MouseHover += mainbutton_picbox_MouseHover;
             // 
             // sidebarpanel
             // 
