@@ -1,43 +1,73 @@
+using System.Windows.Forms;
+using System.ComponentModel;
+using ReaLTaiizor.Controls;
+
 namespace Swift_Edit
 {
-    public partial class Form1 : Form
+    public partial class defaultmode_form : Form
     {
-        public Form1()
+
+        public defaultmode_form()
         {
             InitializeComponent();
-            tabControl1.MouseDoubleClick += tabControl1_MouseDoubleClick_1;
+        }
+        bool menuExpand = false;
+        bool sidebarExpand = true;
 
+        private void menuTransition_Tick(object sender, EventArgs e)
+        {
+            if (menuExpand == false)
+            {
+                filemenupanel.Height += 10;
+                if (filemenupanel.Height >= 630)
+                {
+                    menuTransition.Stop();
+                    menuExpand = true;
+                }
 
+            }
+            else
+            {
+                filemenupanel.Height -= 10;
+                if (filemenupanel.Height <= 70)
+                {
+                    menuTransition.Stop();
+                    menuExpand = false;
+                }
+            }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void sidebarTransition_Tick(object sender, EventArgs e)
         {
+            if (sidebarExpand)
+            {
+                sidebarpanel.Width += 10;
+                if (sidebarpanel.Width >= 339)
+                {
+                    sidebarExpand = false;
+                    sidebarTransition.Stop();
 
+                }
+            }
+            else
+            {
+                sidebarpanel.Width -= 10;
+                if (sidebarpanel.Width <= 69)
+                {
+                    sidebarExpand = true;
+                    sidebarTransition.Stop();
+                }
+            }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void mainfilemenu_btn_Click(object sender, EventArgs e)
         {
-            this.tabControl1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseDoubleClick_1);
+            menuTransition.Start();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void mainbutton_picbox_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabControl1_MouseDoubleClick_1(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
+            sidebarTransition.Start();
         }
     }
 }

@@ -3,7 +3,6 @@ C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\bin\Debug\net9.0-wi
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\bin\Debug\net9.0-windows\Swift_Edit.runtimeconfig.json
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\bin\Debug\net9.0-windows\Swift_Edit.dll
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\bin\Debug\net9.0-windows\Swift_Edit.pdb
-C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-windows\Swift_Edit.Form1.resources
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-windows\Swift_Edit.Properties.Resources.resources
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-windows\Swift_Edit.csproj.GenerateResource.cache
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-windows\Swift_Edit.GeneratedMSBuildEditorConfig.editorconfig
@@ -18,3 +17,4 @@ C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-wi
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\bin\Debug\net9.0-windows\ReaLTaiizor.dll
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-windows\Swift_Edit.csproj.AssemblyReference.cache
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-windows\Swift_Edit.csproj.Up2Date
+C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-windows\Swift_Edit.defaultmode_form.resources
