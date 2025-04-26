@@ -31,6 +31,8 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(defaultmode_form));
             panel1 = new Panel();
+            switchmodepanel = new Panel();
+            switchmodes_btn = new Button();
             controlbar = new ReaLTaiizor.Controls.NightControlBox();
             heading_label = new Label();
             mainbutton_picbox = new PictureBox();
@@ -63,7 +65,15 @@
             textarea = new ReaLTaiizor.Controls.MoonTextBox();
             menuTransition = new System.Windows.Forms.Timer(components);
             sidebarTransition = new System.Windows.Forms.Timer(components);
+            panel13 = new Panel();
+            button1 = new Button();
+            panel14 = new Panel();
+            button2 = new Button();
+            panel15 = new Panel();
+            button3 = new Button();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             panel1.SuspendLayout();
+            switchmodepanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)mainbutton_picbox).BeginInit();
             sidebarpanel.SuspendLayout();
             panel3.SuspendLayout();
@@ -80,11 +90,16 @@
             panel12.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
+            panel13.SuspendLayout();
+            panel14.SuspendLayout();
+            panel15.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(flowLayoutPanel1);
             panel1.Controls.Add(controlbar);
             panel1.Controls.Add(heading_label);
             panel1.Controls.Add(mainbutton_picbox);
@@ -94,15 +109,38 @@
             panel1.Size = new Size(1572, 37);
             panel1.TabIndex = 0;
             // 
+            // switchmodepanel
+            // 
+            switchmodepanel.Controls.Add(switchmodes_btn);
+            switchmodepanel.Location = new Point(3, 3);
+            switchmodepanel.Name = "switchmodepanel";
+            switchmodepanel.Size = new Size(250, 37);
+            switchmodepanel.TabIndex = 4;
+            // 
+            // switchmodes_btn
+            // 
+            switchmodes_btn.BackColor = Color.FromArgb(23, 24, 29);
+            switchmodes_btn.Font = new Font("Iosevka NF", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            switchmodes_btn.ForeColor = Color.White;
+            switchmodes_btn.Image = (Image)resources.GetObject("switchmodes_btn.Image");
+            switchmodes_btn.ImageAlign = ContentAlignment.MiddleRight;
+            switchmodes_btn.Location = new Point(-14, -8);
+            switchmodes_btn.Name = "switchmodes_btn";
+            switchmodes_btn.Padding = new Padding(0, 0, 15, 0);
+            switchmodes_btn.Size = new Size(273, 55);
+            switchmodes_btn.TabIndex = 0;
+            switchmodes_btn.Text = "SWITCH MODES";
+            switchmodes_btn.UseVisualStyleBackColor = false;
+            // 
             // controlbar
             // 
-            controlbar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             controlbar.BackColor = Color.Transparent;
             controlbar.CloseHoverColor = Color.FromArgb(199, 80, 80);
-            controlbar.CloseHoverForeColor = Color.Gray;
+            controlbar.CloseHoverForeColor = SystemColors.HighlightText;
             controlbar.DefaultLocation = true;
             controlbar.DisableMaximizeColor = Color.FromArgb(105, 105, 105);
             controlbar.DisableMinimizeColor = Color.FromArgb(105, 105, 105);
+            controlbar.Dock = DockStyle.Right;
             controlbar.EnableCloseColor = Color.FromArgb(160, 160, 160);
             controlbar.EnableMaximizeButton = true;
             controlbar.EnableMaximizeColor = Color.FromArgb(160, 160, 160);
@@ -121,7 +159,7 @@
             // 
             heading_label.AutoSize = true;
             heading_label.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            heading_label.Location = new Point(71, 8);
+            heading_label.Location = new Point(73, 8);
             heading_label.Name = "heading_label";
             heading_label.Size = new Size(231, 23);
             heading_label.TabIndex = 1;
@@ -132,13 +170,11 @@
             mainbutton_picbox.Image = (Image)resources.GetObject("mainbutton_picbox.Image");
             mainbutton_picbox.Location = new Point(3, 3);
             mainbutton_picbox.Name = "mainbutton_picbox";
-            mainbutton_picbox.Size = new Size(46, 31);
+            mainbutton_picbox.Size = new Size(51, 31);
             mainbutton_picbox.SizeMode = PictureBoxSizeMode.CenterImage;
             mainbutton_picbox.TabIndex = 1;
             mainbutton_picbox.TabStop = false;
             mainbutton_picbox.Click += mainbutton_picbox_Click;
-            mainbutton_picbox.MouseLeave += mainbutton_picbox_MouseLeave;
-            mainbutton_picbox.MouseHover += mainbutton_picbox_MouseHover;
             // 
             // sidebarpanel
             // 
@@ -447,7 +483,11 @@
             // 
             // tabPage2
             // 
-            tabPage2.BorderStyle = BorderStyle.FixedSingle;
+            tabPage2.BackColor = Color.Silver;
+            tabPage2.BorderStyle = BorderStyle.Fixed3D;
+            tabPage2.Controls.Add(panel15);
+            tabPage2.Controls.Add(panel14);
+            tabPage2.Controls.Add(panel13);
             tabPage2.Controls.Add(textarea);
             tabPage2.Font = new Font("JetBrains Mono", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             tabPage2.ForeColor = SystemColors.Desktop;
@@ -457,7 +497,6 @@
             tabPage2.Size = new Size(1495, 851);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Untitled*";
-            tabPage2.UseVisualStyleBackColor = true;
             // 
             // textarea
             // 
@@ -471,10 +510,11 @@
             textarea.Multiline = true;
             textarea.Name = "textarea";
             textarea.ScrollBars = ScrollBars.Both;
-            textarea.Size = new Size(1487, 843);
+            textarea.Size = new Size(1485, 841);
             textarea.TabIndex = 10;
             textarea.Text = "Your Text Here!";
             textarea.WordWrap = false;
+            textarea.Click += textarea_Click;
             // 
             // menuTransition
             // 
@@ -485,6 +525,83 @@
             // 
             sidebarTransition.Interval = 10;
             sidebarTransition.Tick += sidebarTransition_Tick;
+            // 
+            // panel13
+            // 
+            panel13.Controls.Add(button1);
+            panel13.Location = new Point(620, 405);
+            panel13.Name = "panel13";
+            panel13.Size = new Size(250, 37);
+            panel13.TabIndex = 11;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(23, 24, 29);
+            button1.Font = new Font("Iosevka NF", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.MiddleRight;
+            button1.Location = new Point(-14, -8);
+            button1.Name = "button1";
+            button1.Padding = new Padding(0, 0, 15, 0);
+            button1.Size = new Size(273, 55);
+            button1.TabIndex = 0;
+            button1.Text = "SWITCH MODES";
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // panel14
+            // 
+            panel14.Controls.Add(button2);
+            panel14.Location = new Point(927, 378);
+            panel14.Name = "panel14";
+            panel14.Size = new Size(250, 37);
+            panel14.TabIndex = 5;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.FromArgb(23, 24, 29);
+            button2.Font = new Font("Iosevka NF", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.ForeColor = Color.White;
+            button2.Image = (Image)resources.GetObject("button2.Image");
+            button2.ImageAlign = ContentAlignment.MiddleRight;
+            button2.Location = new Point(-14, -8);
+            button2.Name = "button2";
+            button2.Padding = new Padding(0, 0, 15, 0);
+            button2.Size = new Size(273, 55);
+            button2.TabIndex = 0;
+            button2.Text = "SWITCH MODES";
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // panel15
+            // 
+            panel15.Controls.Add(button3);
+            panel15.Location = new Point(890, 530);
+            panel15.Name = "panel15";
+            panel15.Size = new Size(250, 37);
+            panel15.TabIndex = 12;
+            // 
+            // button3
+            // 
+            button3.BackColor = Color.FromArgb(23, 24, 29);
+            button3.Font = new Font("Iosevka NF", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button3.ForeColor = Color.White;
+            button3.Image = (Image)resources.GetObject("button3.Image");
+            button3.ImageAlign = ContentAlignment.MiddleRight;
+            button3.Location = new Point(-14, -8);
+            button3.Name = "button3";
+            button3.Padding = new Padding(0, 0, 15, 0);
+            button3.Size = new Size(273, 55);
+            button3.TabIndex = 0;
+            button3.Text = "SWITCH MODES";
+            button3.UseVisualStyleBackColor = false;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Controls.Add(switchmodepanel);
+            flowLayoutPanel1.Location = new Point(1171, 0);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(256, 139);
+            flowLayoutPanel1.TabIndex = 3;
             // 
             // defaultmode_form
             // 
@@ -500,6 +617,7 @@
             Text = "Form1";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            switchmodepanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)mainbutton_picbox).EndInit();
             sidebarpanel.ResumeLayout(false);
             panel3.ResumeLayout(false);
@@ -517,6 +635,10 @@
             tabControl1.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
+            panel13.ResumeLayout(false);
+            panel14.ResumeLayout(false);
+            panel15.ResumeLayout(false);
+            flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -556,5 +678,14 @@
         private Button saveas_btn;
         private System.Windows.Forms.Timer menuTransition;
         private System.Windows.Forms.Timer sidebarTransition;
+        private Panel switchmodepanel;
+        private Button switchmodes_btn;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Panel panel15;
+        private Button button3;
+        private Panel panel14;
+        private Button button2;
+        private Panel panel13;
+        private Button button1;
     }
 }
