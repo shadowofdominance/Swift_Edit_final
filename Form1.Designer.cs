@@ -31,8 +31,17 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(defaultmode_form));
             panel1 = new Panel();
-            switchmodepanel = new Panel();
-            switchmodes_btn = new Button();
+            switchmode_layoutpanel = new FlowLayoutPanel();
+            panel13 = new Panel();
+            switchmode_btn = new Button();
+            panel14 = new Panel();
+            scribemode_btn = new Button();
+            panel15 = new Panel();
+            quillmode_btn = new Button();
+            panel16 = new Panel();
+            devmode_btn = new Button();
+            panel17 = new Panel();
+            modemenuclose_btn = new Button();
             controlbar = new ReaLTaiizor.Controls.NightControlBox();
             heading_label = new Label();
             mainbutton_picbox = new PictureBox();
@@ -60,20 +69,27 @@
             save_btn = new Button();
             panel12 = new Panel();
             saveas_btn = new Button();
-            tabControl1 = new TabControl();
-            tabPage2 = new TabPage();
-            textarea = new ReaLTaiizor.Controls.MoonTextBox();
             menuTransition = new System.Windows.Forms.Timer(components);
             sidebarTransition = new System.Windows.Forms.Timer(components);
-            panel13 = new Panel();
-            button1 = new Button();
-            panel14 = new Panel();
-            button2 = new Button();
-            panel15 = new Panel();
-            button3 = new Button();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            modetransition = new System.Windows.Forms.Timer(components);
+            footer_layoutpanel = new FlowLayoutPanel();
+            panel18 = new Panel();
+            wordcount_label = new Label();
+            panel19 = new Panel();
+            linecount_label = new Label();
+            panel20 = new Panel();
+            charactercount_label = new Label();
+            panel21 = new Panel();
+            tabControl1 = new TabControl();
+            tabPage2 = new TabPage();
+            textarea = new TextBox();
             panel1.SuspendLayout();
-            switchmodepanel.SuspendLayout();
+            switchmode_layoutpanel.SuspendLayout();
+            panel13.SuspendLayout();
+            panel14.SuspendLayout();
+            panel15.SuspendLayout();
+            panel16.SuspendLayout();
+            panel17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)mainbutton_picbox).BeginInit();
             sidebarpanel.SuspendLayout();
             panel3.SuspendLayout();
@@ -88,49 +104,157 @@
             panel10.SuspendLayout();
             panel11.SuspendLayout();
             panel12.SuspendLayout();
+            footer_layoutpanel.SuspendLayout();
+            panel18.SuspendLayout();
+            panel19.SuspendLayout();
+            panel20.SuspendLayout();
+            panel21.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
-            panel13.SuspendLayout();
-            panel14.SuspendLayout();
-            panel15.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.White;
-            panel1.Controls.Add(flowLayoutPanel1);
+            panel1.Controls.Add(switchmode_layoutpanel);
             panel1.Controls.Add(controlbar);
             panel1.Controls.Add(heading_label);
             panel1.Controls.Add(mainbutton_picbox);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1572, 37);
+            panel1.Size = new Size(1666, 37);
             panel1.TabIndex = 0;
+            panel1.MouseDown += panel1_MouseDown;
             // 
-            // switchmodepanel
+            // switchmode_layoutpanel
             // 
-            switchmodepanel.Controls.Add(switchmodes_btn);
-            switchmodepanel.Location = new Point(3, 3);
-            switchmodepanel.Name = "switchmodepanel";
-            switchmodepanel.Size = new Size(250, 37);
-            switchmodepanel.TabIndex = 4;
+            switchmode_layoutpanel.Controls.Add(panel13);
+            switchmode_layoutpanel.Controls.Add(panel14);
+            switchmode_layoutpanel.Controls.Add(panel15);
+            switchmode_layoutpanel.Controls.Add(panel16);
+            switchmode_layoutpanel.Controls.Add(panel17);
+            switchmode_layoutpanel.Dock = DockStyle.Right;
+            switchmode_layoutpanel.Location = new Point(1318, 0);
+            switchmode_layoutpanel.Name = "switchmode_layoutpanel";
+            switchmode_layoutpanel.Size = new Size(209, 37);
+            switchmode_layoutpanel.TabIndex = 11;
             // 
-            // switchmodes_btn
+            // panel13
             // 
-            switchmodes_btn.BackColor = Color.FromArgb(23, 24, 29);
-            switchmodes_btn.Font = new Font("Iosevka NF", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            switchmodes_btn.ForeColor = Color.White;
-            switchmodes_btn.Image = (Image)resources.GetObject("switchmodes_btn.Image");
-            switchmodes_btn.ImageAlign = ContentAlignment.MiddleRight;
-            switchmodes_btn.Location = new Point(-14, -8);
-            switchmodes_btn.Name = "switchmodes_btn";
-            switchmodes_btn.Padding = new Padding(0, 0, 15, 0);
-            switchmodes_btn.Size = new Size(273, 55);
-            switchmodes_btn.TabIndex = 0;
-            switchmodes_btn.Text = "SWITCH MODES";
-            switchmodes_btn.UseVisualStyleBackColor = false;
+            panel13.Controls.Add(switchmode_btn);
+            panel13.Location = new Point(3, 3);
+            panel13.Name = "panel13";
+            panel13.Size = new Size(208, 34);
+            panel13.TabIndex = 3;
+            // 
+            // switchmode_btn
+            // 
+            switchmode_btn.BackColor = Color.FromArgb(23, 24, 29);
+            switchmode_btn.Font = new Font("Iosevka NFP ExtraBold", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            switchmode_btn.ForeColor = Color.White;
+            switchmode_btn.Image = (Image)resources.GetObject("switchmode_btn.Image");
+            switchmode_btn.ImageAlign = ContentAlignment.MiddleRight;
+            switchmode_btn.Location = new Point(-3, -3);
+            switchmode_btn.Name = "switchmode_btn";
+            switchmode_btn.Padding = new Padding(0, 0, 15, 0);
+            switchmode_btn.Size = new Size(211, 37);
+            switchmode_btn.TabIndex = 4;
+            switchmode_btn.Text = "SWITCH MODE";
+            switchmode_btn.UseVisualStyleBackColor = false;
+            switchmode_btn.Click += switchmode_btn_Click;
+            // 
+            // panel14
+            // 
+            panel14.Controls.Add(scribemode_btn);
+            panel14.Location = new Point(3, 43);
+            panel14.Name = "panel14";
+            panel14.Size = new Size(208, 34);
+            panel14.TabIndex = 4;
+            // 
+            // scribemode_btn
+            // 
+            scribemode_btn.BackColor = Color.FromArgb(23, 24, 29);
+            scribemode_btn.Font = new Font("Iosevka NFP ExtraBold", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            scribemode_btn.ForeColor = Color.White;
+            scribemode_btn.Image = (Image)resources.GetObject("scribemode_btn.Image");
+            scribemode_btn.ImageAlign = ContentAlignment.MiddleRight;
+            scribemode_btn.Location = new Point(-3, -3);
+            scribemode_btn.Name = "scribemode_btn";
+            scribemode_btn.Padding = new Padding(0, 0, 15, 0);
+            scribemode_btn.Size = new Size(211, 37);
+            scribemode_btn.TabIndex = 4;
+            scribemode_btn.Text = "SCRIBE MODE";
+            scribemode_btn.UseVisualStyleBackColor = false;
+            // 
+            // panel15
+            // 
+            panel15.Controls.Add(quillmode_btn);
+            panel15.Location = new Point(3, 83);
+            panel15.Name = "panel15";
+            panel15.Size = new Size(208, 34);
+            panel15.TabIndex = 5;
+            // 
+            // quillmode_btn
+            // 
+            quillmode_btn.BackColor = Color.FromArgb(23, 24, 29);
+            quillmode_btn.Font = new Font("Iosevka NFP ExtraBold", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            quillmode_btn.ForeColor = Color.White;
+            quillmode_btn.Image = (Image)resources.GetObject("quillmode_btn.Image");
+            quillmode_btn.ImageAlign = ContentAlignment.MiddleRight;
+            quillmode_btn.Location = new Point(-3, -3);
+            quillmode_btn.Name = "quillmode_btn";
+            quillmode_btn.Padding = new Padding(0, 0, 15, 0);
+            quillmode_btn.Size = new Size(211, 37);
+            quillmode_btn.TabIndex = 4;
+            quillmode_btn.Text = "QUILL MODE";
+            quillmode_btn.UseVisualStyleBackColor = false;
+            // 
+            // panel16
+            // 
+            panel16.Controls.Add(devmode_btn);
+            panel16.Location = new Point(3, 123);
+            panel16.Name = "panel16";
+            panel16.Size = new Size(208, 34);
+            panel16.TabIndex = 6;
+            // 
+            // devmode_btn
+            // 
+            devmode_btn.BackColor = Color.FromArgb(23, 24, 29);
+            devmode_btn.Font = new Font("Iosevka NFP ExtraBold", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            devmode_btn.ForeColor = Color.White;
+            devmode_btn.Image = (Image)resources.GetObject("devmode_btn.Image");
+            devmode_btn.ImageAlign = ContentAlignment.MiddleRight;
+            devmode_btn.Location = new Point(-3, -3);
+            devmode_btn.Name = "devmode_btn";
+            devmode_btn.Padding = new Padding(0, 0, 15, 0);
+            devmode_btn.Size = new Size(211, 37);
+            devmode_btn.TabIndex = 4;
+            devmode_btn.Text = "DEV MODE";
+            devmode_btn.UseVisualStyleBackColor = false;
+            // 
+            // panel17
+            // 
+            panel17.Controls.Add(modemenuclose_btn);
+            panel17.Location = new Point(3, 163);
+            panel17.Name = "panel17";
+            panel17.Size = new Size(53, 34);
+            panel17.TabIndex = 7;
+            // 
+            // modemenuclose_btn
+            // 
+            modemenuclose_btn.BackColor = Color.FromArgb(23, 24, 29);
+            modemenuclose_btn.Font = new Font("Iosevka NFP ExtraBold", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            modemenuclose_btn.ForeColor = Color.White;
+            modemenuclose_btn.Image = (Image)resources.GetObject("modemenuclose_btn.Image");
+            modemenuclose_btn.ImageAlign = ContentAlignment.MiddleLeft;
+            modemenuclose_btn.Location = new Point(-3, -3);
+            modemenuclose_btn.Name = "modemenuclose_btn";
+            modemenuclose_btn.Padding = new Padding(15, 0, 0, 0);
+            modemenuclose_btn.Size = new Size(62, 37);
+            modemenuclose_btn.TabIndex = 4;
+            modemenuclose_btn.UseVisualStyleBackColor = false;
+            modemenuclose_btn.Click += modemenuclose_btn_Click;
             // 
             // controlbar
             // 
@@ -146,7 +270,7 @@
             controlbar.EnableMaximizeColor = Color.FromArgb(160, 160, 160);
             controlbar.EnableMinimizeButton = true;
             controlbar.EnableMinimizeColor = Color.FromArgb(160, 160, 160);
-            controlbar.Location = new Point(1433, 0);
+            controlbar.Location = new Point(1527, 0);
             controlbar.MaximizeHoverColor = Color.FromArgb(15, 255, 255, 255);
             controlbar.MaximizeHoverForeColor = SystemColors.WindowFrame;
             controlbar.MinimizeHoverColor = Color.FromArgb(15, 255, 255, 255);
@@ -187,7 +311,7 @@
             sidebarpanel.Location = new Point(0, 37);
             sidebarpanel.Name = "sidebarpanel";
             sidebarpanel.Padding = new Padding(0, 20, 0, 0);
-            sidebarpanel.Size = new Size(69, 881);
+            sidebarpanel.Size = new Size(69, 915);
             sidebarpanel.TabIndex = 1;
             // 
             // panel3
@@ -471,51 +595,6 @@
             saveas_btn.TextAlign = ContentAlignment.MiddleLeft;
             saveas_btn.UseVisualStyleBackColor = false;
             // 
-            // tabControl1
-            // 
-            tabControl1.Controls.Add(tabPage2);
-            tabControl1.Dock = DockStyle.Fill;
-            tabControl1.Location = new Point(69, 37);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1503, 881);
-            tabControl1.TabIndex = 2;
-            // 
-            // tabPage2
-            // 
-            tabPage2.BackColor = Color.Silver;
-            tabPage2.BorderStyle = BorderStyle.Fixed3D;
-            tabPage2.Controls.Add(panel15);
-            tabPage2.Controls.Add(panel14);
-            tabPage2.Controls.Add(panel13);
-            tabPage2.Controls.Add(textarea);
-            tabPage2.Font = new Font("JetBrains Mono", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tabPage2.ForeColor = SystemColors.Desktop;
-            tabPage2.Location = new Point(4, 26);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1495, 851);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Untitled*";
-            // 
-            // textarea
-            // 
-            textarea.BackColor = Color.FromArgb(235, 235, 235);
-            textarea.BorderColor = Color.LightGray;
-            textarea.BorderStyle = BorderStyle.FixedSingle;
-            textarea.Dock = DockStyle.Fill;
-            textarea.Font = new Font("JetBrains Mono", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textarea.ForeColor = Color.Black;
-            textarea.Location = new Point(3, 3);
-            textarea.Multiline = true;
-            textarea.Name = "textarea";
-            textarea.ScrollBars = ScrollBars.Both;
-            textarea.Size = new Size(1485, 841);
-            textarea.TabIndex = 10;
-            textarea.Text = "Your Text Here!";
-            textarea.WordWrap = false;
-            textarea.Click += textarea_Click;
-            // 
             // menuTransition
             // 
             menuTransition.Interval = 10;
@@ -526,89 +605,134 @@
             sidebarTransition.Interval = 10;
             sidebarTransition.Tick += sidebarTransition_Tick;
             // 
-            // panel13
+            // modetransition
             // 
-            panel13.Controls.Add(button1);
-            panel13.Location = new Point(620, 405);
-            panel13.Name = "panel13";
-            panel13.Size = new Size(250, 37);
-            panel13.TabIndex = 11;
+            modetransition.Interval = 10;
+            modetransition.Tick += modetransition_Tick;
             // 
-            // button1
+            // footer_layoutpanel
             // 
-            button1.BackColor = Color.FromArgb(23, 24, 29);
-            button1.Font = new Font("Iosevka NF", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.ImageAlign = ContentAlignment.MiddleRight;
-            button1.Location = new Point(-14, -8);
-            button1.Name = "button1";
-            button1.Padding = new Padding(0, 0, 15, 0);
-            button1.Size = new Size(273, 55);
-            button1.TabIndex = 0;
-            button1.Text = "SWITCH MODES";
-            button1.UseVisualStyleBackColor = false;
+            footer_layoutpanel.BackColor = Color.FromArgb(23, 24, 29);
+            footer_layoutpanel.Controls.Add(panel18);
+            footer_layoutpanel.Controls.Add(panel19);
+            footer_layoutpanel.Controls.Add(panel20);
+            footer_layoutpanel.Dock = DockStyle.Bottom;
+            footer_layoutpanel.Location = new Point(69, 919);
+            footer_layoutpanel.Name = "footer_layoutpanel";
+            footer_layoutpanel.Size = new Size(1597, 33);
+            footer_layoutpanel.TabIndex = 11;
             // 
-            // panel14
+            // panel18
             // 
-            panel14.Controls.Add(button2);
-            panel14.Location = new Point(927, 378);
-            panel14.Name = "panel14";
-            panel14.Size = new Size(250, 37);
-            panel14.TabIndex = 5;
+            panel18.Controls.Add(wordcount_label);
+            panel18.Location = new Point(3, 3);
+            panel18.Name = "panel18";
+            panel18.Size = new Size(271, 30);
+            panel18.TabIndex = 12;
             // 
-            // button2
+            // wordcount_label
             // 
-            button2.BackColor = Color.FromArgb(23, 24, 29);
-            button2.Font = new Font("Iosevka NF", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.White;
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.ImageAlign = ContentAlignment.MiddleRight;
-            button2.Location = new Point(-14, -8);
-            button2.Name = "button2";
-            button2.Padding = new Padding(0, 0, 15, 0);
-            button2.Size = new Size(273, 55);
-            button2.TabIndex = 0;
-            button2.Text = "SWITCH MODES";
-            button2.UseVisualStyleBackColor = false;
+            wordcount_label.AutoSize = true;
+            wordcount_label.ForeColor = Color.White;
+            wordcount_label.Location = new Point(3, 8);
+            wordcount_label.Name = "wordcount_label";
+            wordcount_label.Size = new Size(55, 17);
+            wordcount_label.TabIndex = 0;
+            wordcount_label.Text = "Words: ";
+            wordcount_label.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // panel15
+            // panel19
             // 
-            panel15.Controls.Add(button3);
-            panel15.Location = new Point(890, 530);
-            panel15.Name = "panel15";
-            panel15.Size = new Size(250, 37);
-            panel15.TabIndex = 12;
+            panel19.Controls.Add(linecount_label);
+            panel19.Location = new Point(280, 3);
+            panel19.Name = "panel19";
+            panel19.Size = new Size(271, 30);
+            panel19.TabIndex = 13;
             // 
-            // button3
+            // linecount_label
             // 
-            button3.BackColor = Color.FromArgb(23, 24, 29);
-            button3.Font = new Font("Iosevka NF", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.ForeColor = Color.White;
-            button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.ImageAlign = ContentAlignment.MiddleRight;
-            button3.Location = new Point(-14, -8);
-            button3.Name = "button3";
-            button3.Padding = new Padding(0, 0, 15, 0);
-            button3.Size = new Size(273, 55);
-            button3.TabIndex = 0;
-            button3.Text = "SWITCH MODES";
-            button3.UseVisualStyleBackColor = false;
+            linecount_label.AutoSize = true;
+            linecount_label.ForeColor = Color.White;
+            linecount_label.Location = new Point(3, 8);
+            linecount_label.Name = "linecount_label";
+            linecount_label.Size = new Size(45, 17);
+            linecount_label.TabIndex = 0;
+            linecount_label.Text = "Lines: ";
+            linecount_label.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // flowLayoutPanel1
+            // panel20
             // 
-            flowLayoutPanel1.Controls.Add(switchmodepanel);
-            flowLayoutPanel1.Location = new Point(1171, 0);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(256, 139);
-            flowLayoutPanel1.TabIndex = 3;
+            panel20.Controls.Add(charactercount_label);
+            panel20.Location = new Point(557, 3);
+            panel20.Name = "panel20";
+            panel20.Size = new Size(271, 30);
+            panel20.TabIndex = 14;
+            // 
+            // charactercount_label
+            // 
+            charactercount_label.AutoSize = true;
+            charactercount_label.ForeColor = Color.White;
+            charactercount_label.Location = new Point(3, 8);
+            charactercount_label.Name = "charactercount_label";
+            charactercount_label.Size = new Size(79, 17);
+            charactercount_label.TabIndex = 0;
+            charactercount_label.Text = "Characters: ";
+            charactercount_label.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panel21
+            // 
+            panel21.Controls.Add(tabControl1);
+            panel21.Dock = DockStyle.Fill;
+            panel21.Location = new Point(69, 37);
+            panel21.Name = "panel21";
+            panel21.Size = new Size(1597, 882);
+            panel21.TabIndex = 12;
+            // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Dock = DockStyle.Fill;
+            tabControl1.Location = new Point(0, 0);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(1597, 882);
+            tabControl1.TabIndex = 0;
+            // 
+            // tabPage2
+            // 
+            tabPage2.BackColor = Color.Silver;
+            tabPage2.Controls.Add(textarea);
+            tabPage2.Font = new Font("FiraMono Nerd Font Medium", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            tabPage2.ForeColor = SystemColors.ActiveCaptionText;
+            tabPage2.Location = new Point(4, 26);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(1589, 852);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "*Untitled";
+            // 
+            // textarea
+            // 
+            textarea.Dock = DockStyle.Fill;
+            textarea.Font = new Font("JetBrains Mono", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textarea.Location = new Point(3, 3);
+            textarea.Multiline = true;
+            textarea.Name = "textarea";
+            textarea.ScrollBars = ScrollBars.Both;
+            textarea.Size = new Size(1583, 846);
+            textarea.TabIndex = 0;
+            textarea.Text = "Start typing... destiny awaits.";
+            textarea.WordWrap = false;
+            textarea.Click += textarea_Click;
+            textarea.TextChanged += textarea_TextChanged;
             // 
             // defaultmode_form
             // 
             AutoScaleDimensions = new SizeF(8F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1572, 918);
-            Controls.Add(tabControl1);
+            ClientSize = new Size(1666, 952);
+            Controls.Add(panel21);
+            Controls.Add(footer_layoutpanel);
             Controls.Add(sidebarpanel);
             Controls.Add(panel1);
             Font = new Font("Segoe UI Semibold", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -617,7 +741,12 @@
             Text = "Form1";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            switchmodepanel.ResumeLayout(false);
+            switchmode_layoutpanel.ResumeLayout(false);
+            panel13.ResumeLayout(false);
+            panel14.ResumeLayout(false);
+            panel15.ResumeLayout(false);
+            panel16.ResumeLayout(false);
+            panel17.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)mainbutton_picbox).EndInit();
             sidebarpanel.ResumeLayout(false);
             panel3.ResumeLayout(false);
@@ -632,13 +761,17 @@
             panel10.ResumeLayout(false);
             panel11.ResumeLayout(false);
             panel12.ResumeLayout(false);
+            footer_layoutpanel.ResumeLayout(false);
+            panel18.ResumeLayout(false);
+            panel18.PerformLayout();
+            panel19.ResumeLayout(false);
+            panel19.PerformLayout();
+            panel20.ResumeLayout(false);
+            panel20.PerformLayout();
+            panel21.ResumeLayout(false);
             tabControl1.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
-            panel13.ResumeLayout(false);
-            panel14.ResumeLayout(false);
-            panel15.ResumeLayout(false);
-            flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -656,9 +789,6 @@
         private Button mainfilemenu_btn;
         private ReaLTaiizor.Controls.NightControlBox controlbar;
         private SlantedTabControl slantedTabControl1;
-        private TabControl tabControl1;
-        private TabPage tabPage2;
-        private ReaLTaiizor.Controls.MoonTextBox textarea;
         private FlowLayoutPanel filemenupanel;
         private Panel panel6;
         private Button findandreplace_btn;
@@ -678,14 +808,28 @@
         private Button saveas_btn;
         private System.Windows.Forms.Timer menuTransition;
         private System.Windows.Forms.Timer sidebarTransition;
-        private Panel switchmodepanel;
-        private Button switchmodes_btn;
-        private FlowLayoutPanel flowLayoutPanel1;
-        private Panel panel15;
-        private Button button3;
-        private Panel panel14;
-        private Button button2;
+        private System.Windows.Forms.Timer modetransition;
+        private FlowLayoutPanel switchmode_layoutpanel;
         private Panel panel13;
-        private Button button1;
+        private Button switchmode_btn;
+        private Panel panel14;
+        private Button scribemode_btn;
+        private Panel panel15;
+        private Button quillmode_btn;
+        private Panel panel16;
+        private Button devmode_btn;
+        private Panel panel17;
+        private Button modemenuclose_btn;
+        private FlowLayoutPanel footer_layoutpanel;
+        private Panel panel18;
+        private Label wordcount_label;
+        private Panel panel19;
+        private Label linecount_label;
+        private Panel panel20;
+        private Label charactercount_label;
+        private Panel panel21;
+        private TabControl tabControl1;
+        private TabPage tabPage2;
+        private TextBox textarea;
     }
 }
