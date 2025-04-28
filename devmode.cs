@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Swift_Edit
 {
-    public partial class quillmode : Form
+    public partial class devmode : Form
     {
-        public quillmode()
+        public devmode()
         {
             InitializeComponent();
-        }
-
-        private void switchmode_btn_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

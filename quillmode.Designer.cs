@@ -44,6 +44,7 @@
             controlbar = new ReaLTaiizor.Controls.NightControlBox();
             heading_label = new Label();
             mainbutton_picbox = new PictureBox();
+            panel2 = new Panel();
             panel1.SuspendLayout();
             switchmode_layoutpanel.SuspendLayout();
             panel13.SuspendLayout();
@@ -56,7 +57,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.White;
+            panel1.BackColor = Color.Silver;
             panel1.Controls.Add(switchmode_layoutpanel);
             panel1.Controls.Add(controlbar);
             panel1.Controls.Add(heading_label);
@@ -102,6 +103,7 @@
             switchmode_btn.TabIndex = 4;
             switchmode_btn.Text = "SWITCH MODE";
             switchmode_btn.UseVisualStyleBackColor = false;
+            switchmode_btn.Click += switchmode_btn_Click;
             // 
             // panel14
             // 
@@ -200,7 +202,7 @@
             controlbar.CloseHoverColor = Color.FromArgb(199, 80, 80);
             controlbar.CloseHoverForeColor = SystemColors.HighlightText;
             controlbar.DefaultLocation = true;
-            controlbar.DisableMaximizeColor = Color.FromArgb(105, 105, 105);
+            controlbar.DisableMaximizeColor = Color.White;
             controlbar.DisableMinimizeColor = Color.FromArgb(105, 105, 105);
             controlbar.Dock = DockStyle.Right;
             controlbar.EnableCloseColor = Color.FromArgb(160, 160, 160);
@@ -210,9 +212,9 @@
             controlbar.EnableMinimizeColor = Color.FromArgb(160, 160, 160);
             controlbar.Location = new Point(1339, 0);
             controlbar.MaximizeHoverColor = Color.FromArgb(15, 255, 255, 255);
-            controlbar.MaximizeHoverForeColor = SystemColors.WindowFrame;
+            controlbar.MaximizeHoverForeColor = SystemColors.WindowText;
             controlbar.MinimizeHoverColor = Color.FromArgb(15, 255, 255, 255);
-            controlbar.MinimizeHoverForeColor = SystemColors.WindowFrame;
+            controlbar.MinimizeHoverForeColor = SystemColors.WindowText;
             controlbar.Name = "controlbar";
             controlbar.Size = new Size(139, 31);
             controlbar.TabIndex = 2;
@@ -237,11 +239,23 @@
             mainbutton_picbox.TabIndex = 1;
             mainbutton_picbox.TabStop = false;
             // 
+            // panel2
+            // 
+            panel2.AutoScroll = true;
+            panel2.AutoScrollMinSize = new Size(50000, 50000);
+            panel2.BackColor = Color.WhiteSmoke;
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(0, 37);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1478, 808);
+            panel2.TabIndex = 2;
+            // 
             // quillmode
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1478, 845);
+            Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "quillmode";
@@ -275,5 +289,6 @@
         private ReaLTaiizor.Controls.NightControlBox controlbar;
         private Label heading_label;
         private PictureBox mainbutton_picbox;
+        private Panel panel2;
     }
 }

@@ -61,14 +61,14 @@
             newfile_btn = new Button();
             panel8 = new Panel();
             openrecent_btn = new Button();
-            panel9 = new Panel();
-            newfolder_btn = new Button();
-            panel10 = new Panel();
-            openfolder_btn = new Button();
             panel11 = new Panel();
             save_btn = new Button();
             panel12 = new Panel();
             saveas_btn = new Button();
+            panel9 = new Panel();
+            button1 = new Button();
+            panel10 = new Panel();
+            button2 = new Button();
             menuTransition = new System.Windows.Forms.Timer(components);
             sidebarTransition = new System.Windows.Forms.Timer(components);
             modetransition = new System.Windows.Forms.Timer(components);
@@ -100,10 +100,10 @@
             panel4.SuspendLayout();
             panel7.SuspendLayout();
             panel8.SuspendLayout();
-            panel9.SuspendLayout();
-            panel10.SuspendLayout();
             panel11.SuspendLayout();
             panel12.SuspendLayout();
+            panel9.SuspendLayout();
+            panel10.SuspendLayout();
             footer_layoutpanel.SuspendLayout();
             panel18.SuspendLayout();
             panel19.SuspendLayout();
@@ -307,6 +307,7 @@
             sidebarpanel.Controls.Add(panel2);
             sidebarpanel.Controls.Add(panel6);
             sidebarpanel.Controls.Add(filemenupanel);
+            sidebarpanel.Controls.Add(panel10);
             sidebarpanel.Dock = DockStyle.Left;
             sidebarpanel.Location = new Point(0, 37);
             sidebarpanel.Name = "sidebarpanel";
@@ -334,7 +335,7 @@
             home_btn.Padding = new Padding(25, 0, 0, 0);
             home_btn.Size = new Size(360, 87);
             home_btn.TabIndex = 0;
-            home_btn.Text = "            Home";
+            home_btn.Text = "            Keyboard Shortcuts";
             home_btn.TextAlign = ContentAlignment.MiddleLeft;
             home_btn.UseVisualStyleBackColor = false;
             // 
@@ -385,6 +386,7 @@
             findandreplace_btn.Text = "            Find And Replace";
             findandreplace_btn.TextAlign = ContentAlignment.MiddleLeft;
             findandreplace_btn.UseVisualStyleBackColor = false;
+            findandreplace_btn.Click += findandreplace_btn_Click;
             // 
             // filemenupanel
             // 
@@ -393,10 +395,9 @@
             filemenupanel.Controls.Add(panel4);
             filemenupanel.Controls.Add(panel7);
             filemenupanel.Controls.Add(panel8);
-            filemenupanel.Controls.Add(panel9);
-            filemenupanel.Controls.Add(panel10);
             filemenupanel.Controls.Add(panel11);
             filemenupanel.Controls.Add(panel12);
+            filemenupanel.Controls.Add(panel9);
             filemenupanel.Location = new Point(3, 251);
             filemenupanel.Name = "filemenupanel";
             filemenupanel.Size = new Size(338, 70);
@@ -450,6 +451,7 @@
             openfile_btn.Text = "            Open File";
             openfile_btn.TextAlign = ContentAlignment.MiddleLeft;
             openfile_btn.UseVisualStyleBackColor = false;
+            openfile_btn.Click += openfile_btn_Click;
             // 
             // panel7
             // 
@@ -474,6 +476,7 @@
             newfile_btn.Text = "            New File";
             newfile_btn.TextAlign = ContentAlignment.MiddleLeft;
             newfile_btn.UseVisualStyleBackColor = false;
+            newfile_btn.Click += newfile_btn_Click;
             // 
             // panel8
             // 
@@ -498,59 +501,12 @@
             openrecent_btn.Text = "            Open Recent File";
             openrecent_btn.TextAlign = ContentAlignment.MiddleLeft;
             openrecent_btn.UseVisualStyleBackColor = false;
-            // 
-            // panel9
-            // 
-            panel9.Controls.Add(newfolder_btn);
-            panel9.Location = new Point(3, 307);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(334, 70);
-            panel9.TabIndex = 9;
-            // 
-            // newfolder_btn
-            // 
-            newfolder_btn.BackColor = Color.FromArgb(36, 37, 43);
-            newfolder_btn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            newfolder_btn.ForeColor = Color.White;
-            newfolder_btn.Image = (Image)resources.GetObject("newfolder_btn.Image");
-            newfolder_btn.ImageAlign = ContentAlignment.MiddleLeft;
-            newfolder_btn.Location = new Point(-11, -8);
-            newfolder_btn.Name = "newfolder_btn";
-            newfolder_btn.Padding = new Padding(25, 0, 0, 0);
-            newfolder_btn.Size = new Size(360, 89);
-            newfolder_btn.TabIndex = 0;
-            newfolder_btn.Text = "            New Folder";
-            newfolder_btn.TextAlign = ContentAlignment.MiddleLeft;
-            newfolder_btn.UseVisualStyleBackColor = false;
-            // 
-            // panel10
-            // 
-            panel10.Controls.Add(openfolder_btn);
-            panel10.Location = new Point(3, 383);
-            panel10.Name = "panel10";
-            panel10.Size = new Size(334, 70);
-            panel10.TabIndex = 10;
-            // 
-            // openfolder_btn
-            // 
-            openfolder_btn.BackColor = Color.FromArgb(36, 37, 43);
-            openfolder_btn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            openfolder_btn.ForeColor = Color.White;
-            openfolder_btn.Image = (Image)resources.GetObject("openfolder_btn.Image");
-            openfolder_btn.ImageAlign = ContentAlignment.MiddleLeft;
-            openfolder_btn.Location = new Point(-11, -8);
-            openfolder_btn.Name = "openfolder_btn";
-            openfolder_btn.Padding = new Padding(25, 0, 0, 0);
-            openfolder_btn.Size = new Size(360, 89);
-            openfolder_btn.TabIndex = 0;
-            openfolder_btn.Text = "            Open Folder";
-            openfolder_btn.TextAlign = ContentAlignment.MiddleLeft;
-            openfolder_btn.UseVisualStyleBackColor = false;
+            openrecent_btn.Click += openrecent_btn_Click;
             // 
             // panel11
             // 
             panel11.Controls.Add(save_btn);
-            panel11.Location = new Point(3, 459);
+            panel11.Location = new Point(3, 307);
             panel11.Name = "panel11";
             panel11.Size = new Size(334, 70);
             panel11.TabIndex = 11;
@@ -570,11 +526,12 @@
             save_btn.Text = "            Save";
             save_btn.TextAlign = ContentAlignment.MiddleLeft;
             save_btn.UseVisualStyleBackColor = false;
+            save_btn.Click += save_btn_Click;
             // 
             // panel12
             // 
             panel12.Controls.Add(saveas_btn);
-            panel12.Location = new Point(3, 535);
+            panel12.Location = new Point(3, 383);
             panel12.Name = "panel12";
             panel12.Size = new Size(334, 70);
             panel12.TabIndex = 12;
@@ -594,6 +551,57 @@
             saveas_btn.Text = "            Save As";
             saveas_btn.TextAlign = ContentAlignment.MiddleLeft;
             saveas_btn.UseVisualStyleBackColor = false;
+            saveas_btn.Click += saveas_btn_Click;
+            // 
+            // panel9
+            // 
+            panel9.Controls.Add(button1);
+            panel9.Location = new Point(3, 459);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(334, 70);
+            panel9.TabIndex = 13;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(36, 37, 43);
+            button1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(-11, -8);
+            button1.Name = "button1";
+            button1.Padding = new Padding(25, 0, 0, 0);
+            button1.Size = new Size(360, 89);
+            button1.TabIndex = 0;
+            button1.Text = "            Close Current";
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // panel10
+            // 
+            panel10.Controls.Add(button2);
+            panel10.Location = new Point(3, 327);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(334, 70);
+            panel10.TabIndex = 14;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.FromArgb(23, 24, 29);
+            button2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.ForeColor = Color.White;
+            button2.Image = (Image)resources.GetObject("button2.Image");
+            button2.ImageAlign = ContentAlignment.MiddleLeft;
+            button2.Location = new Point(-11, -8);
+            button2.Name = "button2";
+            button2.Padding = new Padding(30, 0, 0, 0);
+            button2.Size = new Size(360, 89);
+            button2.TabIndex = 0;
+            button2.Text = "            Close App";
+            button2.TextAlign = ContentAlignment.MiddleLeft;
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // menuTransition
             // 
@@ -697,6 +705,7 @@
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(1597, 882);
             tabControl1.TabIndex = 0;
+            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
             // tabPage2
             // 
@@ -739,6 +748,8 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "defaultmode_form";
             Text = "Form1";
+            FormClosing += defaultmode_form_FormClosing;
+            Load += defaultmode_form_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             switchmode_layoutpanel.ResumeLayout(false);
@@ -757,10 +768,10 @@
             panel4.ResumeLayout(false);
             panel7.ResumeLayout(false);
             panel8.ResumeLayout(false);
-            panel9.ResumeLayout(false);
-            panel10.ResumeLayout(false);
             panel11.ResumeLayout(false);
             panel12.ResumeLayout(false);
+            panel9.ResumeLayout(false);
+            panel10.ResumeLayout(false);
             footer_layoutpanel.ResumeLayout(false);
             panel18.ResumeLayout(false);
             panel18.PerformLayout();
@@ -798,10 +809,6 @@
         private Button newfile_btn;
         private Panel panel8;
         private Button openrecent_btn;
-        private Panel panel9;
-        private Button newfolder_btn;
-        private Panel panel10;
-        private Button openfolder_btn;
         private Panel panel11;
         private Button save_btn;
         private Panel panel12;
@@ -831,5 +838,9 @@
         private TabControl tabControl1;
         private TabPage tabPage2;
         private TextBox textarea;
+        private Panel panel9;
+        private Button button1;
+        private Panel panel10;
+        private Button button2;
     }
 }

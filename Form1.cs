@@ -1,8 +1,7 @@
-using System.Windows.Forms;
-using System.ComponentModel;
 using ReaLTaiizor.Controls;
 using System.Runtime.InteropServices;
-using System.Drawing;
+using System.Security.Cryptography;
+using WinFormsTabPage = System.Windows.Forms.TabPage;
 
 namespace Swift_Edit
 {
@@ -57,7 +56,7 @@ namespace Swift_Edit
             if (menuExpand == false)
             {
                 filemenupanel.Height += step1;
-                if (filemenupanel.Height >= 606)
+                if (filemenupanel.Height >= 537)
                 {
                     menuTransition.Stop();
                     menuExpand = true;
@@ -138,31 +137,41 @@ namespace Swift_Edit
 
             sidebarTransition.Start();
         }
-        private void UpdateFooter()
+        public void UpdateFooter()
         {
-            // Word Count
-            string text = textarea.Text;
-            int wordCount = 0;
-
-            if (!string.IsNullOrWhiteSpace(text))
+            if (tabControl1.SelectedTab != null && tabControl1.SelectedTab.Controls.Count > 0)
             {
-                wordCount = text.Split(new char[] { ' ', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries).Length;
+                // Find the RichTextBox/TextBox inside the current tab
+                var currentTextArea = tabControl1.SelectedTab.Controls
+                                        .OfType<TextBox>()
+                                        .FirstOrDefault(); // or TextBox if you're using that
+
+                if (currentTextArea != null)
+                {
+                    string text = currentTextArea.Text;
+
+                    int wordCount = 0;
+                    if (!string.IsNullOrWhiteSpace(text))
+                    {
+                        wordCount = text.Split(new char[] { ' ', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries).Length;
+                    }
+
+                    int lineCount = currentTextArea.Lines.Length;
+
+                    int characterCount = 0;
+                    if (!string.IsNullOrWhiteSpace(text))
+                    {
+                        characterCount = text.Count(c => !char.IsWhiteSpace(c));
+                    }
+
+                    // Update Labels
+                    wordcount_label.Text = $"Words: {wordCount}";
+                    linecount_label.Text = $"Lines: {lineCount}";
+                    charactercount_label.Text = $"Characters: {characterCount}";
+                }
             }
-
-            // Line Count
-            int lineCount = textarea.Lines.Length;
-
-            int characterCount = 0;
-            if (!string.IsNullOrWhiteSpace(text))
-            {
-                characterCount = text.Count(c => !char.IsWhiteSpace(c));
-            }
-
-            // Update Labels
-            wordcount_label.Text = $"Words: {wordCount}";
-            linecount_label.Text = $"Lines: {lineCount}";
-            charactercount_label.Text = $"Characters: {characterCount}";
         }
+
 
         private void textarea_Click(object sender, EventArgs e)
         {
@@ -201,6 +210,87 @@ namespace Swift_Edit
                     SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
                 }
             }
+        }
+
+        private void save_btn_Click(object sender, EventArgs e)
+        {
+            fileoperations.SaveFile(tabControl1);
+        }
+
+        private void saveas_btn_Click(object sender, EventArgs e)
+        {
+            fileoperations.SaveFileAs(tabControl1);
+        }
+
+        private void openfile_btn_Click(object sender, EventArgs e)
+        {
+            fileoperations.OpenFile(tabControl1, textarea);
+        }
+
+        private void newfile_btn_Click(object sender, EventArgs e)
+        {
+            fileoperations.NewFile(tabControl1, textarea);
+        }
+
+        private void openrecent_btn_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void defaultmode_form_Load(object sender, EventArgs e)
+        {
+            RecentFilesManager.LoadRecentFiles();
+        }
+
+        private void defaultmode_form_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            RecentFilesManager.SaveRecentFiles();
+        }
+        private void CloseCurrentFile()
+        {
+            try
+            {
+                if (tabControl1.TabCount == 0)
+                {
+                    MessageBox.Show("There are no files open to close.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                WinFormsTabPage currentTab = tabControl1.SelectedTab;
+                if (currentTab.Tag is bool isSaved && !isSaved)
+                {
+                    DialogResult result = MessageBox.Show("The current file has unsaved changes. Do you still want to close it?", "Unsaved Changes", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.No)
+                        return;
+                }
+
+                tabControl1.TabPages.Remove(currentTab);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while closing the file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateFooter();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            fileoperations.CloseApplication(tabControl1);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            fileoperations.CloseCurrentFile(tabControl1);
+        }
+
+        private void findandreplace_btn_Click(object sender, EventArgs e)
+        {
+            FindReplaceForm findReplaceForm = new FindReplaceForm(textarea);
+            findReplaceForm.Show(this);
         }
     }
 }

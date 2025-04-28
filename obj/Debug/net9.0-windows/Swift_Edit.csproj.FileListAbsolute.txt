@@ -20,3 +20,5 @@ C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-wi
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-windows\Swift_Edit.defaultmode_form.resources
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-windows\Swift_Edit.sourcelink.json
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-windows\Swift_Edit.quillmode.resources
+C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-windows\Swift_Edit.devmode.resources
+C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-windows\Swift_Edit.FindReplaceForm.resources
