@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|c:\\users\\acd07\\documents\\projects\\college project\\swift_edit\\findreplaceform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|solutionrelative:findreplaceform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\findreplaceform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|solutionrelative:findreplaceform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|c:\\users\\acd07\\documents\\projects\\college project\\swift_edit\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|c:\\users\\acd07\\documents\\projects\\college project\\swift_edit\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|solutionrelative:settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|c:\\users\\acd07\\documents\\projects\\college project\\swift_edit\\settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|solutionrelative:settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|c:\\users\\acd07\\documents\\projects\\college project\\swift_edit\\recentfilesmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,41 +50,89 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FindReplaceForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\FindReplaceForm.cs",
+              "RelativeDocumentMoniker": "FindReplaceForm.cs",
+              "ToolTip": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\FindReplaceForm.cs [Design]",
+              "RelativeToolTip": "FindReplaceForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T10:33:52.752Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "FindReplaceForm.cs",
+              "DocumentMoniker": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\FindReplaceForm.cs",
+              "RelativeDocumentMoniker": "FindReplaceForm.cs",
+              "ToolTip": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\FindReplaceForm.cs",
+              "RelativeToolTip": "FindReplaceForm.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAkwE4AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T10:30:30.074Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "settings.cs",
+              "DocumentMoniker": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\settings.cs",
+              "RelativeDocumentMoniker": "settings.cs",
+              "ToolTip": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\settings.cs",
+              "RelativeToolTip": "settings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T10:27:16.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "settings.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\settings.cs",
+              "RelativeDocumentMoniker": "settings.cs",
+              "ToolTip": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\settings.cs [Design]",
+              "RelativeToolTip": "settings.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T10:12:12.551Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\Form1.cs",
-              "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAABUBAAAAAAAAAAAwwAoBAAA4AAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\Form1.cs*",
+              "RelativeToolTip": "Form1.cs*",
+              "ViewState": "AgIAAAUBAAAAAAAAAAAowCQBAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-28T17:26:32.565Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\Form1.cs [Design]",
-              "RelativeToolTip": "Form1.cs [Design]",
+              "ToolTip": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\Form1.cs [Design]*",
+              "RelativeToolTip": "Form1.cs [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-28T17:16:47.204Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "RecentFilesManager.cs",
               "DocumentMoniker": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\RecentFilesManager.cs",
               "RelativeDocumentMoniker": "RecentFilesManager.cs",
               "ToolTip": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\RecentFilesManager.cs",
               "RelativeToolTip": "RecentFilesManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAALAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwB4AAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-28T17:15:23.164Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-28T17:15:23.164Z"
             }
           ]
         }

@@ -33,12 +33,12 @@
             pictureBox1 = new PictureBox();
             findandreplace_label = new Label();
             panel2 = new Panel();
-            textBox1 = new TextBox();
+            txtFind = new TextBox();
             label1 = new Label();
             panel3 = new Panel();
-            textBox2 = new TextBox();
+            txtReplace = new TextBox();
             label2 = new Label();
-            match_CheckBox = new CheckBox();
+            chkMatchCase = new CheckBox();
             whole_CheckBox = new CheckBox();
             findnext_btn = new Button();
             replace_btn = new Button();
@@ -52,6 +52,7 @@
             // 
             // panel1
             // 
+            panel1.BackColor = SystemColors.Window;
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(findandreplace_label);
             panel1.Dock = DockStyle.Top;
@@ -86,19 +87,19 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(textBox1);
+            panel2.Controls.Add(txtFind);
             panel2.Controls.Add(label1);
             panel2.Location = new Point(34, 69);
             panel2.Name = "panel2";
             panel2.Size = new Size(449, 40);
             panel2.TabIndex = 1;
             // 
-            // textBox1
+            // txtFind
             // 
-            textBox1.Location = new Point(178, 7);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(271, 27);
-            textBox1.TabIndex = 3;
+            txtFind.Location = new Point(178, 7);
+            txtFind.Name = "txtFind";
+            txtFind.Size = new Size(271, 27);
+            txtFind.TabIndex = 3;
             // 
             // label1
             // 
@@ -112,19 +113,19 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(textBox2);
+            panel3.Controls.Add(txtReplace);
             panel3.Controls.Add(label2);
             panel3.Location = new Point(34, 124);
             panel3.Name = "panel3";
             panel3.Size = new Size(449, 40);
             panel3.TabIndex = 2;
             // 
-            // textBox2
+            // txtReplace
             // 
-            textBox2.Location = new Point(178, 7);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(271, 27);
-            textBox2.TabIndex = 3;
+            txtReplace.Location = new Point(178, 7);
+            txtReplace.Name = "txtReplace";
+            txtReplace.Size = new Size(271, 27);
+            txtReplace.TabIndex = 3;
             // 
             // label2
             // 
@@ -136,17 +137,17 @@
             label2.Text = "Replace: ";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // match_CheckBox
+            // chkMatchCase
             // 
-            match_CheckBox.AutoSize = true;
-            match_CheckBox.Font = new Font("MartianMono NF", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            match_CheckBox.Location = new Point(129, 197);
-            match_CheckBox.Name = "match_CheckBox";
-            match_CheckBox.Size = new Size(85, 22);
-            match_CheckBox.TabIndex = 3;
-            match_CheckBox.Text = "Match";
-            match_CheckBox.UseVisualStyleBackColor = true;
-            match_CheckBox.CheckedChanged += match_CheckBox_CheckedChanged;
+            chkMatchCase.AutoSize = true;
+            chkMatchCase.Font = new Font("MartianMono NF", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            chkMatchCase.Location = new Point(129, 197);
+            chkMatchCase.Name = "chkMatchCase";
+            chkMatchCase.Size = new Size(85, 22);
+            chkMatchCase.TabIndex = 3;
+            chkMatchCase.Text = "Match";
+            chkMatchCase.UseVisualStyleBackColor = true;
+            chkMatchCase.CheckedChanged += match_CheckBox_CheckedChanged;
             // 
             // whole_CheckBox
             // 
@@ -215,7 +216,7 @@
             Controls.Add(replace_btn);
             Controls.Add(findnext_btn);
             Controls.Add(whole_CheckBox);
-            Controls.Add(match_CheckBox);
+            Controls.Add(chkMatchCase);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -239,11 +240,11 @@
         private Panel panel2;
         private Label findandreplace_label;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox txtFind;
         private Panel panel3;
-        private TextBox textBox2;
+        private TextBox txtReplace;
         private Label label2;
-        private CheckBox match_CheckBox;
+        private CheckBox chkMatchCase;
         private CheckBox whole_CheckBox;
         private Button findnext_btn;
         private Button replace_btn;

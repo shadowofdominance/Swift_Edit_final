@@ -289,8 +289,8 @@ namespace Swift_Edit
 
         private void findandreplace_btn_Click(object sender, EventArgs e)
         {
-            FindReplaceForm findReplaceForm = new FindReplaceForm(textarea);
-            findReplaceForm.Show(this);
+            FindReplaceForm findReplaceForm = new FindReplaceForm(this.textarea);
+            findReplaceForm.ShowDialog();
         }
     }
 }

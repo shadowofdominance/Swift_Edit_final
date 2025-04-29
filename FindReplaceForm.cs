@@ -8,14 +8,16 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Swift_Edit;
 
 namespace Swift_Edit
 {
     public partial class FindReplaceForm : Form
     {
-        private TextBox txtFind;
-        private TextBox txtReplace;
-        private CheckBox chkMatchCase;
+        //private TextBox txtFind;
+        //private TextBox txtReplace;
+        //private CheckBox chkMatchCase;
+        //private TextBox editor;
         private TextBox editor;
 
         protected override void WndProc(ref Message m)
@@ -63,7 +65,7 @@ namespace Swift_Edit
         {
             try
             {
-                string findText = txtFind.Text;
+                string findText = txtFind.Text.Trim();
                 if (string.IsNullOrEmpty(findText))
                 {
                     MessageBox.Show("Please enter text to find.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -73,11 +75,11 @@ namespace Swift_Edit
                 StringComparison comparison = chkMatchCase.Checked ? StringComparison.CurrentCulture : StringComparison.CurrentCultureIgnoreCase;
                 int startPos = editor.SelectionStart + editor.SelectionLength;
                 int foundPos = editor.Text.IndexOf(findText, startPos, comparison);
-
-                if (foundPos != -1)
+                
+                if (foundPos == -1 && startPos > 0)
                 {
-                    editor.Select(foundPos, findText.Length);
-                    editor.ScrollToCaret();
+                    // Try searching from the top again
+                    foundPos = editor.Text.IndexOf(findText, 0, comparison);
                 }
                 else
                 {
@@ -110,7 +112,7 @@ namespace Swift_Edit
         {
             try
             {
-                string findText = txtFind.Text;
+                string findText = txtFind.Text.Trim();
                 string replaceText = txtReplace.Text;
 
                 if (string.IsNullOrEmpty(findText))
