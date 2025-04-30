@@ -163,6 +163,14 @@
         kCM3dfIz7VJuTkbUH20/D3ZzNDIceMduyo/KinI5j/sfu793tAF9iUVqHh/LpAAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAKVJREFUSEvt
+        lMENhDAMBCmFUumAkn1CujhmjJXlgBc3P+zZjQQR0/QazGy1zsr9JVB+/yFsbtCTMLOZRSeY2Zdg4izs
+        S8gikHOyCIY53hTuR8RsumEs32BwFziYe7DTD+Fm4ztfwmgJfpqHZ2d4QNy5XMw9GIhy+YpUmB9+h91S
+        IGZTeaQZfK6g50UVFL2pgJ4XVcgikHOyCORcE3+FfYnHf9d/yAcjxPJntNh1IAAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="mainbutton_picbox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAADNJREFUSEvt
@@ -268,5 +276,8 @@
   </metadata>
   <metadata name="modetransition.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>351, 17</value>
+  </metadata>
+  <metadata name="recentfiles_Transition.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>512, 17</value>
   </metadata>
 </root>

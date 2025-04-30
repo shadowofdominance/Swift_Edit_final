@@ -1,4 +1,5 @@
 using ReaLTaiizor.Controls;
+using SwiftEdit;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using WinFormsTabPage = System.Windows.Forms.TabPage;
@@ -7,17 +8,25 @@ namespace Swift_Edit
 {
     public partial class defaultmode_form : Form
     {
-
+        private recentfilemanager recentFilesManager = new recentfilemanager();
         public defaultmode_form()
         {
             InitializeComponent();
+            FormClosing += defaultmode_form_FormClosing;
+            Load += defaultmode_form_Load;
+
         }
         bool menuExpand = false;
+        bool recentmenuExpand = false;
         bool sidebarExpand = true;
         bool switchmodeExpand = true;
         bool placeholderActive = true;
         int step1 = 40;
         int step2 = 25;
+        private void LoadRecentFilesToUI()
+        {
+            recentFilesManager.LoadRecentFiles(recentfile_listbox);
+        }
 
         protected override void WndProc(ref Message m)
         {
@@ -224,7 +233,15 @@ namespace Swift_Edit
 
         private void openfile_btn_Click(object sender, EventArgs e)
         {
-            fileoperations.OpenFile(tabControl1, textarea);
+            // Open file and get the file path
+            string filePath = fileoperations.OpenFile(tabControl1, textarea);
+
+            // If a valid file path is returned, add it to the recent files list
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                recentFilesManager.AddRecentFile(filePath, recentfile_listbox);
+            }
+
         }
 
         private void newfile_btn_Click(object sender, EventArgs e)
@@ -234,17 +251,24 @@ namespace Swift_Edit
 
         private void openrecent_btn_Click(object sender, EventArgs e)
         {
-            
+            recentfiles_Transition.Start();
         }
 
         private void defaultmode_form_Load(object sender, EventArgs e)
         {
-            RecentFilesManager.LoadRecentFiles();
+            recentFilesManager.LoadRecentFiles(recentfile_listbox);
         }
 
         private void defaultmode_form_FormClosing(object sender, FormClosingEventArgs e)
         {
-            RecentFilesManager.SaveRecentFiles();
+            try
+            {
+                recentFilesManager.SaveRecentFiles();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving recent files: " + ex.Message);
+            }
         }
         private void CloseCurrentFile()
         {
@@ -291,6 +315,46 @@ namespace Swift_Edit
         {
             FindReplaceForm findReplaceForm = new FindReplaceForm(this.textarea);
             findReplaceForm.ShowDialog();
+        }
+
+        private void recentfiles_Transition_Tick(object sender, EventArgs e)
+        {
+            if (recentmenuExpand == false)
+            {
+                recentfilepanel.Height += step1;
+                if (recentfilepanel.Height >= 233)
+                {
+                    recentfiles_Transition.Stop();
+                    recentmenuExpand = true;
+                }
+
+            }
+            else
+            {
+                recentfilepanel.Height -= step1;
+                if (recentfilepanel.Height <= 70)
+                {
+                    recentfiles_Transition.Stop();
+                    recentmenuExpand = false;
+                }
+            }
+        }
+
+        private void recentfile_listbox_DoubleClick(object sender, EventArgs e)
+        {
+            if (recentfile_listbox.SelectedIndex >= 0 && recentfile_listbox.Tag is List<string> paths)
+            {
+                string selectedFilePath = paths[recentfile_listbox.SelectedIndex];
+                try
+                {
+                    fileoperations.OpenFile(selectedFilePath, tabControl1, textarea);
+                    recentFilesManager.AddRecentFile(selectedFilePath, recentfile_listbox);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error opening recent file: " + ex.Message);
+                }
+            }
         }
     }
 }

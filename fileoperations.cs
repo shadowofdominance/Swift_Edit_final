@@ -44,19 +44,66 @@ public static class fileoperations
         CreateNewTab(tabControl, referenceTextArea);
     }
 
-    public static void OpenFile(TabControl tabControl, TextBox referenceTextArea)
+    public static string OpenFile(TabControl tabControl, TextBox referenceTextArea)
     {
-        using OpenFileDialog ofd = new OpenFileDialog
+        using (OpenFileDialog ofd = new OpenFileDialog())
         {
-            Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*"
-        };
+            ofd.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
 
-        if (ofd.ShowDialog() == DialogResult.OK)
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = ofd.FileName; // Capture the file path
+                string fileContent = File.ReadAllText(filePath);
+
+                // Call your tab creation method (you may not need this part if you already have tab management)
+                CreateNewTab(tabControl, referenceTextArea, filePath, fileContent);
+
+                // Return the file path after opening the file
+                return filePath;
+            }
+        }
+
+        // If no file was selected, return an empty string
+        return string.Empty;
+    }
+
+
+    public static void OpenFile(string filepath, TabControl tabControl, TextBox referenceTextArea)
+    {
+        if (File.Exists(filepath))
         {
-            string fileContent = File.ReadAllText(ofd.FileName);
-            CreateNewTab(tabControl, referenceTextArea, ofd.FileName, fileContent);
+            string content = File.ReadAllText(filepath);
+
+            // ✅ Pass the file name and content so the tab can use it
+            CreateNewTab(tabControl, referenceTextArea, filepath, content);
+        }
+        else
+        {
+            MessageBox.Show("File not found: " + filepath);
         }
     }
+
+
+    /*public static void OpenFile(string filePath, TabControl tabControl, TextBox referenceTextArea)
+    {
+        if (File.Exists(filePath))
+        {
+            string fileContent = File.ReadAllText(filePath);
+            CreateNewTab(tabControl, referenceTextArea, filePath, fileContent);
+
+            // Update recent files list
+            RecentFilesManager.AddRecentFile(filePath);
+            RecentFilesManager.SaveRecentFiles();
+        }
+        else
+        {
+            MessageBox.Show("That file doesn't exist anymore! \n" + filePath,
+                            "File Not Found",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+        }
+    }*/
+
 
     public static void SaveFile(TabControl tabControl)
     {

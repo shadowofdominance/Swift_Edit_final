@@ -43,6 +43,7 @@
             panel17 = new Panel();
             modemenuclose_btn = new Button();
             controlbar = new ReaLTaiizor.Controls.NightControlBox();
+            pictureBox1 = new PictureBox();
             heading_label = new Label();
             mainbutton_picbox = new PictureBox();
             sidebarpanel = new FlowLayoutPanel();
@@ -59,7 +60,10 @@
             openfile_btn = new Button();
             panel7 = new Panel();
             newfile_btn = new Button();
-            panel8 = new Panel();
+            recentfilepanel = new Panel();
+            panel23 = new Panel();
+            recentfile_listbox = new ListBox();
+            panel22 = new Panel();
             openrecent_btn = new Button();
             panel11 = new Panel();
             save_btn = new Button();
@@ -83,6 +87,7 @@
             tabControl1 = new TabControl();
             tabPage2 = new TabPage();
             textarea = new TextBox();
+            recentfiles_Transition = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             switchmode_layoutpanel.SuspendLayout();
             panel13.SuspendLayout();
@@ -90,6 +95,7 @@
             panel15.SuspendLayout();
             panel16.SuspendLayout();
             panel17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)mainbutton_picbox).BeginInit();
             sidebarpanel.SuspendLayout();
             panel3.SuspendLayout();
@@ -99,7 +105,9 @@
             panel5.SuspendLayout();
             panel4.SuspendLayout();
             panel7.SuspendLayout();
-            panel8.SuspendLayout();
+            recentfilepanel.SuspendLayout();
+            panel23.SuspendLayout();
+            panel22.SuspendLayout();
             panel11.SuspendLayout();
             panel12.SuspendLayout();
             panel9.SuspendLayout();
@@ -118,6 +126,7 @@
             panel1.BackColor = Color.White;
             panel1.Controls.Add(switchmode_layoutpanel);
             panel1.Controls.Add(controlbar);
+            panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(heading_label);
             panel1.Controls.Add(mainbutton_picbox);
             panel1.Dock = DockStyle.Top;
@@ -279,11 +288,23 @@
             controlbar.Size = new Size(139, 31);
             controlbar.TabIndex = 2;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.FromArgb(64, 64, 64);
+            pictureBox1.Dock = DockStyle.Left;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(54, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(52, 37);
+            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox1.TabIndex = 3;
+            pictureBox1.TabStop = false;
+            // 
             // heading_label
             // 
             heading_label.AutoSize = true;
             heading_label.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            heading_label.Location = new Point(73, 8);
+            heading_label.Location = new Point(129, 8);
             heading_label.Name = "heading_label";
             heading_label.Size = new Size(231, 23);
             heading_label.TabIndex = 1;
@@ -291,10 +312,11 @@
             // 
             // mainbutton_picbox
             // 
+            mainbutton_picbox.Dock = DockStyle.Left;
             mainbutton_picbox.Image = (Image)resources.GetObject("mainbutton_picbox.Image");
-            mainbutton_picbox.Location = new Point(3, 3);
+            mainbutton_picbox.Location = new Point(0, 0);
             mainbutton_picbox.Name = "mainbutton_picbox";
-            mainbutton_picbox.Size = new Size(51, 31);
+            mainbutton_picbox.Size = new Size(54, 37);
             mainbutton_picbox.SizeMode = PictureBoxSizeMode.CenterImage;
             mainbutton_picbox.TabIndex = 1;
             mainbutton_picbox.TabStop = false;
@@ -394,7 +416,7 @@
             filemenupanel.Controls.Add(panel5);
             filemenupanel.Controls.Add(panel4);
             filemenupanel.Controls.Add(panel7);
-            filemenupanel.Controls.Add(panel8);
+            filemenupanel.Controls.Add(recentfilepanel);
             filemenupanel.Controls.Add(panel11);
             filemenupanel.Controls.Add(panel12);
             filemenupanel.Controls.Add(panel9);
@@ -478,13 +500,46 @@
             newfile_btn.UseVisualStyleBackColor = false;
             newfile_btn.Click += newfile_btn_Click;
             // 
-            // panel8
+            // recentfilepanel
             // 
-            panel8.Controls.Add(openrecent_btn);
-            panel8.Location = new Point(3, 231);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(334, 70);
-            panel8.TabIndex = 8;
+            recentfilepanel.Controls.Add(panel23);
+            recentfilepanel.Controls.Add(panel22);
+            recentfilepanel.Location = new Point(3, 231);
+            recentfilepanel.Name = "recentfilepanel";
+            recentfilepanel.Size = new Size(334, 70);
+            recentfilepanel.TabIndex = 8;
+            // 
+            // panel23
+            // 
+            panel23.Controls.Add(recentfile_listbox);
+            panel23.Dock = DockStyle.Fill;
+            panel23.Location = new Point(0, 70);
+            panel23.Name = "panel23";
+            panel23.Size = new Size(334, 0);
+            panel23.TabIndex = 2;
+            // 
+            // recentfile_listbox
+            // 
+            recentfile_listbox.BackColor = Color.FromArgb(21, 22, 29);
+            recentfile_listbox.Dock = DockStyle.Fill;
+            recentfile_listbox.Font = new Font("UbuntuMono Nerd Font", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            recentfile_listbox.ForeColor = Color.White;
+            recentfile_listbox.FormattingEnabled = true;
+            recentfile_listbox.Location = new Point(0, 0);
+            recentfile_listbox.Name = "recentfile_listbox";
+            recentfile_listbox.ScrollAlwaysVisible = true;
+            recentfile_listbox.Size = new Size(334, 0);
+            recentfile_listbox.TabIndex = 0;
+            recentfile_listbox.DoubleClick += recentfile_listbox_DoubleClick;
+            // 
+            // panel22
+            // 
+            panel22.Controls.Add(openrecent_btn);
+            panel22.Dock = DockStyle.Top;
+            panel22.Location = new Point(0, 0);
+            panel22.Name = "panel22";
+            panel22.Size = new Size(334, 70);
+            panel22.TabIndex = 1;
             // 
             // openrecent_btn
             // 
@@ -493,7 +548,7 @@
             openrecent_btn.ForeColor = Color.White;
             openrecent_btn.Image = (Image)resources.GetObject("openrecent_btn.Image");
             openrecent_btn.ImageAlign = ContentAlignment.MiddleLeft;
-            openrecent_btn.Location = new Point(-11, -8);
+            openrecent_btn.Location = new Point(-11, -9);
             openrecent_btn.Name = "openrecent_btn";
             openrecent_btn.Padding = new Padding(25, 0, 0, 0);
             openrecent_btn.Size = new Size(360, 89);
@@ -735,6 +790,11 @@
             textarea.Click += textarea_Click;
             textarea.TextChanged += textarea_TextChanged;
             // 
+            // recentfiles_Transition
+            // 
+            recentfiles_Transition.Interval = 10;
+            recentfiles_Transition.Tick += recentfiles_Transition_Tick;
+            // 
             // defaultmode_form
             // 
             AutoScaleDimensions = new SizeF(8F, 17F);
@@ -758,6 +818,7 @@
             panel15.ResumeLayout(false);
             panel16.ResumeLayout(false);
             panel17.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)mainbutton_picbox).EndInit();
             sidebarpanel.ResumeLayout(false);
             panel3.ResumeLayout(false);
@@ -767,7 +828,9 @@
             panel5.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel7.ResumeLayout(false);
-            panel8.ResumeLayout(false);
+            recentfilepanel.ResumeLayout(false);
+            panel23.ResumeLayout(false);
+            panel22.ResumeLayout(false);
             panel11.ResumeLayout(false);
             panel12.ResumeLayout(false);
             panel9.ResumeLayout(false);
@@ -798,7 +861,6 @@
         private Button home_btn;
         private Panel panel5;
         private Button mainfilemenu_btn;
-        private ReaLTaiizor.Controls.NightControlBox controlbar;
         private SlantedTabControl slantedTabControl1;
         private FlowLayoutPanel filemenupanel;
         private Panel panel6;
@@ -807,7 +869,7 @@
         private Button openfile_btn;
         private Panel panel7;
         private Button newfile_btn;
-        private Panel panel8;
+        private Panel recentfilepanel;
         private Button openrecent_btn;
         private Panel panel11;
         private Button save_btn;
@@ -842,5 +904,11 @@
         private Button button1;
         private Panel panel10;
         private Button button2;
+        private Panel panel22;
+        private Panel panel23;
+        private ListBox recentfile_listbox;
+        private System.Windows.Forms.Timer recentfiles_Transition;
+        private PictureBox pictureBox1;
+        private ReaLTaiizor.Controls.NightControlBox controlbar;
     }
 }
