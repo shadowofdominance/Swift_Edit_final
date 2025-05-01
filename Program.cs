@@ -12,6 +12,7 @@ namespace Swift_Edit
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new defaultmode_form());
+
         }
     }
 }

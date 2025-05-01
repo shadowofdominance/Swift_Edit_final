@@ -126,7 +126,7 @@ namespace Swift_Edit
                 int pos = 0;
 
                 editor.SuspendLayout();
-                while (pos < editor.Text.Length)
+                while (pos <= editor.Text.Length - findText.Length)
                 {
                     int foundPos = editor.Text.IndexOf(findText, pos, comparison);
                     if (foundPos == -1) break;
@@ -134,6 +134,7 @@ namespace Swift_Edit
                     editor.Select(foundPos, findText.Length);
                     editor.SelectedText = replaceText;
 
+                    // Move forward by REPLACEMENT length to avoid infinite loop on same match
                     pos = foundPos + replaceText.Length;
                     count++;
                 }

@@ -356,8 +356,16 @@ namespace Swift_Edit
 
         private void findandreplace_btn_Click(object sender, EventArgs e)
         {
-            FindReplaceForm findReplaceForm = new FindReplaceForm(this.textarea);
-            findReplaceForm.ShowDialog();
+            var currentTextArea = tabControl1.SelectedTab?.Controls.OfType<TextBox>().FirstOrDefault();
+            if (currentTextArea != null)
+            {
+                FindReplaceForm findForm = new FindReplaceForm(currentTextArea);
+                findForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("No active text area found.");
+            }
         }
 
         private void recentfiles_Transition_Tick(object sender, EventArgs e)
@@ -407,8 +415,20 @@ namespace Swift_Edit
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            FormAI formai = new FormAI();
-            formai.ShowDialog();
+            string savedKey = Properties.Settings.Default.APIKey;
+
+            if (!string.IsNullOrEmpty(savedKey))
+            {
+                // Key exists -> open chatbot
+                var aiForm = new FormAI(savedKey);
+                aiForm.Show();
+            }
+            else
+            {
+                // No key yet -> open key entry form
+                var keyForm = new ApiKeyForm();
+                keyForm.Show();
+            }
         }
     }
 }

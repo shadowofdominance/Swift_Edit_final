@@ -34,52 +34,52 @@
             findandreplace_label = new Label();
             tabControl1 = new TabControl();
             globalsettingstabpage = new TabPage();
-            programmingtabpage = new TabPage();
-            panel2 = new Panel();
-            notestabpage = new TabPage();
-            label1 = new Label();
-            radioButton1 = new RadioButton();
-            radioButton2 = new RadioButton();
-            label2 = new Label();
-            comboBox1 = new ComboBox();
-            label3 = new Label();
-            comboBox2 = new ComboBox();
-            checkBox1 = new CheckBox();
-            label4 = new Label();
-            label5 = new Label();
-            checkBox2 = new CheckBox();
-            comboBox3 = new ComboBox();
-            label6 = new Label();
             comboBox4 = new ComboBox();
             label7 = new Label();
-            panel3 = new Panel();
-            button1 = new Button();
-            button2 = new Button();
-            label8 = new Label();
-            comboBox5 = new ComboBox();
-            label9 = new Label();
-            checkBox3 = new CheckBox();
-            label10 = new Label();
-            label11 = new Label();
-            label12 = new Label();
-            checkBox4 = new CheckBox();
-            checkBox5 = new CheckBox();
-            checkBox6 = new CheckBox();
+            comboBox3 = new ComboBox();
+            label6 = new Label();
+            label5 = new Label();
+            checkBox2 = new CheckBox();
+            label4 = new Label();
+            checkBox1 = new CheckBox();
+            comboBox2 = new ComboBox();
+            label3 = new Label();
+            comboBox1 = new ComboBox();
+            label2 = new Label();
+            radioButton2 = new RadioButton();
+            radioButton1 = new RadioButton();
+            label1 = new Label();
+            programmingtabpage = new TabPage();
             label13 = new Label();
             checkBox7 = new CheckBox();
+            checkBox6 = new CheckBox();
+            checkBox5 = new CheckBox();
+            checkBox4 = new CheckBox();
+            label12 = new Label();
+            label11 = new Label();
+            label10 = new Label();
+            checkBox3 = new CheckBox();
+            label9 = new Label();
+            comboBox5 = new ComboBox();
+            label8 = new Label();
+            notestabpage = new TabPage();
+            checkBox9 = new CheckBox();
+            label16 = new Label();
             checkBox8 = new CheckBox();
             label14 = new Label();
             comboBox6 = new ComboBox();
             label15 = new Label();
-            checkBox9 = new CheckBox();
-            label16 = new Label();
+            panel2 = new Panel();
+            panel3 = new Panel();
+            button2 = new Button();
+            button1 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl1.SuspendLayout();
             globalsettingstabpage.SuspendLayout();
             programmingtabpage.SuspendLayout();
-            panel2.SuspendLayout();
             notestabpage.SuspendLayout();
+            panel2.SuspendLayout();
             panel3.SuspendLayout();
             SuspendLayout();
             // 
@@ -93,6 +93,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(410, 36);
             panel1.TabIndex = 1;
+            panel1.MouseDown += panel1_MouseDown;
             // 
             // pictureBox1
             // 
@@ -105,6 +106,7 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // findandreplace_label
             // 
@@ -155,6 +157,144 @@
             globalsettingstabpage.Text = "Global Settings";
             globalsettingstabpage.UseVisualStyleBackColor = true;
             // 
+            // comboBox4
+            // 
+            comboBox4.FormattingEnabled = true;
+            comboBox4.Location = new Point(197, 296);
+            comboBox4.Name = "comboBox4";
+            comboBox4.Size = new Size(184, 26);
+            comboBox4.TabIndex = 14;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(16, 299);
+            label7.Name = "label7";
+            label7.Size = new Size(176, 18);
+            label7.TabIndex = 13;
+            label7.Text = "Default Startup Mode:";
+            // 
+            // comboBox3
+            // 
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Location = new Point(197, 244);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(184, 26);
+            comboBox3.TabIndex = 12;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(16, 247);
+            label6.Name = "label6";
+            label6.Size = new Size(88, 18);
+            label6.TabIndex = 11;
+            label6.Text = "Auto Save:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(16, 201);
+            label5.Name = "label5";
+            label5.Size = new Size(88, 18);
+            label5.TabIndex = 10;
+            label5.Text = "Word Wrap:";
+            // 
+            // checkBox2
+            // 
+            checkBox2.AutoSize = true;
+            checkBox2.Location = new Point(243, 200);
+            checkBox2.Name = "checkBox2";
+            checkBox2.Size = new Size(86, 22);
+            checkBox2.TabIndex = 9;
+            checkBox2.Text = "Enabled";
+            checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(16, 154);
+            label4.Name = "label4";
+            label4.Size = new Size(112, 18);
+            label4.TabIndex = 8;
+            label4.Text = "Line Numbers:";
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(243, 153);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(86, 22);
+            checkBox1.TabIndex = 7;
+            checkBox1.Text = "Enabled";
+            checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(197, 103);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(184, 26);
+            comboBox2.TabIndex = 6;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(16, 106);
+            label3.Name = "label3";
+            label3.Size = new Size(96, 18);
+            label3.TabIndex = 5;
+            label3.Text = "Font Size: ";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(197, 60);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(184, 26);
+            comboBox1.TabIndex = 4;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(16, 63);
+            label2.Name = "label2";
+            label2.Size = new Size(48, 18);
+            label2.TabIndex = 3;
+            label2.Text = "Font:";
+            // 
+            // radioButton2
+            // 
+            radioButton2.AutoSize = true;
+            radioButton2.Location = new Point(299, 14);
+            radioButton2.Name = "radioButton2";
+            radioButton2.Size = new Size(69, 22);
+            radioButton2.TabIndex = 2;
+            radioButton2.TabStop = true;
+            radioButton2.Text = "Light";
+            radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.Location = new Point(214, 14);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(61, 22);
+            radioButton1.TabIndex = 1;
+            radioButton1.TabStop = true;
+            radioButton1.Text = "Dark";
+            radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(16, 18);
+            label1.Name = "label1";
+            label1.Size = new Size(64, 18);
+            label1.TabIndex = 0;
+            label1.Text = "Theme: ";
+            // 
             // programmingtabpage
             // 
             programmingtabpage.Controls.Add(label13);
@@ -178,295 +318,6 @@
             programmingtabpage.Text = "Programming";
             programmingtabpage.UseVisualStyleBackColor = true;
             // 
-            // panel2
-            // 
-            panel2.BorderStyle = BorderStyle.Fixed3D;
-            panel2.Controls.Add(panel3);
-            panel2.Controls.Add(tabControl1);
-            panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(0, 36);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(410, 419);
-            panel2.TabIndex = 3;
-            // 
-            // notestabpage
-            // 
-            notestabpage.Controls.Add(checkBox9);
-            notestabpage.Controls.Add(label16);
-            notestabpage.Controls.Add(checkBox8);
-            notestabpage.Controls.Add(label14);
-            notestabpage.Controls.Add(comboBox6);
-            notestabpage.Controls.Add(label15);
-            notestabpage.Font = new Font("Iosevka NF SemiBold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            notestabpage.Location = new Point(4, 27);
-            notestabpage.Name = "notestabpage";
-            notestabpage.Padding = new Padding(3);
-            notestabpage.Size = new Size(398, 342);
-            notestabpage.TabIndex = 2;
-            notestabpage.Text = "Notes";
-            notestabpage.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(16, 18);
-            label1.Name = "label1";
-            label1.Size = new Size(64, 18);
-            label1.TabIndex = 0;
-            label1.Text = "Theme: ";
-            // 
-            // radioButton1
-            // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(214, 14);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(61, 22);
-            radioButton1.TabIndex = 1;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Dark";
-            radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(299, 14);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(69, 22);
-            radioButton2.TabIndex = 2;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Light";
-            radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(16, 63);
-            label2.Name = "label2";
-            label2.Size = new Size(48, 18);
-            label2.TabIndex = 3;
-            label2.Text = "Font:";
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(197, 60);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(184, 26);
-            comboBox1.TabIndex = 4;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(16, 106);
-            label3.Name = "label3";
-            label3.Size = new Size(96, 18);
-            label3.TabIndex = 5;
-            label3.Text = "Font Size: ";
-            // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(197, 103);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(184, 26);
-            comboBox2.TabIndex = 6;
-            // 
-            // checkBox1
-            // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(243, 153);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(86, 22);
-            checkBox1.TabIndex = 7;
-            checkBox1.Text = "Enabled";
-            checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(16, 154);
-            label4.Name = "label4";
-            label4.Size = new Size(112, 18);
-            label4.TabIndex = 8;
-            label4.Text = "Line Numbers:";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(16, 201);
-            label5.Name = "label5";
-            label5.Size = new Size(88, 18);
-            label5.TabIndex = 10;
-            label5.Text = "Word Wrap:";
-            // 
-            // checkBox2
-            // 
-            checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(243, 200);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(86, 22);
-            checkBox2.TabIndex = 9;
-            checkBox2.Text = "Enabled";
-            checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // comboBox3
-            // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(197, 244);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(184, 26);
-            comboBox3.TabIndex = 12;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(16, 247);
-            label6.Name = "label6";
-            label6.Size = new Size(88, 18);
-            label6.TabIndex = 11;
-            label6.Text = "Auto Save:";
-            // 
-            // comboBox4
-            // 
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(197, 296);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(184, 26);
-            comboBox4.TabIndex = 14;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(16, 299);
-            label7.Name = "label7";
-            label7.Size = new Size(176, 18);
-            label7.TabIndex = 13;
-            label7.Text = "Default Startup Mode:";
-            // 
-            // panel3
-            // 
-            panel3.Controls.Add(button2);
-            panel3.Controls.Add(button1);
-            panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(0, 373);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(406, 42);
-            panel3.TabIndex = 3;
-            // 
-            // button1
-            // 
-            button1.Dock = DockStyle.Left;
-            button1.Location = new Point(0, 0);
-            button1.Name = "button1";
-            button1.Size = new Size(196, 42);
-            button1.TabIndex = 0;
-            button1.Text = "Apply";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Dock = DockStyle.Right;
-            button2.Location = new Point(201, 0);
-            button2.Name = "button2";
-            button2.Size = new Size(205, 42);
-            button2.TabIndex = 1;
-            button2.Text = "Close";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(22, 25);
-            label8.Name = "label8";
-            label8.Size = new Size(64, 18);
-            label8.TabIndex = 1;
-            label8.Text = "Theme: ";
-            // 
-            // comboBox5
-            // 
-            comboBox5.FormattingEnabled = true;
-            comboBox5.Location = new Point(197, 22);
-            comboBox5.Name = "comboBox5";
-            comboBox5.Size = new Size(184, 26);
-            comboBox5.TabIndex = 5;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(22, 85);
-            label9.Name = "label9";
-            label9.Size = new Size(168, 18);
-            label9.TabIndex = 6;
-            label9.Text = "Syntax Highlighting:";
-            // 
-            // checkBox3
-            // 
-            checkBox3.AutoSize = true;
-            checkBox3.Location = new Point(234, 85);
-            checkBox3.Name = "checkBox3";
-            checkBox3.Size = new Size(86, 22);
-            checkBox3.TabIndex = 10;
-            checkBox3.Text = "Enabled";
-            checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(24, 133);
-            label10.Name = "label10";
-            label10.Size = new Size(104, 18);
-            label10.TabIndex = 11;
-            label10.Text = "Auto-Indent:";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Location = new Point(24, 184);
-            label11.Name = "label11";
-            label11.Size = new Size(152, 18);
-            label11.TabIndex = 12;
-            label11.Text = "Show Code Minimap:";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Location = new Point(24, 231);
-            label12.Name = "label12";
-            label12.Size = new Size(208, 18);
-            label12.TabIndex = 13;
-            label12.Text = "Highligh Matching Braces:";
-            // 
-            // checkBox4
-            // 
-            checkBox4.AutoSize = true;
-            checkBox4.Location = new Point(234, 133);
-            checkBox4.Name = "checkBox4";
-            checkBox4.Size = new Size(86, 22);
-            checkBox4.TabIndex = 14;
-            checkBox4.Text = "Enabled";
-            checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            checkBox5.AutoSize = true;
-            checkBox5.Location = new Point(234, 184);
-            checkBox5.Name = "checkBox5";
-            checkBox5.Size = new Size(86, 22);
-            checkBox5.TabIndex = 15;
-            checkBox5.Text = "Enabled";
-            checkBox5.UseVisualStyleBackColor = true;
-            // 
-            // checkBox6
-            // 
-            checkBox6.AutoSize = true;
-            checkBox6.Location = new Point(234, 231);
-            checkBox6.Name = "checkBox6";
-            checkBox6.Size = new Size(86, 22);
-            checkBox6.TabIndex = 16;
-            checkBox6.Text = "Enabled";
-            checkBox6.UseVisualStyleBackColor = true;
-            // 
             // label13
             // 
             label13.AutoSize = true;
@@ -486,10 +337,139 @@
             checkBox7.Text = "Enabled";
             checkBox7.UseVisualStyleBackColor = true;
             // 
+            // checkBox6
+            // 
+            checkBox6.AutoSize = true;
+            checkBox6.Location = new Point(234, 231);
+            checkBox6.Name = "checkBox6";
+            checkBox6.Size = new Size(86, 22);
+            checkBox6.TabIndex = 16;
+            checkBox6.Text = "Enabled";
+            checkBox6.UseVisualStyleBackColor = true;
+            // 
+            // checkBox5
+            // 
+            checkBox5.AutoSize = true;
+            checkBox5.Location = new Point(234, 184);
+            checkBox5.Name = "checkBox5";
+            checkBox5.Size = new Size(86, 22);
+            checkBox5.TabIndex = 15;
+            checkBox5.Text = "Enabled";
+            checkBox5.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            checkBox4.AutoSize = true;
+            checkBox4.Location = new Point(234, 133);
+            checkBox4.Name = "checkBox4";
+            checkBox4.Size = new Size(86, 22);
+            checkBox4.TabIndex = 14;
+            checkBox4.Text = "Enabled";
+            checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(24, 231);
+            label12.Name = "label12";
+            label12.Size = new Size(208, 18);
+            label12.TabIndex = 13;
+            label12.Text = "Highligh Matching Braces:";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(24, 184);
+            label11.Name = "label11";
+            label11.Size = new Size(152, 18);
+            label11.TabIndex = 12;
+            label11.Text = "Show Code Minimap:";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(24, 133);
+            label10.Name = "label10";
+            label10.Size = new Size(104, 18);
+            label10.TabIndex = 11;
+            label10.Text = "Auto-Indent:";
+            // 
+            // checkBox3
+            // 
+            checkBox3.AutoSize = true;
+            checkBox3.Location = new Point(234, 85);
+            checkBox3.Name = "checkBox3";
+            checkBox3.Size = new Size(86, 22);
+            checkBox3.TabIndex = 10;
+            checkBox3.Text = "Enabled";
+            checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(22, 85);
+            label9.Name = "label9";
+            label9.Size = new Size(168, 18);
+            label9.TabIndex = 6;
+            label9.Text = "Syntax Highlighting:";
+            // 
+            // comboBox5
+            // 
+            comboBox5.FormattingEnabled = true;
+            comboBox5.Location = new Point(197, 22);
+            comboBox5.Name = "comboBox5";
+            comboBox5.Size = new Size(184, 26);
+            comboBox5.TabIndex = 5;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(22, 25);
+            label8.Name = "label8";
+            label8.Size = new Size(64, 18);
+            label8.TabIndex = 1;
+            label8.Text = "Theme: ";
+            // 
+            // notestabpage
+            // 
+            notestabpage.Controls.Add(checkBox9);
+            notestabpage.Controls.Add(label16);
+            notestabpage.Controls.Add(checkBox8);
+            notestabpage.Controls.Add(label14);
+            notestabpage.Controls.Add(comboBox6);
+            notestabpage.Controls.Add(label15);
+            notestabpage.Font = new Font("Iosevka NF SemiBold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            notestabpage.Location = new Point(4, 27);
+            notestabpage.Name = "notestabpage";
+            notestabpage.Padding = new Padding(3);
+            notestabpage.Size = new Size(398, 342);
+            notestabpage.TabIndex = 2;
+            notestabpage.Text = "Notes";
+            notestabpage.UseVisualStyleBackColor = true;
+            // 
+            // checkBox9
+            // 
+            checkBox9.AutoSize = true;
+            checkBox9.Location = new Point(236, 164);
+            checkBox9.Name = "checkBox9";
+            checkBox9.Size = new Size(86, 22);
+            checkBox9.TabIndex = 16;
+            checkBox9.Text = "Enabled";
+            checkBox9.UseVisualStyleBackColor = true;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(24, 164);
+            label16.Name = "label16";
+            label16.Size = new Size(104, 18);
+            label16.TabIndex = 15;
+            label16.Text = "Connections:";
+            // 
             // checkBox8
             // 
             checkBox8.AutoSize = true;
-            checkBox8.Location = new Point(236, 94);
+            checkBox8.Location = new Point(236, 100);
             checkBox8.Name = "checkBox8";
             checkBox8.Size = new Size(86, 22);
             checkBox8.TabIndex = 14;
@@ -499,7 +479,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(24, 94);
+            label14.Location = new Point(24, 100);
             label14.Name = "label14";
             label14.Size = new Size(168, 18);
             label14.TabIndex = 13;
@@ -522,24 +502,52 @@
             label15.TabIndex = 11;
             label15.Text = "Note Style: ";
             // 
-            // checkBox9
+            // panel2
             // 
-            checkBox9.AutoSize = true;
-            checkBox9.Location = new Point(236, 158);
-            checkBox9.Name = "checkBox9";
-            checkBox9.Size = new Size(86, 22);
-            checkBox9.TabIndex = 16;
-            checkBox9.Text = "Enabled";
-            checkBox9.UseVisualStyleBackColor = true;
+            panel2.BorderStyle = BorderStyle.Fixed3D;
+            panel2.Controls.Add(panel3);
+            panel2.Controls.Add(tabControl1);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(0, 36);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(410, 419);
+            panel2.TabIndex = 3;
             // 
-            // label16
+            // panel3
             // 
-            label16.AutoSize = true;
-            label16.Location = new Point(24, 158);
-            label16.Name = "label16";
-            label16.Size = new Size(104, 18);
-            label16.TabIndex = 15;
-            label16.Text = "Connections:";
+            panel3.Controls.Add(button2);
+            panel3.Controls.Add(button1);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(0, 373);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(406, 42);
+            panel3.TabIndex = 3;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.IndianRed;
+            button2.Dock = DockStyle.Right;
+            button2.Font = new Font("MartianMono NF Cond Med", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.ForeColor = Color.Black;
+            button2.Location = new Point(201, 0);
+            button2.Name = "button2";
+            button2.Size = new Size(205, 42);
+            button2.TabIndex = 1;
+            button2.Text = "Close";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.LightGray;
+            button1.Dock = DockStyle.Left;
+            button1.Font = new Font("MartianMono NF Cond", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Location = new Point(0, 0);
+            button1.Name = "button1";
+            button1.Size = new Size(196, 42);
+            button1.TabIndex = 0;
+            button1.Text = "Apply";
+            button1.UseVisualStyleBackColor = false;
             // 
             // Settings
             // 
@@ -560,9 +568,9 @@
             globalsettingstabpage.PerformLayout();
             programmingtabpage.ResumeLayout(false);
             programmingtabpage.PerformLayout();
-            panel2.ResumeLayout(false);
             notestabpage.ResumeLayout(false);
             notestabpage.PerformLayout();
+            panel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
