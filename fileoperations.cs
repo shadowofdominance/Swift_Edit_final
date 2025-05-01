@@ -7,9 +7,14 @@ public static class fileoperations
 {
     public static void CreateNewTab(TabControl tabControl, TextBox referenceTextArea, string fileName = "Untitled", string fileContent = "")
     {
+        // Use the full path in TabPage.Tag, but only display the file name as tab title
+        string displayName = Path.GetFileName(fileName);
+        string fullPath = fileName;
+
         TabPage newTab = new TabPage
         {
-            Text = Path.GetFileName(fileName)
+            Text = displayName,
+            Tag = fullPath // ✅ Store full file path here
         };
 
         TextBox newTextBox = new TextBox
@@ -33,11 +38,11 @@ public static class fileoperations
             }
         };
 
-        newTab.Tag = fileName;
         newTab.Controls.Add(newTextBox);
         tabControl.TabPages.Add(newTab);
         tabControl.SelectedTab = newTab;
     }
+
 
     public static void NewFile(TabControl tabControl, TextBox referenceTextArea)
     {
@@ -192,4 +197,38 @@ public static class fileoperations
         string savedText = File.ReadAllText(filePath);
         return savedText != textBox.Text;
     }
+    public static void CloseAllTabs(TabControl tabControl)
+    {
+        // We'll collect all tabs to close after confirming unsaved changes
+        List<TabPage> tabsToClose = new List<TabPage>();
+
+        foreach (TabPage tab in tabControl.TabPages)
+        {
+            if (tab.Controls[0] is not TextBox textBox) continue;
+
+            string filePath = tab.Tag as string;
+
+            if (IsTextChanged(textBox, filePath))
+            {
+                DialogResult result = MessageBox.Show(
+                    $"The file '{tab.Text}' has unsaved changes. Do you want to close it without saving?",
+                    "Unsaved Changes",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (result == DialogResult.No)
+                    continue;
+            }
+
+            tabsToClose.Add(tab);
+        }
+
+        // Remove the collected tabs
+        foreach (var tab in tabsToClose)
+        {
+            tabControl.TabPages.Remove(tab);
+        }
+    }
+
 }

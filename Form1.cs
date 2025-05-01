@@ -257,6 +257,29 @@ namespace Swift_Edit
         private void defaultmode_form_Load(object sender, EventArgs e)
         {
             recentFilesManager.LoadRecentFiles(recentfile_listbox);
+            try
+            {
+                if (File.Exists("open_tabs.txt"))
+                {
+                    string[] filePaths = File.ReadAllLines("open_tabs.txt");
+
+                    foreach (string path in filePaths)
+                    {
+                        if (File.Exists(path))
+                        {
+                            // Optional: Check if it's already open (not likely on startup, but future-proof)
+                            fileoperations.OpenFile(path, tabControl1, textarea);
+                        }
+                    }
+
+                    // After loading, clear the file so it's fresh for next exit
+                    File.WriteAllText("open_tabs.txt", string.Empty);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading session: " + ex.Message);
+            }
         }
 
         private void defaultmode_form_FormClosing(object sender, FormClosingEventArgs e)
@@ -268,6 +291,26 @@ namespace Swift_Edit
             catch (Exception ex)
             {
                 MessageBox.Show("Error saving recent files: " + ex.Message);
+            }
+            try
+            {
+                List<string> openFilePaths = new List<string>();
+
+                foreach (WinFormsTabPage tab in tabControl1.TabPages)
+                {
+                    if (tab.Tag is string path && !string.IsNullOrEmpty(path) && !openFilePaths.Contains(path))
+                    {
+                        openFilePaths.Add(path);
+                    }
+
+                    File.WriteAllLines("open_tabs.txt", openFilePaths);
+                }
+
+                recentFilesManager.SaveRecentFiles(); // keep this if you're saving recents
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving session: " + ex.Message);
             }
         }
         private void CloseCurrentFile()
@@ -355,6 +398,17 @@ namespace Swift_Edit
                     MessageBox.Show("Error opening recent file: " + ex.Message);
                 }
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            fileoperations.CloseAllTabs(tabControl1);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            FormAI formai = new FormAI();
+            formai.ShowDialog();
         }
     }
 }

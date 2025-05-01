@@ -71,6 +71,8 @@
             saveas_btn = new Button();
             panel9 = new Panel();
             button1 = new Button();
+            panel8 = new Panel();
+            button3 = new Button();
             panel10 = new Panel();
             button2 = new Button();
             menuTransition = new System.Windows.Forms.Timer(components);
@@ -111,6 +113,7 @@
             panel11.SuspendLayout();
             panel12.SuspendLayout();
             panel9.SuspendLayout();
+            panel8.SuspendLayout();
             panel10.SuspendLayout();
             footer_layoutpanel.SuspendLayout();
             panel18.SuspendLayout();
@@ -123,7 +126,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.White;
+            panel1.BackColor = SystemColors.ControlLight;
             panel1.Controls.Add(switchmode_layoutpanel);
             panel1.Controls.Add(controlbar);
             panel1.Controls.Add(pictureBox1);
@@ -299,6 +302,7 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // heading_label
             // 
@@ -329,6 +333,7 @@
             sidebarpanel.Controls.Add(panel2);
             sidebarpanel.Controls.Add(panel6);
             sidebarpanel.Controls.Add(filemenupanel);
+            sidebarpanel.Controls.Add(panel8);
             sidebarpanel.Controls.Add(panel10);
             sidebarpanel.Dock = DockStyle.Left;
             sidebarpanel.Location = new Point(0, 37);
@@ -633,10 +638,35 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // panel8
+            // 
+            panel8.Controls.Add(button3);
+            panel8.Location = new Point(3, 327);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(334, 70);
+            panel8.TabIndex = 15;
+            // 
+            // button3
+            // 
+            button3.BackColor = Color.FromArgb(23, 24, 29);
+            button3.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button3.ForeColor = Color.White;
+            button3.Image = (Image)resources.GetObject("button3.Image");
+            button3.ImageAlign = ContentAlignment.MiddleLeft;
+            button3.Location = new Point(-11, -8);
+            button3.Name = "button3";
+            button3.Padding = new Padding(30, 0, 0, 0);
+            button3.Size = new Size(360, 89);
+            button3.TabIndex = 0;
+            button3.Text = "            Close All Tabs";
+            button3.TextAlign = ContentAlignment.MiddleLeft;
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
+            // 
             // panel10
             // 
             panel10.Controls.Add(button2);
-            panel10.Location = new Point(3, 327);
+            panel10.Location = new Point(3, 403);
             panel10.Name = "panel10";
             panel10.Size = new Size(334, 70);
             panel10.TabIndex = 14;
@@ -650,7 +680,7 @@
             button2.ImageAlign = ContentAlignment.MiddleLeft;
             button2.Location = new Point(-11, -8);
             button2.Name = "button2";
-            button2.Padding = new Padding(30, 0, 0, 0);
+            button2.Padding = new Padding(32, 0, 0, 0);
             button2.Size = new Size(360, 89);
             button2.TabIndex = 0;
             button2.Text = "            Close App";
@@ -764,7 +794,7 @@
             // 
             // tabPage2
             // 
-            tabPage2.BackColor = Color.Silver;
+            tabPage2.BackColor = Color.LightGray;
             tabPage2.Controls.Add(textarea);
             tabPage2.Font = new Font("FiraMono Nerd Font Medium", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             tabPage2.ForeColor = SystemColors.ActiveCaptionText;
@@ -773,10 +803,11 @@
             tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(1589, 852);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "*Untitled";
+            tabPage2.Text = "Untitled";
             // 
             // textarea
             // 
+            textarea.BackColor = Color.Gainsboro;
             textarea.Dock = DockStyle.Fill;
             textarea.Font = new Font("JetBrains Mono", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
             textarea.Location = new Point(3, 3);
@@ -834,6 +865,7 @@
             panel11.ResumeLayout(false);
             panel12.ResumeLayout(false);
             panel9.ResumeLayout(false);
+            panel8.ResumeLayout(false);
             panel10.ResumeLayout(false);
             footer_layoutpanel.ResumeLayout(false);
             panel18.ResumeLayout(false);
@@ -910,5 +942,7 @@
         private System.Windows.Forms.Timer recentfiles_Transition;
         private PictureBox pictureBox1;
         private ReaLTaiizor.Controls.NightControlBox controlbar;
+        private Panel panel8;
+        private Button button3;
     }
 }
