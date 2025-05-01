@@ -148,7 +148,7 @@
             clear_btn.Font = new Font("UbuntuMono Nerd Font", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             clear_btn.Image = (Image)resources.GetObject("clear_btn.Image");
             clear_btn.ImageAlign = ContentAlignment.MiddleRight;
-            clear_btn.Location = new Point(264, 138);
+            clear_btn.Location = new Point(259, 138);
             clear_btn.Name = "clear_btn";
             clear_btn.Padding = new Padding(10, 0, 10, 0);
             clear_btn.Size = new Size(100, 35);
@@ -164,7 +164,7 @@
             copy_btn.Font = new Font("UbuntuMono Nerd Font", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             copy_btn.Image = (Image)resources.GetObject("copy_btn.Image");
             copy_btn.ImageAlign = ContentAlignment.MiddleRight;
-            copy_btn.Location = new Point(158, 138);
+            copy_btn.Location = new Point(153, 138);
             copy_btn.Name = "copy_btn";
             copy_btn.Padding = new Padding(10, 0, 10, 0);
             copy_btn.Size = new Size(100, 35);
@@ -180,7 +180,7 @@
             send_btn.Font = new Font("UbuntuMono Nerd Font", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             send_btn.Image = (Image)resources.GetObject("send_btn.Image");
             send_btn.ImageAlign = ContentAlignment.MiddleRight;
-            send_btn.Location = new Point(52, 138);
+            send_btn.Location = new Point(47, 136);
             send_btn.Name = "send_btn";
             send_btn.Padding = new Padding(10, 0, 10, 0);
             send_btn.Size = new Size(100, 35);
