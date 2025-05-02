@@ -16,6 +16,7 @@ namespace Swift_Edit
 {
     public partial class FormAI : Form
     {
+        
         protected override void WndProc(ref Message m)
         {
             const int WM_NCHITTEST = 0x84;
@@ -52,6 +53,8 @@ namespace Swift_Edit
         public FormAI()
         {
             InitializeComponent();
+            response_textbox.SelectionIndent = 10;
+            response_textbox.SelectionRightIndent = 10;
         }
 
         private void close_picturebox_Click(object sender, EventArgs e)
@@ -75,9 +78,10 @@ namespace Swift_Edit
             }
 
             send_btn.Enabled = false;
-            send_btn.Text = "Thinking...";
+            response_textbox.Text = "Thinking...";
 
             string response = await SendPromptToOllama(prompt);
+            response_textbox.Text = string.Empty;
             response_textbox.AppendText("You: " + prompt + Environment.NewLine);
             response_textbox.AppendText("AI: " + response + Environment.NewLine + Environment.NewLine);
 

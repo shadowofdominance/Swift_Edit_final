@@ -34,7 +34,7 @@
             close_picturebox = new PictureBox();
             panel2 = new Panel();
             panel4 = new Panel();
-            response_textbox = new TextBox();
+            response_textbox = new RichTextBox();
             close_btn = new Button();
             panel3 = new Panel();
             clear_btn = new Button();
@@ -105,16 +105,16 @@
             // response_textbox
             // 
             response_textbox.BackColor = SystemColors.ScrollBar;
+            response_textbox.BorderStyle = BorderStyle.None;
             response_textbox.Dock = DockStyle.Fill;
-            response_textbox.Font = new Font("UbuntuMono Nerd Font", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            response_textbox.Font = new Font("JetBrains Mono Medium", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             response_textbox.Location = new Point(0, 0);
-            response_textbox.Multiline = true;
             response_textbox.Name = "response_textbox";
             response_textbox.ReadOnly = true;
-            response_textbox.ScrollBars = ScrollBars.Both;
+            response_textbox.ScrollBars = RichTextBoxScrollBars.Vertical;
             response_textbox.Size = new Size(415, 311);
             response_textbox.TabIndex = 1;
-            response_textbox.WordWrap = false;
+            response_textbox.Text = "";
             // 
             // close_btn
             // 
@@ -202,7 +202,6 @@
             prompt_textbox.Size = new Size(415, 132);
             prompt_textbox.TabIndex = 0;
             prompt_textbox.Text = "Enter your  prompt here!";
-            prompt_textbox.WordWrap = false;
             prompt_textbox.Click += prompt_textbox_Click;
             // 
             // FormAI
@@ -220,7 +219,6 @@
             ((System.ComponentModel.ISupportInitialize)close_picturebox).EndInit();
             panel2.ResumeLayout(false);
             panel4.ResumeLayout(false);
-            panel4.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ResumeLayout(false);
@@ -238,7 +236,7 @@
         private Button copy_btn;
         private Button send_btn;
         private Panel panel4;
-        private TextBox response_textbox;
         private Button close_btn;
+        private RichTextBox response_textbox;
     }
 }

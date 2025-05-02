@@ -2,6 +2,7 @@ using ReaLTaiizor.Controls;
 using SwiftEdit;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
+using System.Windows.Forms;
 using WinFormsTabPage = System.Windows.Forms.TabPage;
 
 namespace Swift_Edit
@@ -115,7 +116,7 @@ namespace Swift_Edit
             if (switchmodeExpand)
             {
                 switchmode_layoutpanel.Width += 20;
-                if (switchmode_layoutpanel.Width >= 915)
+                if (switchmode_layoutpanel.Width >= 703)
                 {
                     switchmodeExpand = false;
                     modetransition.Stop();
@@ -415,20 +416,26 @@ namespace Swift_Edit
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            string savedKey = Properties.Settings.Default.APIKey;
+            FormAI formAI = new FormAI();
+            formAI.ShowDialog();
+        }
 
-            if (!string.IsNullOrEmpty(savedKey))
-            {
-                // Key exists -> open chatbot
-                var aiForm = new FormAI(savedKey);
-                aiForm.Show();
-            }
-            else
-            {
-                // No key yet -> open key entry form
-                var keyForm = new ApiKeyForm();
-                keyForm.Show();
-            }
+        private void home_btn_Click(object sender, EventArgs e)
+        {
+            Keyboardshortcuts keyboard = new Keyboardshortcuts();
+            keyboard.ShowDialog();
+        }
+
+        private void quillmode_btn_Click(object sender, EventArgs e)
+        {
+            quillmode quill = new quillmode();
+            quill.ShowDialog();
+        }
+
+        private void devmode_btn_Click(object sender, EventArgs e)
+        {
+            devmode devmode = new devmode();
+            devmode.ShowDialog();
         }
     }
 }

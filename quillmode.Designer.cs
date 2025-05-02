@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(quillmode));
             panel1 = new Panel();
             switchmode_layoutpanel = new FlowLayoutPanel();
             panel13 = new Panel();
             switchmode_btn = new Button();
-            panel14 = new Panel();
-            scribemode_btn = new Button();
             panel15 = new Panel();
             quillmode_btn = new Button();
             panel16 = new Panel();
@@ -44,11 +43,11 @@
             controlbar = new ReaLTaiizor.Controls.NightControlBox();
             heading_label = new Label();
             mainbutton_picbox = new PictureBox();
-            panel2 = new Panel();
+            infinitycanvas = new Panel();
+            mode_transition = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             switchmode_layoutpanel.SuspendLayout();
             panel13.SuspendLayout();
-            panel14.SuspendLayout();
             panel15.SuspendLayout();
             panel16.SuspendLayout();
             panel17.SuspendLayout();
@@ -57,7 +56,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.Silver;
+            panel1.BackColor = Color.Transparent;
             panel1.Controls.Add(switchmode_layoutpanel);
             panel1.Controls.Add(controlbar);
             panel1.Controls.Add(heading_label);
@@ -67,11 +66,11 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1478, 37);
             panel1.TabIndex = 1;
+            panel1.MouseDown += panel1_MouseDown;
             // 
             // switchmode_layoutpanel
             // 
             switchmode_layoutpanel.Controls.Add(panel13);
-            switchmode_layoutpanel.Controls.Add(panel14);
             switchmode_layoutpanel.Controls.Add(panel15);
             switchmode_layoutpanel.Controls.Add(panel16);
             switchmode_layoutpanel.Controls.Add(panel17);
@@ -105,33 +104,10 @@
             switchmode_btn.UseVisualStyleBackColor = false;
             switchmode_btn.Click += switchmode_btn_Click;
             // 
-            // panel14
-            // 
-            panel14.Controls.Add(scribemode_btn);
-            panel14.Location = new Point(3, 43);
-            panel14.Name = "panel14";
-            panel14.Size = new Size(208, 34);
-            panel14.TabIndex = 4;
-            // 
-            // scribemode_btn
-            // 
-            scribemode_btn.BackColor = Color.FromArgb(23, 24, 29);
-            scribemode_btn.Font = new Font("Iosevka NFP ExtraBold", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            scribemode_btn.ForeColor = Color.White;
-            scribemode_btn.Image = (Image)resources.GetObject("scribemode_btn.Image");
-            scribemode_btn.ImageAlign = ContentAlignment.MiddleRight;
-            scribemode_btn.Location = new Point(-3, -3);
-            scribemode_btn.Name = "scribemode_btn";
-            scribemode_btn.Padding = new Padding(0, 0, 15, 0);
-            scribemode_btn.Size = new Size(211, 37);
-            scribemode_btn.TabIndex = 4;
-            scribemode_btn.Text = "SCRIBE MODE";
-            scribemode_btn.UseVisualStyleBackColor = false;
-            // 
             // panel15
             // 
             panel15.Controls.Add(quillmode_btn);
-            panel15.Location = new Point(3, 83);
+            panel15.Location = new Point(3, 43);
             panel15.Name = "panel15";
             panel15.Size = new Size(208, 34);
             panel15.TabIndex = 5;
@@ -154,7 +130,7 @@
             // panel16
             // 
             panel16.Controls.Add(devmode_btn);
-            panel16.Location = new Point(3, 123);
+            panel16.Location = new Point(3, 83);
             panel16.Name = "panel16";
             panel16.Size = new Size(208, 34);
             panel16.TabIndex = 6;
@@ -177,7 +153,7 @@
             // panel17
             // 
             panel17.Controls.Add(modemenuclose_btn);
-            panel17.Location = new Point(3, 163);
+            panel17.Location = new Point(3, 123);
             panel17.Name = "panel17";
             panel17.Size = new Size(53, 34);
             panel17.TabIndex = 7;
@@ -239,23 +215,28 @@
             mainbutton_picbox.TabIndex = 1;
             mainbutton_picbox.TabStop = false;
             // 
-            // panel2
+            // infinitycanvas
             // 
-            panel2.AutoScroll = true;
-            panel2.AutoScrollMinSize = new Size(50000, 50000);
-            panel2.BackColor = Color.WhiteSmoke;
-            panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(0, 37);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(1478, 808);
-            panel2.TabIndex = 2;
+            infinitycanvas.AutoScroll = true;
+            infinitycanvas.AutoScrollMinSize = new Size(5000, 5000);
+            infinitycanvas.BackColor = Color.WhiteSmoke;
+            infinitycanvas.Dock = DockStyle.Fill;
+            infinitycanvas.Location = new Point(0, 37);
+            infinitycanvas.Name = "infinitycanvas";
+            infinitycanvas.Size = new Size(1478, 808);
+            infinitycanvas.TabIndex = 2;
+            infinitycanvas.Scroll += panel2_Scroll;
+            // 
+            // mode_transition
+            // 
+            mode_transition.Interval = 10;
             // 
             // quillmode
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1478, 845);
-            Controls.Add(panel2);
+            Controls.Add(infinitycanvas);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "quillmode";
@@ -264,7 +245,6 @@
             panel1.PerformLayout();
             switchmode_layoutpanel.ResumeLayout(false);
             panel13.ResumeLayout(false);
-            panel14.ResumeLayout(false);
             panel15.ResumeLayout(false);
             panel16.ResumeLayout(false);
             panel17.ResumeLayout(false);
@@ -278,8 +258,6 @@
         private FlowLayoutPanel switchmode_layoutpanel;
         private Panel panel13;
         private Button switchmode_btn;
-        private Panel panel14;
-        private Button scribemode_btn;
         private Panel panel15;
         private Button quillmode_btn;
         private Panel panel16;
@@ -289,6 +267,7 @@
         private ReaLTaiizor.Controls.NightControlBox controlbar;
         private Label heading_label;
         private PictureBox mainbutton_picbox;
-        private Panel panel2;
+        private Panel infinitycanvas;
+        private System.Windows.Forms.Timer mode_transition;
     }
 }
