@@ -161,6 +161,22 @@
         rkJggg==
 </value>
   </data>
+  <data name="pictureBox3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAIFJREFUSEvt
+        09EJgDAMBNCO4AiO6iaO4giO0BEc4STQYDgE01hBsQ/8aUiPpjal7rMATPLxehMABhweCxnfH1LmXMMX
+        QjOu4Q5Qm4RxXYVGBGApDZlrVmhzoR28bt36TT0BIvzQvAFh5g5WrjWjp7i66LDad8D9bgBm3uwM93U/
+        swOVFHKSBC/jVwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAIVJREFUSEtj
+        YBgFgx78//+/AYTRxakCoIbDgAC6PEUAzXAFdHmKAD0NJwbMRzcDLyDDAhggPo5ICaL////fhylEl8ML
+        SLTkPFTdfnQ5vICUZApThC5OEBCb0ci2gFhAUwuQIpq0OCAEQPHy////92S7HqaRSIA3EWAF6CbgAAQT
+        wCgY5gAAAkJyktVGRgkAAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="mode_transition.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

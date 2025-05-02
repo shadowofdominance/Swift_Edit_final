@@ -44,6 +44,10 @@
             heading_label = new Label();
             mainbutton_picbox = new PictureBox();
             infinitycanvas = new Panel();
+            pictureBox3 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            panel2 = new Panel();
+            pictureBox1 = new PictureBox();
             mode_transition = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             switchmode_layoutpanel.SuspendLayout();
@@ -52,6 +56,11 @@
             panel16.SuspendLayout();
             panel17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)mainbutton_picbox).BeginInit();
+            infinitycanvas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -220,12 +229,55 @@
             infinitycanvas.AutoScroll = true;
             infinitycanvas.AutoScrollMinSize = new Size(5000, 5000);
             infinitycanvas.BackColor = Color.WhiteSmoke;
+            infinitycanvas.Controls.Add(pictureBox3);
+            infinitycanvas.Controls.Add(pictureBox2);
+            infinitycanvas.Controls.Add(panel2);
             infinitycanvas.Dock = DockStyle.Fill;
             infinitycanvas.Location = new Point(0, 37);
             infinitycanvas.Name = "infinitycanvas";
             infinitycanvas.Size = new Size(1478, 808);
             infinitycanvas.TabIndex = 2;
             infinitycanvas.Scroll += panel2_Scroll;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.BackColor = Color.FromArgb(23, 24, 29);
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(344, 702);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(65, 51);
+            pictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox3.TabIndex = 3;
+            pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.FromArgb(23, 24, 29);
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(256, 702);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(65, 51);
+            pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox2.TabIndex = 2;
+            pictureBox2.TabStop = false;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(23, 24, 29);
+            panel2.Controls.Add(pictureBox1);
+            panel2.Location = new Point(433, 702);
+            panel2.Name = "panel2";
+            panel2.Padding = new Padding(10, 0, 10, 0);
+            panel2.Size = new Size(764, 51);
+            panel2.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(13, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(67, 51);
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
             // 
             // mode_transition
             // 
@@ -249,6 +301,11 @@
             panel16.ResumeLayout(false);
             panel17.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)mainbutton_picbox).EndInit();
+            infinitycanvas.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -269,5 +326,9 @@
         private PictureBox mainbutton_picbox;
         private Panel infinitycanvas;
         private System.Windows.Forms.Timer mode_transition;
+        private Panel panel2;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox3;
+        private PictureBox pictureBox1;
     }
 }

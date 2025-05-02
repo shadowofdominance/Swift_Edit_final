@@ -86,7 +86,7 @@
             panel21 = new Panel();
             tabControl1 = new TabControl();
             tabPage2 = new TabPage();
-            textarea = new TextBox();
+            textarea = new RichTextBox();
             recentfiles_Transition = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             switchmode_layoutpanel.SuspendLayout();
@@ -365,6 +365,7 @@
             settings_btn.Text = "            Settings";
             settings_btn.TextAlign = ContentAlignment.MiddleLeft;
             settings_btn.UseVisualStyleBackColor = false;
+            settings_btn.Click += settings_btn_Click;
             // 
             // panel6
             // 
@@ -784,15 +785,14 @@
             // textarea
             // 
             textarea.BackColor = Color.Gainsboro;
+            textarea.BorderStyle = BorderStyle.None;
             textarea.Dock = DockStyle.Fill;
-            textarea.Font = new Font("JetBrains Mono", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textarea.Font = new Font("JetBrains Mono", 10.15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             textarea.Location = new Point(3, 3);
-            textarea.Multiline = true;
             textarea.Name = "textarea";
-            textarea.ScrollBars = ScrollBars.Both;
             textarea.Size = new Size(1583, 846);
             textarea.TabIndex = 0;
-            textarea.Text = "Start typing... destiny awaits.";
+            textarea.Text = "Start Typing, Destiny Awaits!";
             textarea.WordWrap = false;
             textarea.Click += textarea_Click;
             textarea.TextChanged += textarea_TextChanged;
@@ -813,6 +813,7 @@
             Controls.Add(panel1);
             Font = new Font("Segoe UI Semibold", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "defaultmode_form";
             Text = "Form1";
             FormClosing += defaultmode_form_FormClosing;
@@ -852,7 +853,6 @@
             panel21.ResumeLayout(false);
             tabControl1.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -868,7 +868,6 @@
         private Button home_btn;
         private Panel panel5;
         private Button mainfilemenu_btn;
-        private SlantedTabControl slantedTabControl1;
         private FlowLayoutPanel filemenupanel;
         private Panel panel6;
         private Button findandreplace_btn;
@@ -904,7 +903,6 @@
         private Panel panel21;
         private TabControl tabControl1;
         private TabPage tabPage2;
-        private TextBox textarea;
         private Panel panel9;
         private Button button1;
         private Panel panel10;
@@ -917,5 +915,6 @@
         private ReaLTaiizor.Controls.NightControlBox controlbar;
         private Panel panel8;
         private Button button3;
+        private RichTextBox textarea;
     }
 }

@@ -1,5 +1,4 @@
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\bin\Debug\net9.0-windows\Swift_Edit.exe
-C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\bin\Debug\net9.0-windows\Swift_Edit.dll.config
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\bin\Debug\net9.0-windows\Swift_Edit.deps.json
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\bin\Debug\net9.0-windows\Swift_Edit.runtimeconfig.json
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\bin\Debug\net9.0-windows\Swift_Edit.dll
@@ -8,7 +7,6 @@ C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\bin\Debug\net9.0-wi
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\bin\Debug\net9.0-windows\Newtonsoft.Json.Bson.dll
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\bin\Debug\net9.0-windows\ReaLTaiizor.dll
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-windows\Swift_Edit.csproj.AssemblyReference.cache
-C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-windows\Swift_Edit.devmode.resources
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-windows\Swift_Edit.FindReplaceForm.resources
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-windows\Swift_Edit.defaultmode_form.resources
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-windows\Swift_Edit.FormAI.resources
@@ -28,3 +26,4 @@ C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-wi
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-windows\Swift_Edit.genruntimeconfig.cache
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-windows\ref\Swift_Edit.dll
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-windows\Swift_Edit.Keyboardshortcuts.resources
+C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\obj\Debug\net9.0-windows\Swift_Edit.devmode_form.resources

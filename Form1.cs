@@ -181,21 +181,6 @@ namespace Swift_Edit
                 }
             }
         }
-
-
-        private void textarea_Click(object sender, EventArgs e)
-        {
-            if (placeholderActive)
-            {
-                textarea.Text = string.Empty;
-                placeholderActive = false;
-            }
-        }
-
-        private void textarea_TextChanged(object sender, EventArgs e)
-        {
-            UpdateFooter();
-        }
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -434,8 +419,28 @@ namespace Swift_Edit
 
         private void devmode_btn_Click(object sender, EventArgs e)
         {
-            devmode devmode = new devmode();
-            devmode.ShowDialog();
+            devmode_form devmodeobj = new devmode_form();
+            devmodeobj.ShowDialog();
+        }
+
+        private void settings_btn_Click(object sender, EventArgs e)
+        {
+            Settings settings = new Settings();
+            settings.ShowDialog();
+        }
+
+        private void textarea_TextChanged(object sender, EventArgs e)
+        {
+            UpdateFooter();
+        }
+
+        private void textarea_Click(object sender, EventArgs e)
+        {
+            if (placeholderActive)
+            {
+                textarea.Text = string.Empty;
+                placeholderActive = false;
+            }
         }
     }
 }

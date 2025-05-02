@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="devmode.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="FindReplaceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -21,9 +18,6 @@
     </Compile>
     <Compile Update="Settings.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="SlantedTabControl.cs">
-      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
 </Project>

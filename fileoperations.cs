@@ -5,23 +5,21 @@ using Swift_Edit;
 
 public static class fileoperations
 {
-    public static void CreateNewTab(TabControl tabControl, TextBox referenceTextArea, string fileName = "Untitled", string fileContent = "")
+    public static void CreateNewTab(TabControl tabControl, RichTextBox referenceTextArea, string fileName = "Untitled", string fileContent = "")
     {
-        // Use the full path in TabPage.Tag, but only display the file name as tab title
         string displayName = Path.GetFileName(fileName);
         string fullPath = fileName;
 
         TabPage newTab = new TabPage
         {
             Text = displayName,
-            Tag = fullPath // ✅ Store full file path here
+            Tag = fullPath
         };
 
-        TextBox newTextBox = new TextBox
+        RichTextBox newTextBox = new RichTextBox
         {
             Multiline = true,
             Dock = DockStyle.Fill,
-            ScrollBars = ScrollBars.Both,
             Font = referenceTextArea.Font,
             ForeColor = referenceTextArea.ForeColor,
             BackColor = referenceTextArea.BackColor,
@@ -43,13 +41,12 @@ public static class fileoperations
         tabControl.SelectedTab = newTab;
     }
 
-
-    public static void NewFile(TabControl tabControl, TextBox referenceTextArea)
+    public static void NewFile(TabControl tabControl, RichTextBox referenceTextArea)
     {
         CreateNewTab(tabControl, referenceTextArea);
     }
 
-    public static string OpenFile(TabControl tabControl, TextBox referenceTextArea)
+    public static string OpenFile(TabControl tabControl, RichTextBox referenceTextArea)
     {
         using (OpenFileDialog ofd = new OpenFileDialog())
         {
@@ -57,29 +54,20 @@ public static class fileoperations
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                string filePath = ofd.FileName; // Capture the file path
+                string filePath = ofd.FileName;
                 string fileContent = File.ReadAllText(filePath);
-
-                // Call your tab creation method (you may not need this part if you already have tab management)
                 CreateNewTab(tabControl, referenceTextArea, filePath, fileContent);
-
-                // Return the file path after opening the file
                 return filePath;
             }
         }
-
-        // If no file was selected, return an empty string
         return string.Empty;
     }
 
-
-    public static void OpenFile(string filepath, TabControl tabControl, TextBox referenceTextArea)
+    public static void OpenFile(string filepath, TabControl tabControl, RichTextBox referenceTextArea)
     {
         if (File.Exists(filepath))
         {
             string content = File.ReadAllText(filepath);
-
-            // ✅ Pass the file name and content so the tab can use it
             CreateNewTab(tabControl, referenceTextArea, filepath, content);
         }
         else
@@ -88,33 +76,11 @@ public static class fileoperations
         }
     }
 
-
-    /*public static void OpenFile(string filePath, TabControl tabControl, TextBox referenceTextArea)
-    {
-        if (File.Exists(filePath))
-        {
-            string fileContent = File.ReadAllText(filePath);
-            CreateNewTab(tabControl, referenceTextArea, filePath, fileContent);
-
-            // Update recent files list
-            RecentFilesManager.AddRecentFile(filePath);
-            RecentFilesManager.SaveRecentFiles();
-        }
-        else
-        {
-            MessageBox.Show("That file doesn't exist anymore! \n" + filePath,
-                            "File Not Found",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Warning);
-        }
-    }*/
-
-
     public static void SaveFile(TabControl tabControl)
     {
         if (tabControl.SelectedTab == null) return;
 
-        if (tabControl.SelectedTab.Controls[0] is not TextBox currentTextBox) return;
+        if (tabControl.SelectedTab.Controls[0] is not RichTextBox currentTextBox) return;
 
         string filePath = tabControl.SelectedTab.Tag as string;
 
@@ -133,7 +99,7 @@ public static class fileoperations
     {
         if (tabControl.SelectedTab == null) return;
 
-        if (tabControl.SelectedTab.Controls[0] is not TextBox currentTextBox) return;
+        if (tabControl.SelectedTab.Controls[0] is not RichTextBox currentTextBox) return;
 
         using SaveFileDialog sfd = new SaveFileDialog
         {
@@ -155,7 +121,7 @@ public static class fileoperations
     {
         if (tabControl.SelectedTab == null) return;
 
-        if (tabControl.SelectedTab.Controls[0] is not TextBox currentTextBox) return;
+        if (tabControl.SelectedTab.Controls[0] is not RichTextBox currentTextBox) return;
 
         string filePath = tabControl.SelectedTab.Tag as string;
 
@@ -173,7 +139,7 @@ public static class fileoperations
     {
         foreach (TabPage tab in tabControl.TabPages)
         {
-            if (tab.Controls[0] is not TextBox textBox) continue;
+            if (tab.Controls[0] is not RichTextBox textBox) continue;
 
             string filePath = tab.Tag as string;
 
@@ -189,7 +155,7 @@ public static class fileoperations
         Application.Exit();
     }
 
-    private static bool IsTextChanged(TextBox textBox, string filePath)
+    private static bool IsTextChanged(RichTextBox textBox, string filePath)
     {
         if (string.IsNullOrEmpty(filePath) || !File.Exists(filePath))
             return true;
@@ -197,14 +163,14 @@ public static class fileoperations
         string savedText = File.ReadAllText(filePath);
         return savedText != textBox.Text;
     }
+
     public static void CloseAllTabs(TabControl tabControl)
     {
-        // We'll collect all tabs to close after confirming unsaved changes
         List<TabPage> tabsToClose = new List<TabPage>();
 
         foreach (TabPage tab in tabControl.TabPages)
         {
-            if (tab.Controls[0] is not TextBox textBox) continue;
+            if (tab.Controls[0] is not RichTextBox textBox) continue;
 
             string filePath = tab.Tag as string;
 
@@ -224,11 +190,9 @@ public static class fileoperations
             tabsToClose.Add(tab);
         }
 
-        // Remove the collected tabs
         foreach (var tab in tabsToClose)
         {
             tabControl.TabPages.Remove(tab);
         }
     }
-
 }
