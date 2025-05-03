@@ -33,7 +33,10 @@
             label1 = new Label();
             close_picturebox = new PictureBox();
             panel2 = new Panel();
+            label2 = new Label();
+            richTextBox1 = new RichTextBox();
             label3 = new Label();
+            richTextBox2 = new RichTextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)close_picturebox).BeginInit();
             panel2.SuspendLayout();
@@ -73,12 +76,36 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(richTextBox2);
+            panel2.Controls.Add(label2);
+            panel2.Controls.Add(richTextBox1);
             panel2.Controls.Add(label3);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 42);
             panel2.Name = "panel2";
             panel2.Size = new Size(489, 758);
             panel2.TabIndex = 2;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("VictorMono NF SemiBold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(12, 399);
+            label2.Name = "label2";
+            label2.Size = new Size(92, 26);
+            label2.TabIndex = 4;
+            label2.Text = "Dev Mode";
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.BackColor = SystemColors.ActiveBorder;
+            richTextBox1.BorderStyle = BorderStyle.None;
+            richTextBox1.Location = new Point(12, 52);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.ReadOnly = true;
+            richTextBox1.Size = new Size(465, 303);
+            richTextBox1.TabIndex = 3;
+            richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
             // label3
             // 
@@ -90,6 +117,17 @@
             label3.TabIndex = 2;
             label3.Text = "Default Mode";
             label3.Click += label3_Click;
+            // 
+            // richTextBox2
+            // 
+            richTextBox2.BackColor = SystemColors.ActiveBorder;
+            richTextBox2.BorderStyle = BorderStyle.None;
+            richTextBox2.Location = new Point(12, 428);
+            richTextBox2.Name = "richTextBox2";
+            richTextBox2.ReadOnly = true;
+            richTextBox2.Size = new Size(465, 303);
+            richTextBox2.TabIndex = 5;
+            richTextBox2.Text = resources.GetString("richTextBox2.Text");
             // 
             // Keyboardshortcuts
             // 
@@ -116,5 +154,8 @@
         private PictureBox close_picturebox;
         private Panel panel2;
         private Label label3;
+        private Label label2;
+        private RichTextBox richTextBox1;
+        private RichTextBox richTextBox2;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ReaLTaiizor.Controls;
+using Swift_Edit.Properties;
 using SwiftEdit;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -16,6 +17,7 @@ namespace Swift_Edit
         public devmode_form()
         {
             InitializeComponent();
+            this.KeyPreview = true;
         }
         bool menuExpand = false;
         bool recentmenuExpand = false;
@@ -490,7 +492,7 @@ namespace Swift_Edit
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            //sidebarcompleteclose.Start();
+            sidebarcompleteclose.Start();
         }
 
         List<string> expandedPaths = new List<string>();
@@ -668,6 +670,84 @@ namespace Swift_Edit
             {
                 MessageBox.Show("Error loading session: " + ex.Message);
             }
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Control | Keys.Alt | Keys.A:
+                    FormAI formAI = new FormAI();
+                    formAI.ShowDialog();
+                    return true;
+
+                case Keys.Control | Keys.N:
+                    fileoperations.NewFile(tabControl1, textarea);
+                    return true;
+
+                case Keys.Control | Keys.O:
+                    string filePath = fileoperations.OpenFile(tabControl1, textarea);
+                    if (!string.IsNullOrEmpty(filePath))
+                        recentfilemgr.AddRecentFile(filePath, recentfile_listbox);
+                    return true;
+
+                case Keys.Control | Keys.S:
+                    fileoperations.SaveFile(tabControl1);
+                    return true;
+
+                case Keys.Control | Keys.Shift | Keys.S:
+                    fileoperations.SaveFileAs(tabControl1);
+                    return true;
+
+                case Keys.Control | Keys.F:
+                    var currentTextArea = tabControl1.SelectedTab?.Controls.OfType<TextBox>().FirstOrDefault();
+                    if (currentTextArea != null)
+                    {
+                        FindReplaceForm findForm = new FindReplaceForm(currentTextArea);
+                        findForm.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No active text area found.");
+                    }
+                    return true;
+
+                case Keys.Control | Keys.Alt | Keys.R:
+                    sidebarTransition.Start();
+                    recentfiles_Transition.Start();
+                    return true;
+
+                case Keys.Control | Keys.Alt | Keys.S:
+                    Settings settings = new Settings();
+                    settings.Show();
+                    return true;
+
+                case Keys.Control | Keys.Alt | Keys.C:
+                    fileoperations.CloseAllTabs(tabControl1);
+                    return true;
+
+                case Keys.Control | Keys.Alt | Keys.X:
+                    fileoperations.CloseApplication(tabControl1);
+                    return true;
+
+                case Keys.Control | Keys.Z:
+                    if (textarea.CanUndo)
+                        textarea.Undo();
+                    return true;
+
+                case Keys.Control | Keys.Y:
+                    if (textarea.CanRedo)
+                        textarea.Redo();
+                    return true;
+
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
+            }
+        }
+        private void settings_btn_Click(object sender, EventArgs e)
+        {
+            Settings settings = new Settings();
+            settings.Show();
         }
     }
 }

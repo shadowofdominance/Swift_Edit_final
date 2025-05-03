@@ -392,6 +392,7 @@
             settings_btn.Text = "            Settings";
             settings_btn.TextAlign = ContentAlignment.MiddleLeft;
             settings_btn.UseVisualStyleBackColor = false;
+            settings_btn.Click += settings_btn_Click;
             // 
             // panel6
             // 
@@ -818,7 +819,7 @@
             tabcontrol_panel.Dock = DockStyle.Fill;
             tabcontrol_panel.Location = new Point(0, 0);
             tabcontrol_panel.Name = "tabcontrol_panel";
-            tabcontrol_panel.Size = new Size(1268, 661);
+            tabcontrol_panel.Size = new Size(1551, 661);
             tabcontrol_panel.TabIndex = 3;
             // 
             // tabControl1
@@ -828,7 +829,7 @@
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1268, 661);
+            tabControl1.Size = new Size(1551, 661);
             tabControl1.TabIndex = 0;
             tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
@@ -841,7 +842,7 @@
             tabPage2.Location = new Point(4, 26);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1260, 631);
+            tabPage2.Size = new Size(1543, 631);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Untitled";
             // 
@@ -852,7 +853,7 @@
             panel14.Dock = DockStyle.Fill;
             panel14.Location = new Point(3, 3);
             panel14.Name = "panel14";
-            panel14.Size = new Size(1254, 625);
+            panel14.Size = new Size(1537, 625);
             panel14.TabIndex = 2;
             // 
             // textarea
@@ -864,7 +865,7 @@
             textarea.ForeColor = SystemColors.WindowText;
             textarea.Location = new Point(47, 0);
             textarea.Name = "textarea";
-            textarea.Size = new Size(1207, 625);
+            textarea.Size = new Size(1490, 625);
             textarea.TabIndex = 2;
             textarea.Text = "Start typing, Destiny Awaits!";
             textarea.VScroll += textarea_VScroll;
@@ -890,9 +891,9 @@
             // 
             fileplorer_panel.Controls.Add(fileexplorermain_panel);
             fileplorer_panel.Dock = DockStyle.Right;
-            fileplorer_panel.Location = new Point(1268, 0);
+            fileplorer_panel.Location = new Point(1551, 0);
             fileplorer_panel.Name = "fileplorer_panel";
-            fileplorer_panel.Size = new Size(329, 661);
+            fileplorer_panel.Size = new Size(46, 661);
             fileplorer_panel.TabIndex = 2;
             // 
             // fileexplorermain_panel
@@ -902,7 +903,7 @@
             fileexplorermain_panel.Dock = DockStyle.Fill;
             fileexplorermain_panel.Location = new Point(0, 0);
             fileexplorermain_panel.Name = "fileexplorermain_panel";
-            fileexplorermain_panel.Size = new Size(329, 661);
+            fileexplorermain_panel.Size = new Size(46, 661);
             fileexplorermain_panel.TabIndex = 2;
             // 
             // filetreeview
@@ -913,7 +914,7 @@
             filetreeview.ForeColor = SystemColors.MenuText;
             filetreeview.Location = new Point(0, 37);
             filetreeview.Name = "filetreeview";
-            filetreeview.Size = new Size(329, 624);
+            filetreeview.Size = new Size(46, 624);
             filetreeview.TabIndex = 0;
             filetreeview.NodeMouseDoubleClick += filetreeview_NodeMouseDoubleClick;
             // 
@@ -925,7 +926,7 @@
             panel21.Dock = DockStyle.Top;
             panel21.Location = new Point(0, 0);
             panel21.Name = "panel21";
-            panel21.Size = new Size(329, 37);
+            panel21.Size = new Size(46, 37);
             panel21.TabIndex = 1;
             // 
             // pictureBox2
@@ -933,7 +934,7 @@
             pictureBox2.BackColor = SystemColors.WindowText;
             pictureBox2.Dock = DockStyle.Right;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(283, 0);
+            pictureBox2.Location = new Point(0, 0);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(46, 37);
             pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -989,6 +990,7 @@
             // terminalInput
             // 
             terminalInput.BackColor = Color.FromArgb(23, 24, 29);
+            terminalInput.BorderStyle = BorderStyle.None;
             terminalInput.Dock = DockStyle.Fill;
             terminalInput.Font = new Font("Iosevka NF SemiBold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             terminalInput.ForeColor = SystemColors.ButtonHighlight;

@@ -125,4 +125,34 @@
         5dXWB1jeYG5KVpjNprAitpMoBUom5Rw62YFz4GSvAz24AB7wF48LegAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="richTextBox2.Text" xml:space="preserve">
+    <value>Shortcut 	Action
+Ctrl + N	New File
+Ctrl + O	Open File
+Ctrl + S	Save File
+Ctrl + Shift + S	Save File As
+Ctrl + F	Find
+Ctrl + Z	Undo
+Ctrl + Y	Redo
+Ctrl + Alt + A	Open AI Form
+Ctrl + Alt + R	Trigger Sidebar Transition
+Ctrl + Alt + S	Open Settings
+Ctrl + Alt + C	Close All Tabs
+Ctrl + Alt + X	Exit App</value>
+  </data>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>Shortcut 	Action
+Ctrl + N	New File
+Ctrl + O	Open File
+Ctrl + S	Save File
+Ctrl + Shift + S	Save File As
+Ctrl + F	Find
+Ctrl + Z	Undo
+Ctrl + Y	Redo
+Ctrl + Alt + A	Open AI Form
+Ctrl + Alt + R	Trigger Sidebar Transition
+Ctrl + Alt + S	Open Settings
+Ctrl + Alt + C	Close All Tabs
+Ctrl + Alt + X	Exit App</value>
+  </data>
 </root>

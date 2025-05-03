@@ -111,9 +111,56 @@ namespace Swift_Edit
                 );
             }
         }
+        public void AddTextBox(Point location)
+        {
+            TextBox tb = new TextBox
+            {
+                Multiline = true,
+                Size = new Size(150, 50),
+                Location = location,
+                BorderStyle = BorderStyle.FixedSingle
+            };
+
+            EnableDrag(tb);
+
+            this.Controls.Add(tb);
+            tb.BringToFront();
+            tb.Focus();
+        }
+        private void EnableDrag(Control ctrl)
+        {
+            Point offset = Point.Empty;
+
+            ctrl.MouseDown += (s, e) =>
+            {
+                if (e.Button == MouseButtons.Left)
+                    offset = e.Location;
+            };
+
+            ctrl.MouseMove += (s, e) =>
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    ctrl.Left += e.X - offset.X;
+                    ctrl.Top += e.Y - offset.Y;
+                }
+            };
+        }
+
         private void panel2_Scroll(object sender, ScrollEventArgs e)
         {
             CheckAndExpandCanvas();
+        }
+
+        private void mode_transition_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void infinitycanvas_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Point canvasPos = e.Location;
+            AddTextBox(canvasPos);
         }
     }
 }

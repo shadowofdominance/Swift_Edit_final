@@ -42,25 +42,28 @@
             modemenuclose_btn = new Button();
             controlbar = new ReaLTaiizor.Controls.NightControlBox();
             heading_label = new Label();
-            mainbutton_picbox = new PictureBox();
             infinitycanvas = new Panel();
             pictureBox3 = new PictureBox();
             pictureBox2 = new PictureBox();
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
             mode_transition = new System.Windows.Forms.Timer(components);
+            panel3 = new Panel();
+            panel4 = new Panel();
+            panel5 = new Panel();
             panel1.SuspendLayout();
             switchmode_layoutpanel.SuspendLayout();
             panel13.SuspendLayout();
             panel15.SuspendLayout();
             panel16.SuspendLayout();
             panel17.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)mainbutton_picbox).BeginInit();
-            infinitycanvas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel3.SuspendLayout();
+            panel4.SuspendLayout();
+            panel5.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -69,7 +72,6 @@
             panel1.Controls.Add(switchmode_layoutpanel);
             panel1.Controls.Add(controlbar);
             panel1.Controls.Add(heading_label);
-            panel1.Controls.Add(mainbutton_picbox);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
@@ -133,7 +135,7 @@
             quillmode_btn.Padding = new Padding(0, 0, 15, 0);
             quillmode_btn.Size = new Size(211, 37);
             quillmode_btn.TabIndex = 4;
-            quillmode_btn.Text = "QUILL MODE";
+            quillmode_btn.Text = "DEFAULT MODE";
             quillmode_btn.UseVisualStyleBackColor = false;
             // 
             // panel16
@@ -208,42 +210,30 @@
             // 
             heading_label.AutoSize = true;
             heading_label.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            heading_label.Location = new Point(73, 8);
+            heading_label.Location = new Point(12, 8);
             heading_label.Name = "heading_label";
             heading_label.Size = new Size(209, 23);
             heading_label.TabIndex = 1;
             heading_label.Text = "SWIFTEDIT | QUILL MODE";
             // 
-            // mainbutton_picbox
-            // 
-            mainbutton_picbox.Image = (Image)resources.GetObject("mainbutton_picbox.Image");
-            mainbutton_picbox.Location = new Point(3, 3);
-            mainbutton_picbox.Name = "mainbutton_picbox";
-            mainbutton_picbox.Size = new Size(51, 31);
-            mainbutton_picbox.SizeMode = PictureBoxSizeMode.CenterImage;
-            mainbutton_picbox.TabIndex = 1;
-            mainbutton_picbox.TabStop = false;
-            // 
             // infinitycanvas
             // 
             infinitycanvas.AutoScroll = true;
             infinitycanvas.AutoScrollMinSize = new Size(5000, 5000);
-            infinitycanvas.BackColor = Color.WhiteSmoke;
-            infinitycanvas.Controls.Add(pictureBox3);
-            infinitycanvas.Controls.Add(pictureBox2);
-            infinitycanvas.Controls.Add(panel2);
+            infinitycanvas.BackColor = Color.FromArgb(224, 224, 224);
             infinitycanvas.Dock = DockStyle.Fill;
-            infinitycanvas.Location = new Point(0, 37);
+            infinitycanvas.Location = new Point(0, 0);
             infinitycanvas.Name = "infinitycanvas";
-            infinitycanvas.Size = new Size(1478, 808);
+            infinitycanvas.Size = new Size(1478, 743);
             infinitycanvas.TabIndex = 2;
             infinitycanvas.Scroll += panel2_Scroll;
+            infinitycanvas.MouseDoubleClick += infinitycanvas_MouseDoubleClick;
             // 
             // pictureBox3
             // 
             pictureBox3.BackColor = Color.FromArgb(23, 24, 29);
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(344, 702);
+            pictureBox3.Location = new Point(364, 6);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(65, 51);
             pictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -254,7 +244,7 @@
             // 
             pictureBox2.BackColor = Color.FromArgb(23, 24, 29);
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(256, 702);
+            pictureBox2.Location = new Point(281, 6);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(65, 51);
             pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -265,7 +255,7 @@
             // 
             panel2.BackColor = Color.FromArgb(23, 24, 29);
             panel2.Controls.Add(pictureBox1);
-            panel2.Location = new Point(433, 702);
+            panel2.Location = new Point(458, 6);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(10, 0, 10, 0);
             panel2.Size = new Size(764, 51);
@@ -275,20 +265,51 @@
             // 
             pictureBox1.Location = new Point(13, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(67, 51);
+            pictureBox1.Size = new Size(62, 51);
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
             // mode_transition
             // 
             mode_transition.Interval = 10;
+            mode_transition.Tick += mode_transition_Tick;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(infinitycanvas);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(0, 0);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1478, 743);
+            panel3.TabIndex = 4;
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(pictureBox3);
+            panel4.Controls.Add(panel2);
+            panel4.Controls.Add(pictureBox2);
+            panel4.Dock = DockStyle.Bottom;
+            panel4.Location = new Point(0, 743);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(1478, 65);
+            panel4.TabIndex = 5;
+            // 
+            // panel5
+            // 
+            panel5.Controls.Add(panel3);
+            panel5.Controls.Add(panel4);
+            panel5.Dock = DockStyle.Fill;
+            panel5.Location = new Point(0, 37);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(1478, 808);
+            panel5.TabIndex = 6;
             // 
             // quillmode
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1478, 845);
-            Controls.Add(infinitycanvas);
+            Controls.Add(panel5);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "quillmode";
@@ -300,12 +321,13 @@
             panel15.ResumeLayout(false);
             panel16.ResumeLayout(false);
             panel17.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)mainbutton_picbox).EndInit();
-            infinitycanvas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel3.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel5.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -323,12 +345,14 @@
         private Button modemenuclose_btn;
         private ReaLTaiizor.Controls.NightControlBox controlbar;
         private Label heading_label;
-        private PictureBox mainbutton_picbox;
         private Panel infinitycanvas;
         private System.Windows.Forms.Timer mode_transition;
         private Panel panel2;
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private PictureBox pictureBox1;
+        private Panel panel3;
+        private Panel panel4;
+        private Panel panel5;
     }
 }
