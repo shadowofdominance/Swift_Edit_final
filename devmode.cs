@@ -476,7 +476,7 @@ namespace Swift_Edit
 
             sidebarTransition.Start();
         }
-        
+
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -661,7 +661,7 @@ namespace Swift_Edit
             SetScrollPos(linenumber_richtextbox.Handle, SB_VERT, nPos, true);
             SendMessage(linenumber_richtextbox.Handle, WM_VSCROLL, (SB_THUMBPOSITION + 0x10000 * nPos), 0);
         }
-        
+
         private void textarea_Click_1(object sender, EventArgs e)
         {
             if (placeholderActive)
@@ -677,7 +677,7 @@ namespace Swift_Edit
             UpdateLineNumbers();
         }
 
-        
+
 
         private void openfolder_btn_Click(object sender, EventArgs e)
         {
@@ -719,9 +719,9 @@ namespace Swift_Edit
         {
             sidebarcompleteclose.Start();
         }
-        
 
-        
+
+
 
         private void terminalInput_Click(object sender, EventArgs e)
         {
@@ -731,7 +731,7 @@ namespace Swift_Edit
                 placeholder = true;
             }
         }
-        
+
 
         private void terminalInput_KeyDown(object sender, KeyEventArgs e)
         {
@@ -884,6 +884,11 @@ namespace Swift_Edit
         {
             Settings settings = new Settings();
             settings.Show();
+        }
+
+        private void terminalTransition_Tick(object sender, EventArgs e)
+        {
+
         }
         //*****************************
         //Functions called from designer end

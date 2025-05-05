@@ -105,6 +105,7 @@
             pictureBox3 = new PictureBox();
             recentfiles_Transition = new System.Windows.Forms.Timer(components);
             sidebarcompleteclose = new System.Windows.Forms.Timer(components);
+            terminalTransition = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             switchmode_layoutpanel.SuspendLayout();
             panel13.SuspendLayout();
@@ -588,7 +589,7 @@
             openfolder_btn.Padding = new Padding(25, 0, 0, 0);
             openfolder_btn.Size = new Size(360, 89);
             openfolder_btn.TabIndex = 0;
-            openfolder_btn.Text = "            Close Current";
+            openfolder_btn.Text = "            Open Folder";
             openfolder_btn.TextAlign = ContentAlignment.MiddleLeft;
             openfolder_btn.UseVisualStyleBackColor = false;
             openfolder_btn.Click += openfolder_btn_Click;
@@ -1025,6 +1026,11 @@
             sidebarcompleteclose.Interval = 10;
             sidebarcompleteclose.Tick += sidebarcompleteclose_Tick;
             // 
+            // terminalTransition
+            // 
+            terminalTransition.Interval = 10;
+            terminalTransition.Tick += terminalTransition_Tick;
+            // 
             // devmode_form
             // 
             AutoScaleDimensions = new SizeF(8F, 17F);
@@ -1168,5 +1174,6 @@
         private PictureBox pictureBox3;
         private RichTextBox outputTerminal;
         private TextBox terminalInput;
+        private System.Windows.Forms.Timer terminalTransition;
     }
 }

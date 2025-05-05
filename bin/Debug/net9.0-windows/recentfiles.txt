@@ -1,3 +1,4 @@
+C:\xampp\htdocs\ModernTaskManager\register.php
 C:\Users\acd07\Documents\Projects\College Project\GPT\quillmode.txt
 C:\Users\acd07\Documents\Projects\College Project\GPT\Untitled.txt
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\FormAI.cs
@@ -7,4 +8,3 @@ C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\devmode.cs
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\quillmode.cs
 C:\Users\acd07\Documents\Projects\College Project\GPT\hello.txt
 C:\Users\acd07\Documents\Projects\College Project\GPT\helllonsfnjenv.txt
-C:\Users\acd07\Documents\Projects\College Project\GPT\gouravssss.txt
