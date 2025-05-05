@@ -1,4 +1,5 @@
-﻿using ReaLTaiizor.Controls;
+﻿using Newtonsoft.Json.Linq;
+using ReaLTaiizor.Controls;
 using Swift_Edit.Properties;
 using SwiftEdit;
 using System.Diagnostics;
@@ -12,25 +13,62 @@ namespace Swift_Edit
 {
     public partial class devmode_form : Form
     {
-        private recentfilemanagerdevmode recentfilemgr = new recentfilemanagerdevmode();
-        private Process terminalProcess;
         public devmode_form()
         {
             InitializeComponent();
             this.KeyPreview = true;
         }
+        //*****************************
+        //Variable Declarations section Start
+        //*****************************
+
+        private LspClient lspClient = new LspClient();
+        private recentfilemanagerdevmode recentfilemgr = new recentfilemanagerdevmode();
+        private Process terminalProcess;
         bool menuExpand = false;
         bool recentmenuExpand = false;
         bool sidebarExpand = true;
         bool switchmodeExpand = true;
         bool placeholderActive = true;
+        bool fileexplorer_expand = true;
+        bool placeholder = false;
         int step1 = 40;
         int step2 = 25;
-        private void LoadRecentFilesToUI()
-        {
-            recentfilemgr.LoadRecentFiles(recentfile_listbox);
-        }
+        List<string> expandedPaths = new List<string>();
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+        const int WM_VSCROLL = 0x115;
+        const int SB_THUMBPOSITION = 4;
+        private const int SB_VERT = 1;
 
+        //*****************************
+        //Variable Declarations section End
+        //*****************************
+
+        //*****************************
+        //Functions for the enabling of dragging of window start
+        //*****************************
+        [DllImport("user32.dll")]
+        private static extern int GetScrollPos(IntPtr hWnd, int nBar);
+
+        [DllImport("user32.dll")]
+        private static extern int SetScrollPos(IntPtr hWnd, int nBar, int nPos, bool bRedraw);
+
+        // These two functions allow dragging
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        [DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
+        //*****************************
+        //Functions for the enabling of dragging of window end
+        //*****************************
+
+
+        //*****************************
+        //User defined functions start
+        //*****************************
         protected override void WndProc(ref Message m)
         {
             const int WM_NCHITTEST = 0x84;
@@ -52,20 +90,306 @@ namespace Swift_Edit
 
             base.WndProc(ref m);
         }
-        // These two functions allow dragging
-        [DllImport("user32.dll")]
-        public static extern bool ReleaseCapture();
+        private void LoadRecentFilesToUI()
+        {
+            recentfilemgr.LoadRecentFiles(recentfile_listbox);
+        }
+        public void UpdateFooter()
+        {
+            if (tabControl1.SelectedTab != null && tabControl1.SelectedTab.Controls.Count > 0)
+            {
+                // Find the RichTextBox/TextBox inside the current tab
+                var currentTextArea = tabControl1.SelectedTab.Controls
+                                        .OfType<RichTextBox>()
+                                        .FirstOrDefault(); // or TextBox if you're using that
 
-        [DllImport("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+                if (currentTextArea != null)
+                {
+                    string text = currentTextArea.Text;
 
-        // Constants
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
+                    int wordCount = 0;
+                    if (!string.IsNullOrWhiteSpace(text))
+                    {
+                        wordCount = text.Split(new char[] { ' ', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries).Length;
+                    }
 
-        const int WM_VSCROLL = 0x115;
-        const int SB_THUMBPOSITION = 4;
+                    int lineCount = currentTextArea.Lines.Length;
 
+                    int characterCount = 0;
+                    if (!string.IsNullOrWhiteSpace(text))
+                    {
+                        characterCount = text.Count(c => !char.IsWhiteSpace(c));
+                    }
+
+                    // Update Labels
+                    wordcount_label.Text = $"Words: {wordCount}";
+                    linecount_label.Text = $"Lines: {lineCount}";
+                    charactercount_label.Text = $"Characters: {characterCount}";
+                }
+            }
+        }
+        private void CloseCurrentFile()
+        {
+            try
+            {
+                if (tabControl1.TabCount == 0)
+                {
+                    MessageBox.Show("There are no files open to close.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                WinFormsTabPage currentTab = tabControl1.SelectedTab;
+                if (currentTab.Tag is bool isSaved && !isSaved)
+                {
+                    DialogResult result = MessageBox.Show("The current file has unsaved changes. Do you still want to close it?", "Unsaved Changes", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.No)
+                        return;
+                }
+
+                tabControl1.TabPages.Remove(currentTab);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while closing the file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void UpdateLineNumbers()
+        {
+            int firstLine = textarea.GetLineFromCharIndex(0);
+            int totalLines = textarea.Lines.Length;
+
+            StringBuilder lineNumbers = new StringBuilder();
+            for (int i = 1; i <= totalLines; i++)
+            {
+                lineNumbers.AppendLine(i.ToString());
+            }
+
+            linenumber_richtextbox.Text = lineNumbers.ToString();
+        }
+
+        private void HighlightTokens(JArray tokens)
+        {
+            int line = 0, charPos = 0;
+
+            for (int i = 0; i < tokens.Count; i += 5)
+            {
+                int deltaLine = (int)tokens[i];
+                int deltaChar = (int)tokens[i + 1];
+                int length = (int)tokens[i + 2];
+                int tokenType = (int)tokens[i + 3];
+                // int tokenModifiers = (int)tokens[i + 4];
+
+                line += deltaLine;
+                charPos = (deltaLine == 0) ? charPos + deltaChar : deltaChar;
+
+                int startIndex = GetCharIndexFromLineAndColumn(line, charPos);
+                textarea.Select(startIndex, length);
+                textarea.SelectionColor = GetColorForTokenType(tokenType);
+            }
+
+            textarea.Select(0, 0); // reset selection
+        }
+
+        private int GetCharIndexFromLineAndColumn(int line, int column)
+        {
+            string[] lines = textarea.Lines;
+            int index = 0;
+            for (int i = 0; i < line; i++)
+            {
+                index += lines[i].Length + 1; // +1 for newline
+            }
+            return index + column;
+        }
+
+        private Color GetColorForTokenType(int tokenType)
+        {
+            // Pyright LSP token types: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#semanticTokenTypes
+            return tokenType switch
+            {
+                0 => Color.Blue,       // namespace
+                1 => Color.DarkCyan,   // type
+                2 => Color.DarkGreen,  // class
+                3 => Color.Orange,     // enum
+                4 => Color.Purple,     // interface
+                5 => Color.Red,        // function
+                6 => Color.Brown,      // variable
+                _ => Color.Gray
+            };
+        }
+        void CollectExpanded(TreeNodeCollection nodes)
+        {
+            foreach (TreeNode node in nodes)
+            {
+                if (node.IsExpanded)
+                    expandedPaths.Add(node.Tag.ToString());
+
+                CollectExpanded(node.Nodes);
+            }
+        }
+        void RestoreExpanded(TreeNodeCollection nodes, List<string> paths)
+        {
+            foreach (TreeNode node in nodes)
+            {
+                if (paths.Contains(node.Tag.ToString()))
+                    node.Expand();
+
+                RestoreExpanded(node.Nodes, paths);
+            }
+        }
+
+        void LoadDirectory(string dir, TreeNodeCollection nodes)
+        {
+            DirectoryInfo di = new DirectoryInfo(dir);
+
+            TreeNode dirNode = nodes.Add(di.Name);
+            dirNode.Tag = di.FullName;
+
+            foreach (var subDir in di.GetDirectories())
+            {
+                LoadDirectory(subDir.FullName, dirNode.Nodes);
+            }
+
+            foreach (var file in di.GetFiles())
+            {
+                TreeNode fileNode = dirNode.Nodes.Add(file.Name);
+                fileNode.Tag = file.FullName;
+            }
+        }
+        private void LaunchPowerShell()
+        {
+            try
+            {
+                terminalProcess = new Process();
+                terminalProcess.StartInfo.FileName = "powershell.exe";
+                terminalProcess.StartInfo.UseShellExecute = false;
+                terminalProcess.StartInfo.RedirectStandardInput = true;
+                terminalProcess.StartInfo.RedirectStandardOutput = true;
+                terminalProcess.StartInfo.RedirectStandardError = true;
+                terminalProcess.StartInfo.CreateNoWindow = true;
+
+                terminalProcess.OutputDataReceived += (s, e) =>
+                {
+                    if (e.Data != null)
+                    {
+                        outputTerminal.Invoke((MethodInvoker)(() =>
+                        {
+                            terminalProcess.StartInfo.Arguments = "-NoExit";
+                            outputTerminal.AppendText(e.Data + Environment.NewLine);
+                            outputTerminal.SelectionStart = outputTerminal.Text.Length;
+                            outputTerminal.ScrollToCaret();
+                        }));
+                    }
+                };
+
+                terminalProcess.ErrorDataReceived += (s, e) =>
+                {
+                    if (e.Data != null)
+                    {
+                        outputTerminal.Invoke((MethodInvoker)(() =>
+                        {
+                            outputTerminal.AppendText("ERROR: " + e.Data + Environment.NewLine);
+                            outputTerminal.SelectionStart = outputTerminal.Text.Length;
+                            outputTerminal.ScrollToCaret();
+                        }));
+                    }
+                };
+
+                try
+                {
+                    terminalProcess.Start();
+                    terminalProcess.BeginOutputReadLine();
+                    terminalProcess.BeginErrorReadLine();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to start terminal:\n" + ex.Message);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to start PowerShell process:\n" + ex.Message);
+            }
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Control | Keys.Alt | Keys.A:
+                    FormAI formAI = new FormAI();
+                    formAI.ShowDialog();
+                    return true;
+
+                case Keys.Control | Keys.N:
+                    fileoperations.NewFile(tabControl1, textarea);
+                    return true;
+
+                case Keys.Control | Keys.O:
+                    string filePath = fileoperations.OpenFile(tabControl1, textarea);
+                    if (!string.IsNullOrEmpty(filePath))
+                        recentfilemgr.AddRecentFile(filePath, recentfile_listbox);
+                    return true;
+
+                case Keys.Control | Keys.S:
+                    fileoperations.SaveFile(tabControl1);
+                    return true;
+
+                case Keys.Control | Keys.Shift | Keys.S:
+                    fileoperations.SaveFileAs(tabControl1);
+                    return true;
+
+                case Keys.Control | Keys.F:
+                    var currentTextArea = tabControl1.SelectedTab?.Controls.OfType<RichTextBox>().FirstOrDefault();
+                    if (currentTextArea != null)
+                    {
+                        FindReplaceForm findForm = new FindReplaceForm(currentTextArea);
+                        findForm.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No active text area found.");
+                    }
+                    return true;
+
+                case Keys.Control | Keys.Alt | Keys.R:
+                    sidebarTransition.Start();
+                    recentfiles_Transition.Start();
+                    return true;
+
+                case Keys.Control | Keys.Alt | Keys.S:
+                    Settings settings = new Settings();
+                    settings.Show();
+                    return true;
+
+                case Keys.Control | Keys.Alt | Keys.C:
+                    fileoperations.CloseAllTabs(tabControl1);
+                    return true;
+
+                case Keys.Control | Keys.Alt | Keys.X:
+                    fileoperations.CloseApplication(tabControl1);
+                    return true;
+
+                case Keys.Control | Keys.Z:
+                    if (textarea.CanUndo)
+                        textarea.Undo();
+                    return true;
+
+                case Keys.Control | Keys.Y:
+                    if (textarea.CanRedo)
+                        textarea.Redo();
+                    return true;
+
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
+            }
+        }
+        //*****************************
+        //User defined functions end
+        //*****************************
+
+        //*****************************
+        //Functions called from the designer!
+        //*****************************
         private void menuTransition_Tick(object sender, EventArgs e)
         {
             if (menuExpand == false)
@@ -152,40 +476,7 @@ namespace Swift_Edit
 
             sidebarTransition.Start();
         }
-        public void UpdateFooter()
-        {
-            if (tabControl1.SelectedTab != null && tabControl1.SelectedTab.Controls.Count > 0)
-            {
-                // Find the RichTextBox/TextBox inside the current tab
-                var currentTextArea = tabControl1.SelectedTab.Controls
-                                        .OfType<TextBox>()
-                                        .FirstOrDefault(); // or TextBox if you're using that
-
-                if (currentTextArea != null)
-                {
-                    string text = currentTextArea.Text;
-
-                    int wordCount = 0;
-                    if (!string.IsNullOrWhiteSpace(text))
-                    {
-                        wordCount = text.Split(new char[] { ' ', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries).Length;
-                    }
-
-                    int lineCount = currentTextArea.Lines.Length;
-
-                    int characterCount = 0;
-                    if (!string.IsNullOrWhiteSpace(text))
-                    {
-                        characterCount = text.Count(c => !char.IsWhiteSpace(c));
-                    }
-
-                    // Update Labels
-                    wordcount_label.Text = $"Words: {wordCount}";
-                    linecount_label.Text = $"Lines: {lineCount}";
-                    charactercount_label.Text = $"Characters: {characterCount}";
-                }
-            }
-        }
+        
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -244,31 +535,6 @@ namespace Swift_Edit
         {
             recentfiles_Transition.Start();
         }
-        private void CloseCurrentFile()
-        {
-            try
-            {
-                if (tabControl1.TabCount == 0)
-                {
-                    MessageBox.Show("There are no files open to close.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                WinFormsTabPage currentTab = tabControl1.SelectedTab;
-                if (currentTab.Tag is bool isSaved && !isSaved)
-                {
-                    DialogResult result = MessageBox.Show("The current file has unsaved changes. Do you still want to close it?", "Unsaved Changes", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (result == DialogResult.No)
-                        return;
-                }
-
-                tabControl1.TabPages.Remove(currentTab);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred while closing the file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -287,7 +553,7 @@ namespace Swift_Edit
 
         private void findandreplace_btn_Click(object sender, EventArgs e)
         {
-            var currentTextArea = tabControl1.SelectedTab?.Controls.OfType<TextBox>().FirstOrDefault();
+            var currentTextArea = tabControl1.SelectedTab?.Controls.OfType<RichTextBox>().FirstOrDefault();
             if (currentTextArea != null)
             {
                 FindReplaceForm findForm = new FindReplaceForm(currentTextArea);
@@ -361,28 +627,11 @@ namespace Swift_Edit
             quillmode quill = new quillmode();
             quill.ShowDialog();
         }
-
-        private void UpdateLineNumbers()
-        {
-            int firstLine = textarea.GetLineFromCharIndex(0);
-            int totalLines = textarea.Lines.Length;
-
-            StringBuilder lineNumbers = new StringBuilder();
-            for (int i = 1; i <= totalLines; i++)
-            {
-                lineNumbers.AppendLine(i.ToString());
-            }
-
-            linenumber_richtextbox.Text = lineNumbers.ToString();
-        }
-
         private void defaultmode_btn_Click(object sender, EventArgs e)
         {
             defaultmode_form defaultmodeform = new defaultmode_form();
             defaultmodeform.ShowDialog();
         }
-
-        bool fileexplorer_expand = true;
 
         private void sidebarcompleteclose_Tick(object sender, EventArgs e)
         {
@@ -412,14 +661,7 @@ namespace Swift_Edit
             SetScrollPos(linenumber_richtextbox.Handle, SB_VERT, nPos, true);
             SendMessage(linenumber_richtextbox.Handle, WM_VSCROLL, (SB_THUMBPOSITION + 0x10000 * nPos), 0);
         }
-        [DllImport("user32.dll")]
-        private static extern int GetScrollPos(IntPtr hWnd, int nBar);
-
-        [DllImport("user32.dll")]
-        private static extern int SetScrollPos(IntPtr hWnd, int nBar, int nPos, bool bRedraw);
-
-        private const int SB_VERT = 1;
-
+        
         private void textarea_Click_1(object sender, EventArgs e)
         {
             if (placeholderActive)
@@ -435,24 +677,7 @@ namespace Swift_Edit
             UpdateLineNumbers();
         }
 
-        void LoadDirectory(string dir, TreeNodeCollection nodes)
-        {
-            DirectoryInfo di = new DirectoryInfo(dir);
-
-            TreeNode dirNode = nodes.Add(di.Name);
-            dirNode.Tag = di.FullName;
-
-            foreach (var subDir in di.GetDirectories())
-            {
-                LoadDirectory(subDir.FullName, dirNode.Nodes);
-            }
-
-            foreach (var file in di.GetFiles())
-            {
-                TreeNode fileNode = dirNode.Nodes.Add(file.Name);
-                fileNode.Tag = file.FullName;
-            }
-        }
+        
 
         private void openfolder_btn_Click(object sender, EventArgs e)
         {
@@ -494,30 +719,9 @@ namespace Swift_Edit
         {
             sidebarcompleteclose.Start();
         }
+        
 
-        List<string> expandedPaths = new List<string>();
-        void CollectExpanded(TreeNodeCollection nodes)
-        {
-            foreach (TreeNode node in nodes)
-            {
-                if (node.IsExpanded)
-                    expandedPaths.Add(node.Tag.ToString());
-
-                CollectExpanded(node.Nodes);
-            }
-        }
-        void RestoreExpanded(TreeNodeCollection nodes, List<string> paths)
-        {
-            foreach (TreeNode node in nodes)
-            {
-                if (paths.Contains(node.Tag.ToString()))
-                    node.Expand();
-
-                RestoreExpanded(node.Nodes, paths);
-            }
-        }
-
-        bool placeholder = false;
+        
 
         private void terminalInput_Click(object sender, EventArgs e)
         {
@@ -527,53 +731,7 @@ namespace Swift_Edit
                 placeholder = true;
             }
         }
-        private void LaunchPowerShell()
-        {
-            try
-            {
-                terminalProcess = new Process();
-                terminalProcess.StartInfo.FileName = "powershell.exe";
-                terminalProcess.StartInfo.UseShellExecute = false;
-                terminalProcess.StartInfo.RedirectStandardInput = true;
-                terminalProcess.StartInfo.RedirectStandardOutput = true;
-                terminalProcess.StartInfo.RedirectStandardError = true;
-                terminalProcess.StartInfo.CreateNoWindow = true;
-
-                terminalProcess.OutputDataReceived += (s, e) =>
-                {
-                    if (e.Data != null)
-                    {
-                        outputTerminal.Invoke((MethodInvoker)(() =>
-                        {
-                            outputTerminal.AppendText(e.Data + Environment.NewLine);
-                            outputTerminal.SelectionStart = outputTerminal.Text.Length;
-                            outputTerminal.ScrollToCaret();
-                        }));
-                    }
-                };
-
-                terminalProcess.ErrorDataReceived += (s, e) =>
-                {
-                    if (e.Data != null)
-                    {
-                        outputTerminal.Invoke((MethodInvoker)(() =>
-                        {
-                            outputTerminal.AppendText("ERROR: " + e.Data + Environment.NewLine);
-                            outputTerminal.SelectionStart = outputTerminal.Text.Length;
-                            outputTerminal.ScrollToCaret();
-                        }));
-                    }
-                };
-
-                terminalProcess.Start();
-                terminalProcess.BeginOutputReadLine();
-                terminalProcess.BeginErrorReadLine();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to start PowerShell process:\n" + ex.Message);
-            }
-        }
+        
 
         private void terminalInput_KeyDown(object sender, KeyEventArgs e)
         {
@@ -633,115 +791,93 @@ namespace Swift_Edit
             }
         }
 
-        private void devmode_form_Load(object sender, EventArgs e)
+        private async void devmode_form_Load(object sender, EventArgs e)
         {
-            LaunchPowerShell();
-            if (File.Exists("last_folder.txt"))
-            {
-                string lastPath = File.ReadAllText("last_folder.txt");
-                if (Directory.Exists(lastPath))
-                {
-                    filetreeview.Nodes.Clear();
-                    LoadDirectory(lastPath, filetreeview.Nodes);
-                }
-            }
-
-            recentfilemgr.LoadRecentFiles(recentfile_listbox);
             try
             {
-                if (File.Exists("open_tabs.txt"))
+                // 💻 Setup Terminal (PowerShell)
+                LaunchPowerShell(); // Make sure you have this method defined!
+
+                // 🧠 Initialize Python LSP (example: Pyright, you can later swap for OmniSharp)
+                lspClient = new LspClient();
+
+                string pyrightPath = Path.Combine(Application.StartupPath, @"node_modules\.bin\pyright-langserver.cmd");
+
+                if (!File.Exists(pyrightPath))
                 {
-                    string[] filePaths = File.ReadAllLines("open_tabs.txt");
+                    MessageBox.Show("Pyright LSP not found. Please ensure it is installed in node_modules.");
+                }
+                else
+                {
+                    await lspClient.StartAsync(pyrightPath);
+
+                    if (textarea == null)
+                    {
+                        MessageBox.Show("Coding area (textarea) is not initialized.");
+                        return;
+                    }
+
+                    string fileContent = textarea.Text;
+                    if (string.IsNullOrEmpty(fileContent))
+                    {
+                        MessageBox.Show("No file content found to send to LSP.");
+                        return;
+                    }
+
+                    string fileUri = "file:///fake_file.py"; // Just a unique ID for now
+                    await lspClient.SendDidOpenAsync(fileUri, "python", fileContent);
+
+                    JObject tokenResponse = await lspClient.RequestSemanticTokensAsync(fileUri);
+                    if (tokenResponse != null && tokenResponse["result"]?["data"] is JArray tokens)
+                    {
+                        HighlightTokens(tokens); // You must define this method!
+                    }
+                }
+
+                // 📁 Load last opened directory if available
+                if (File.Exists("last_folder.txt"))
+                {
+                    string lastPath = File.ReadAllText("last_folder.txt");
+
+                    if (Directory.Exists(lastPath))
+                    {
+                        filetreeview.Nodes.Clear();
+                        LoadDirectory(lastPath, filetreeview.Nodes); // Make sure this method exists!
+                    }
+                    else
+                    {
+                        MessageBox.Show("Last folder path is invalid or doesn't exist.");
+                    }
+                }
+
+                // 🕘 Load recent files into the listbox
+                recentfilemgr.LoadRecentFiles(recentfile_listbox);
+
+                // 📂 Load open tabs from previous session
+                string openTabsPath = "open_tabs_devmode.txt";
+                if (File.Exists(openTabsPath))
+                {
+                    string[] filePaths = File.ReadAllLines(openTabsPath);
 
                     foreach (string path in filePaths)
                     {
                         if (File.Exists(path))
                         {
-                            // Optional: Check if it's already open (not likely on startup, but future-proof)
                             fileoperations.OpenFile(path, tabControl1, textarea);
+                        }
+                        else
+                        {
+                            MessageBox.Show($"The file {path} no longer exists.");
                         }
                     }
 
-                    // After loading, clear the file so it's fresh for next exit
-                    File.WriteAllText("open_tabs_devmode.txt", string.Empty);
+                    // Clear session tracker
+                    File.WriteAllText(openTabsPath, string.Empty);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading session: " + ex.Message);
-            }
-        }
-
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            switch (keyData)
-            {
-                case Keys.Control | Keys.Alt | Keys.A:
-                    FormAI formAI = new FormAI();
-                    formAI.ShowDialog();
-                    return true;
-
-                case Keys.Control | Keys.N:
-                    fileoperations.NewFile(tabControl1, textarea);
-                    return true;
-
-                case Keys.Control | Keys.O:
-                    string filePath = fileoperations.OpenFile(tabControl1, textarea);
-                    if (!string.IsNullOrEmpty(filePath))
-                        recentfilemgr.AddRecentFile(filePath, recentfile_listbox);
-                    return true;
-
-                case Keys.Control | Keys.S:
-                    fileoperations.SaveFile(tabControl1);
-                    return true;
-
-                case Keys.Control | Keys.Shift | Keys.S:
-                    fileoperations.SaveFileAs(tabControl1);
-                    return true;
-
-                case Keys.Control | Keys.F:
-                    var currentTextArea = tabControl1.SelectedTab?.Controls.OfType<TextBox>().FirstOrDefault();
-                    if (currentTextArea != null)
-                    {
-                        FindReplaceForm findForm = new FindReplaceForm(currentTextArea);
-                        findForm.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No active text area found.");
-                    }
-                    return true;
-
-                case Keys.Control | Keys.Alt | Keys.R:
-                    sidebarTransition.Start();
-                    recentfiles_Transition.Start();
-                    return true;
-
-                case Keys.Control | Keys.Alt | Keys.S:
-                    Settings settings = new Settings();
-                    settings.Show();
-                    return true;
-
-                case Keys.Control | Keys.Alt | Keys.C:
-                    fileoperations.CloseAllTabs(tabControl1);
-                    return true;
-
-                case Keys.Control | Keys.Alt | Keys.X:
-                    fileoperations.CloseApplication(tabControl1);
-                    return true;
-
-                case Keys.Control | Keys.Z:
-                    if (textarea.CanUndo)
-                        textarea.Undo();
-                    return true;
-
-                case Keys.Control | Keys.Y:
-                    if (textarea.CanRedo)
-                        textarea.Redo();
-                    return true;
-
-                default:
-                    return base.ProcessCmdKey(ref msg, keyData);
+                MessageBox.Show("An error occurred while loading Dev Mode:\n" + ex.Message);
             }
         }
         private void settings_btn_Click(object sender, EventArgs e)
@@ -749,5 +885,8 @@ namespace Swift_Edit
             Settings settings = new Settings();
             settings.Show();
         }
+        //*****************************
+        //Functions called from designer end
+        //*****************************
     }
 }

@@ -33,10 +33,10 @@
             label1 = new Label();
             close_picturebox = new PictureBox();
             panel2 = new Panel();
+            richTextBox2 = new RichTextBox();
             label2 = new Label();
             richTextBox1 = new RichTextBox();
             label3 = new Label();
-            richTextBox2 = new RichTextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)close_picturebox).BeginInit();
             panel2.SuspendLayout();
@@ -73,6 +73,7 @@
             close_picturebox.SizeMode = PictureBoxSizeMode.CenterImage;
             close_picturebox.TabIndex = 0;
             close_picturebox.TabStop = false;
+            close_picturebox.Click += close_picturebox_Click;
             // 
             // panel2
             // 
@@ -85,6 +86,17 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(489, 758);
             panel2.TabIndex = 2;
+            // 
+            // richTextBox2
+            // 
+            richTextBox2.BackColor = SystemColors.ActiveBorder;
+            richTextBox2.BorderStyle = BorderStyle.None;
+            richTextBox2.Location = new Point(12, 428);
+            richTextBox2.Name = "richTextBox2";
+            richTextBox2.ReadOnly = true;
+            richTextBox2.Size = new Size(465, 303);
+            richTextBox2.TabIndex = 5;
+            richTextBox2.Text = resources.GetString("richTextBox2.Text");
             // 
             // label2
             // 
@@ -117,17 +129,6 @@
             label3.TabIndex = 2;
             label3.Text = "Default Mode";
             label3.Click += label3_Click;
-            // 
-            // richTextBox2
-            // 
-            richTextBox2.BackColor = SystemColors.ActiveBorder;
-            richTextBox2.BorderStyle = BorderStyle.None;
-            richTextBox2.Location = new Point(12, 428);
-            richTextBox2.Name = "richTextBox2";
-            richTextBox2.ReadOnly = true;
-            richTextBox2.Size = new Size(465, 303);
-            richTextBox2.TabIndex = 5;
-            richTextBox2.Text = resources.GetString("richTextBox2.Text");
             // 
             // Keyboardshortcuts
             // 

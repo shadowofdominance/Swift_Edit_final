@@ -18,7 +18,7 @@ namespace Swift_Edit
         //private TextBox txtReplace;
         //private CheckBox chkMatchCase;
         //private TextBox editor;
-        private TextBox editor;
+        private RichTextBox editor;
 
         protected override void WndProc(ref Message m)
         {
@@ -52,7 +52,7 @@ namespace Swift_Edit
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
-        public FindReplaceForm(TextBox editorTextBox)
+        public FindReplaceForm(RichTextBox editorTextBox)
         {
             if (editorTextBox == null)
                 throw new ArgumentNullException(nameof(editorTextBox), "Editor TextBox cannot be null.");

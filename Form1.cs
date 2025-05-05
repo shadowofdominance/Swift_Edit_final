@@ -153,7 +153,7 @@ namespace Swift_Edit
             {
                 // Find the RichTextBox/TextBox inside the current tab
                 var currentTextArea = tabControl1.SelectedTab.Controls
-                                        .OfType<TextBox>()
+                                        .OfType<RichTextBox>()
                                         .FirstOrDefault(); // or TextBox if you're using that
 
                 if (currentTextArea != null)
@@ -342,7 +342,7 @@ namespace Swift_Edit
 
         private void findandreplace_btn_Click(object sender, EventArgs e)
         {
-            var currentTextArea = tabControl1.SelectedTab?.Controls.OfType<TextBox>().FirstOrDefault();
+            var currentTextArea = tabControl1.SelectedTab?.Controls.OfType<RichTextBox>().FirstOrDefault();
             if (currentTextArea != null)
             {
                 FindReplaceForm findForm = new FindReplaceForm(currentTextArea);
@@ -429,11 +429,6 @@ namespace Swift_Edit
             settings.ShowDialog();
         }
 
-        private void textarea_TextChanged(object sender, EventArgs e)
-        {
-            UpdateFooter();
-        }
-
         private void textarea_Click(object sender, EventArgs e)
         {
             if (placeholderActive)
@@ -441,6 +436,11 @@ namespace Swift_Edit
                 textarea.Text = string.Empty;
                 placeholderActive = false;
             }
+        }
+
+        private void textarea_TextChanged(object sender, EventArgs e)
+        {
+            UpdateFooter();
         }
     }
 }

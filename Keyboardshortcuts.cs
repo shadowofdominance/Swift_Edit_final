@@ -21,5 +21,10 @@ namespace Swift_Edit
         {
 
         }
+
+        private void close_picturebox_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

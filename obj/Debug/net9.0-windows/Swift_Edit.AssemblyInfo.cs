@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Swift_Edit")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2e0a0faee8390e97cb260b50e563da830da6ddb8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fcd7b7c2a1d9f8898c9702daa17237abece5e73e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Swift_Edit")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Swift_Edit")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

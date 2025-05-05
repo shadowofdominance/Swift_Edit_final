@@ -1,5 +1,0 @@
-C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\Form1.cs
-C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\devmode.cs
-C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\FindReplaceForm.cs
-C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\Settings.Designer.cs
-C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\quillmode.Designer.cs
