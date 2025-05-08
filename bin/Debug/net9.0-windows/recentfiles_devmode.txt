@@ -1,3 +1,6 @@
-C:\xampp\htdocs\ModernTaskManager\index.php
+C:\xampp\htdocs\ModernTaskManager\investor_dashboard.php
 C:\xampp\htdocs\ModernTaskManager\generated-icon.png
+C:\xampp\htdocs\ModernTaskManager\faq.php
+C:\xampp\htdocs\ModernTaskManager\login.php
+C:\xampp\htdocs\ModernTaskManager\index.php
 C:\Users\acd07\Documents\Projects\College Project\Swift_Edit\quillmode.cs

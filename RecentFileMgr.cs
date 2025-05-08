@@ -6,9 +6,9 @@ using System.Windows.Forms;
 
 namespace SwiftEdit
 {
-    public class recentfilemanagerdevmode
+    public class RecentFileMgr
     {
-        private readonly string recentFilesPath = Path.Combine(Application.StartupPath, "recentfiles_devmode.txt");
+        private readonly string recentFilesPath = Path.Combine(Application.StartupPath, "recentfiles.txt");
         private readonly List<string> recentFiles = new List<string>();
         private readonly int maxRecentFiles = 10; // You can adjust this as needed
 

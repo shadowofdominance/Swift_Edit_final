@@ -1,0 +1,4 @@
+C:\xampp\htdocs\ModernTaskManager\login.php
+C:\xampp\htdocs\ModernTaskManager\faq.php
+C:\xampp\htdocs\ModernTaskManager\generated-icon.png
+C:\xampp\htdocs\ModernTaskManager\investor_dashboard.php

@@ -16,27 +16,83 @@ public static class fileoperations
             Tag = fullPath
         };
 
-        RichTextBox newTextBox = new RichTextBox
-        {
-            Multiline = true,
-            Dock = DockStyle.Fill,
-            Font = referenceTextArea.Font,
-            ForeColor = referenceTextArea.ForeColor,
-            BackColor = referenceTextArea.BackColor,
-            AcceptsTab = true,
-            WordWrap = referenceTextArea.WordWrap,
-            Text = fileContent
-        };
+        // Determine if the calling form is devmode_form
+        bool isDevMode = tabControl.FindForm() is devmode_form;
 
-        newTextBox.TextChanged += (s, e) =>
+        if (isDevMode)
         {
-            if (tabControl.FindForm() is defaultmode_form mainForm)
+            // Create line number textbox
+            RichTextBox lineNumbers = new RichTextBox
             {
-                mainForm.UpdateFooter();
-            }
-        };
+                Width = 40,
+                Dock = DockStyle.Left,
+                ReadOnly = true,
+                Font = referenceTextArea.Font,
+                BackColor = referenceTextArea.BackColor,
+                ForeColor = referenceTextArea.ForeColor,
+                Text = "1",
+                ScrollBars = RichTextBoxScrollBars.None,
+                BorderStyle = BorderStyle.None,
+            };
 
-        newTab.Controls.Add(newTextBox);
+            // Create code editor textbox
+            RichTextBox codeTextBox = new RichTextBox
+            {
+                Multiline = true,
+                Dock = DockStyle.Fill,
+                Font = referenceTextArea.Font,
+                ForeColor = referenceTextArea.ForeColor,
+                BackColor = referenceTextArea.BackColor,
+                AcceptsTab = true,
+                WordWrap = referenceTextArea.WordWrap,
+                Text = fileContent,
+                BorderStyle = BorderStyle.None,
+            };
+
+            codeTextBox.TextChanged += (s, e) =>
+            {
+                if (tabControl.FindForm() is devmode_form devForm)
+                {
+                    devForm.UpdateFooter();
+                    devForm.UpdateLineNumbers();
+                }
+            };
+
+            Panel editorPanel = new Panel
+            {
+                Dock = DockStyle.Fill
+            };
+
+            editorPanel.Controls.Add(codeTextBox);
+            editorPanel.Controls.Add(lineNumbers);
+
+            newTab.Controls.Add(editorPanel);
+        }
+        else
+        {
+            RichTextBox newTextBox = new RichTextBox
+            {
+                Multiline = true,
+                Dock = DockStyle.Fill,
+                Font = referenceTextArea.Font,
+                ForeColor = referenceTextArea.ForeColor,
+                BackColor = referenceTextArea.BackColor,
+                AcceptsTab = true,
+                WordWrap = referenceTextArea.WordWrap,
+                Text = fileContent
+            };
+
+            newTextBox.TextChanged += (s, e) =>
+            {
+                if (tabControl.FindForm() is defaultmode_form mainForm)
+                {
+                    mainForm.UpdateFooter();
+                }
+            };
+
+            newTab.Controls.Add(newTextBox);
+        }
+
         tabControl.TabPages.Add(newTab);
         tabControl.SelectedTab = newTab;
     }

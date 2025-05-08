@@ -18,12 +18,13 @@ namespace Swift_Edit
             InitializeComponent();
             this.KeyPreview = true;
         }
+
         //*****************************
         //Variable Declarations section Start
         //*****************************
 
         private LspClient lspClient = new LspClient();
-        private recentfilemanagerdevmode recentfilemgr = new recentfilemanagerdevmode();
+        private RecentFileMgrDevMode recentfilemgr = new RecentFileMgrDevMode();
         private Process terminalProcess;
         bool menuExpand = false;
         bool recentmenuExpand = false;
@@ -153,7 +154,7 @@ namespace Swift_Edit
                 MessageBox.Show($"An error occurred while closing the file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void UpdateLineNumbers()
+        public void UpdateLineNumbers()
         {
             int firstLine = textarea.GetLineFromCharIndex(0);
             int totalLines = textarea.Lines.Length;
@@ -538,7 +539,7 @@ namespace Swift_Edit
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            UpdateFooter();
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -670,15 +671,6 @@ namespace Swift_Edit
                 placeholderActive = false;
             }
         }
-
-        private void textarea_TextChanged(object sender, EventArgs e)
-        {
-            UpdateFooter();
-            UpdateLineNumbers();
-        }
-
-
-
         private void openfolder_btn_Click(object sender, EventArgs e)
         {
             using (FolderBrowserDialog fbd = new FolderBrowserDialog())
@@ -889,6 +881,17 @@ namespace Swift_Edit
         private void terminalTransition_Tick(object sender, EventArgs e)
         {
 
+        }
+
+        private void textarea_TextChanged(object sender, EventArgs e)
+        {
+            UpdateFooter();
+            UpdateLineNumbers();
+        }
+
+        private void linenumber_richtextbox_TextChanged(object sender, EventArgs e)
+        {
+           
         }
         //*****************************
         //Functions called from designer end

@@ -887,6 +887,7 @@
             linenumber_richtextbox.Size = new Size(47, 625);
             linenumber_richtextbox.TabIndex = 1;
             linenumber_richtextbox.Text = "";
+            linenumber_richtextbox.TextChanged += linenumber_richtextbox_TextChanged;
             // 
             // fileplorer_panel
             // 

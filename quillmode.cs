@@ -116,7 +116,7 @@ namespace Swift_Edit
             TextBox tb = new TextBox
             {
                 Multiline = true,
-                Size = new Size(150, 50),
+                Size = new Size(300, 300),
                 Location = location,
                 BorderStyle = BorderStyle.FixedSingle
             };

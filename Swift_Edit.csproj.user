@@ -16,7 +16,7 @@
     <Compile Update="Keyboardshortcuts.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="quillmode.cs">
+    <Compile Update="QuillMode.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Settings.cs">

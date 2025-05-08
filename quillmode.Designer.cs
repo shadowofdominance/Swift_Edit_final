@@ -46,6 +46,9 @@
             pictureBox3 = new PictureBox();
             pictureBox2 = new PictureBox();
             panel2 = new Panel();
+            pictureBox6 = new PictureBox();
+            pictureBox5 = new PictureBox();
+            pictureBox4 = new PictureBox();
             pictureBox1 = new PictureBox();
             mode_transition = new System.Windows.Forms.Timer(components);
             panel3 = new Panel();
@@ -60,6 +63,9 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
@@ -233,7 +239,7 @@
             // 
             pictureBox3.BackColor = Color.FromArgb(23, 24, 29);
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(364, 6);
+            pictureBox3.Location = new Point(600, 11);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(65, 51);
             pictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -244,7 +250,7 @@
             // 
             pictureBox2.BackColor = Color.FromArgb(23, 24, 29);
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(281, 6);
+            pictureBox2.Location = new Point(517, 11);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(65, 51);
             pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -254,18 +260,57 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(23, 24, 29);
+            panel2.Controls.Add(pictureBox6);
+            panel2.Controls.Add(pictureBox5);
+            panel2.Controls.Add(pictureBox4);
             panel2.Controls.Add(pictureBox1);
-            panel2.Location = new Point(458, 6);
+            panel2.Location = new Point(680, 11);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(10, 0, 10, 0);
-            panel2.Size = new Size(764, 51);
+            panel2.Size = new Size(305, 51);
             panel2.TabIndex = 0;
+            // 
+            // pictureBox6
+            // 
+            pictureBox6.BackColor = Color.FromArgb(23, 24, 29);
+            pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
+            pictureBox6.Location = new Point(226, 0);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(65, 51);
+            pictureBox6.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox6.TabIndex = 7;
+            pictureBox6.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            pictureBox5.BackColor = Color.FromArgb(23, 24, 29);
+            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
+            pictureBox5.Location = new Point(155, 0);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(65, 51);
+            pictureBox5.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox5.TabIndex = 6;
+            pictureBox5.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.BackColor = Color.FromArgb(23, 24, 29);
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(13, 0);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(65, 51);
+            pictureBox4.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox4.TabIndex = 5;
+            pictureBox4.TabStop = false;
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(13, 0);
+            pictureBox1.BackColor = Color.FromArgb(23, 24, 29);
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(84, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(62, 51);
+            pictureBox1.Size = new Size(65, 51);
+            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
@@ -324,6 +369,9 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel3.ResumeLayout(false);
             panel4.ResumeLayout(false);
@@ -350,9 +398,12 @@
         private Panel panel2;
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
-        private PictureBox pictureBox1;
         private Panel panel3;
         private Panel panel4;
         private Panel panel5;
+        private PictureBox pictureBox5;
+        private PictureBox pictureBox4;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox6;
     }
 }

@@ -9,7 +9,7 @@ namespace Swift_Edit
 {
     public partial class defaultmode_form : Form
     {
-        private recentfilemanager recentFilesManager = new recentfilemanager();
+        private RecentFileMgr recentFilesManager = new RecentFileMgr();
         public defaultmode_form()
         {
             InitializeComponent();
