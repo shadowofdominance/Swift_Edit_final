@@ -8,7 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 using WinFormsTabPage = System.Windows.Forms.TabPage;
-
+using WinFormsPanel = System.Windows.Forms.Panel;
 namespace Swift_Edit
 {
     public partial class devmode_form : Form
@@ -49,11 +49,6 @@ namespace Swift_Edit
         //*****************************
         //Functions for the enabling of dragging of window start
         //*****************************
-        [DllImport("user32.dll")]
-        private static extern int GetScrollPos(IntPtr hWnd, int nBar);
-
-        [DllImport("user32.dll")]
-        private static extern int SetScrollPos(IntPtr hWnd, int nBar, int nPos, bool bRedraw);
 
         // These two functions allow dragging
         [DllImport("user32.dll")]
@@ -61,6 +56,9 @@ namespace Swift_Edit
 
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
+        [DllImport("user32.dll")]
+        private static extern int SendMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
 
         //*****************************
         //Functions for the enabling of dragging of window end
@@ -91,19 +89,31 @@ namespace Swift_Edit
 
             base.WndProc(ref m);
         }
+
+        private void SyncLineNumberScroll(RichTextBox codeBox, RichTextBox lineBox)
+        {
+            if (codeBox == null || lineBox == null) return;
+
+            // Get scroll position of code editor
+            int nPos = GetScrollPos(codeBox.Handle, SB_VERT);
+            SetScrollPos(lineBox.Handle, SB_VERT, nPos, true);
+            SendMessage(lineBox.Handle, WM_VSCROLL, (IntPtr)(SB_THUMBPOSITION + 0x10000 * nPos), IntPtr.Zero);
+        }
+
+        [DllImport("user32.dll")]
+        private static extern int GetScrollPos(IntPtr hWnd, int nBar);
+
+        [DllImport("user32.dll")]
+        private static extern int SetScrollPos(IntPtr hWnd, int nBar, int nPos, bool bRedraw);
         private void LoadRecentFilesToUI()
         {
             recentfilemgr.LoadRecentFiles(recentfile_listbox);
         }
         public void UpdateFooter()
         {
-            if (tabControl1.SelectedTab != null && tabControl1.SelectedTab.Controls.Count > 0)
+            if (tabControl1.SelectedTab != null)
             {
-                // Find the RichTextBox/TextBox inside the current tab
-                var currentTextArea = tabControl1.SelectedTab.Controls
-                                        .OfType<RichTextBox>()
-                                        .FirstOrDefault(); // or TextBox if you're using that
-
+                RichTextBox currentTextArea = GetCurrentEditor();
                 if (currentTextArea != null)
                 {
                     string text = currentTextArea.Text;
@@ -116,19 +126,46 @@ namespace Swift_Edit
 
                     int lineCount = currentTextArea.Lines.Length;
 
-                    int characterCount = 0;
-                    if (!string.IsNullOrWhiteSpace(text))
-                    {
-                        characterCount = text.Count(c => !char.IsWhiteSpace(c));
-                    }
+                    int characterCount = text.Count(c => !char.IsWhiteSpace(c));
 
-                    // Update Labels
                     wordcount_label.Text = $"Words: {wordCount}";
                     linecount_label.Text = $"Lines: {lineCount}";
                     charactercount_label.Text = $"Characters: {characterCount}";
                 }
             }
         }
+        private RichTextBox GetCurrentEditor()
+        {
+            if (tabControl1.SelectedTab?.Controls.Count > 0)
+            {
+                var panel = tabControl1.SelectedTab.Controls[0] as WinFormsPanel;
+                if (panel != null)
+                {
+                    // Line number RichTextBox is usually docked left, we want the fill one
+                    return panel.Controls
+                                .OfType<RichTextBox>()
+                                .FirstOrDefault(rtb => rtb.Dock == DockStyle.Fill);
+                }
+            }
+            return null;
+        }
+        private RichTextBox GetCurrentLineNumberBox()
+        {
+            if (tabControl1.SelectedTab?.Controls.Count > 0)
+            {
+                var panel = tabControl1.SelectedTab.Controls[0] as WinFormsPanel;
+                if (panel != null)
+                {
+                    // We assume the line number box is the left-docked RichTextBox
+                    return panel.Controls
+                                .OfType<RichTextBox>()
+                                .FirstOrDefault(rtb => rtb.Dock == DockStyle.Left);
+                }
+            }
+            return null;
+        }
+
+
         private void CloseCurrentFile()
         {
             try
@@ -156,8 +193,12 @@ namespace Swift_Edit
         }
         public void UpdateLineNumbers()
         {
-            int firstLine = textarea.GetLineFromCharIndex(0);
-            int totalLines = textarea.Lines.Length;
+            RichTextBox currentTextArea = GetCurrentEditor();
+            RichTextBox currentLineBox = GetCurrentLineNumberBox();
+
+            if (currentTextArea == null || currentLineBox == null) return;
+
+            int totalLines = currentTextArea.Lines.Length;
 
             StringBuilder lineNumbers = new StringBuilder();
             for (int i = 1; i <= totalLines; i++)
@@ -165,8 +206,9 @@ namespace Swift_Edit
                 lineNumbers.AppendLine(i.ToString());
             }
 
-            linenumber_richtextbox.Text = lineNumbers.ToString();
+            currentLineBox.Text = lineNumbers.ToString();
         }
+
 
         private void HighlightTokens(JArray tokens)
         {
@@ -539,7 +581,8 @@ namespace Swift_Edit
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            UpdateFooter();
+            UpdateLineNumbers();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -658,9 +701,9 @@ namespace Swift_Edit
 
         private void textarea_VScroll(object sender, EventArgs e)
         {
-            int nPos = GetScrollPos(textarea.Handle, SB_VERT);
-            SetScrollPos(linenumber_richtextbox.Handle, SB_VERT, nPos, true);
-            SendMessage(linenumber_richtextbox.Handle, WM_VSCROLL, (SB_THUMBPOSITION + 0x10000 * nPos), 0);
+            var codeBox = GetCurrentEditor();
+            var lineBox = GetCurrentLineNumberBox();
+            SyncLineNumberScroll(codeBox, lineBox);
         }
 
         private void textarea_Click_1(object sender, EventArgs e)

@@ -864,9 +864,9 @@
             textarea.Dock = DockStyle.Fill;
             textarea.Font = new Font("JetBrains Mono", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
             textarea.ForeColor = SystemColors.WindowText;
-            textarea.Location = new Point(47, 0);
+            textarea.Location = new Point(70, 0);
             textarea.Name = "textarea";
-            textarea.Size = new Size(1490, 625);
+            textarea.Size = new Size(1467, 625);
             textarea.TabIndex = 2;
             textarea.Text = "Start typing, Destiny Awaits!";
             textarea.VScroll += textarea_VScroll;
@@ -884,7 +884,7 @@
             linenumber_richtextbox.Name = "linenumber_richtextbox";
             linenumber_richtextbox.ReadOnly = true;
             linenumber_richtextbox.ScrollBars = RichTextBoxScrollBars.None;
-            linenumber_richtextbox.Size = new Size(47, 625);
+            linenumber_richtextbox.Size = new Size(70, 625);
             linenumber_richtextbox.TabIndex = 1;
             linenumber_richtextbox.Text = "";
             linenumber_richtextbox.TextChanged += linenumber_richtextbox_TextChanged;

@@ -24,7 +24,7 @@ public static class fileoperations
             // Create line number textbox
             RichTextBox lineNumbers = new RichTextBox
             {
-                Width = 40,
+                Width = 70,
                 Dock = DockStyle.Left,
                 ReadOnly = true,
                 Font = referenceTextArea.Font,
