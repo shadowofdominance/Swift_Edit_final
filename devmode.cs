@@ -649,17 +649,6 @@ namespace Swift_Edit
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            fileoperations.CloseAllTabs(tabControl1);
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            FormAI formAI = new FormAI();
-            formAI.ShowDialog();
-        }
-
         private void home_btn_Click(object sender, EventArgs e)
         {
             Keyboardshortcuts keyboard = new Keyboardshortcuts();
