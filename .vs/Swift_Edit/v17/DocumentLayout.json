@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|c:\\users\\acd07\\documents\\projects\\college project\\swift_edit\\fileoperations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|solutionrelative:fileoperations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|c:\\users\\acd07\\documents\\projects\\college project\\swift_edit\\drawcanvas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|solutionrelative:drawcanvas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|c:\\users\\acd07\\documents\\projects\\college project\\swift_edit\\devmode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|solutionrelative:devmode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|c:\\users\\acd07\\documents\\projects\\college project\\swift_edit\\lspclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|solutionrelative:lspclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|c:\\users\\acd07\\documents\\projects\\college project\\swift_edit\\newtonsoft.json.dll||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|solutionrelative:newtonsoft.json.dll||{177559E0-D141-11D0-92DF-00A0C9138C45}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|c:\\users\\acd07\\documents\\projects\\college project\\swift_edit\\package-lock.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -23,16 +19,20 @@
       "RelativeMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|solutionrelative:package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|c:\\users\\acd07\\documents\\projects\\college project\\swift_edit\\newtonsoft.json.dll||{177559E0-D141-11D0-92DF-00A0C9138C45}",
-      "RelativeMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|solutionrelative:newtonsoft.json.dll||{177559E0-D141-11D0-92DF-00A0C9138C45}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|c:\\users\\acd07\\documents\\projects\\college project\\swift_edit\\drawcanvas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|solutionrelative:drawcanvas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\findreplaceform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|solutionrelative:findreplaceform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|c:\\users\\acd07\\documents\\projects\\college project\\swift_edit\\fileoperations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|solutionrelative:fileoperations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|c:\\users\\acd07\\documents\\projects\\college project\\swift_edit\\devmode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|solutionrelative:devmode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|c:\\users\\acd07\\documents\\projects\\college project\\swift_edit\\lspclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|solutionrelative:lspclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{43DBB435-D5F7-4324-9318-DBA8E8234A74}|Swift_Edit.csproj|c:\\users\\acd07\\documents\\projects\\college project\\swift_edit\\findreplaceform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -74,7 +74,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -86,31 +86,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "package-lock.json",
-              "DocumentMoniker": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\package-lock.json",
-              "RelativeDocumentMoniker": "package-lock.json",
-              "ToolTip": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\package-lock.json",
-              "RelativeToolTip": "package-lock.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-14T05:59:14.969Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "package.json",
-              "DocumentMoniker": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\package.json",
-              "RelativeDocumentMoniker": "package.json",
-              "ToolTip": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\package.json",
-              "RelativeToolTip": "package.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-14T05:58:45.6Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "Newtonsoft.Json.dll",
               "DocumentMoniker": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\Newtonsoft.Json.dll",
               "RelativeDocumentMoniker": "Newtonsoft.Json.dll",
@@ -121,19 +97,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "DrawCanvas.cs",
               "DocumentMoniker": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\DrawCanvas.cs",
               "RelativeDocumentMoniker": "DrawCanvas.cs",
               "ToolTip": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\DrawCanvas.cs",
               "RelativeToolTip": "DrawCanvas.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T05:50:02.967Z"
+              "WhenOpened": "2025-05-14T05:50:02.967Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "DevMode.cs",
               "DocumentMoniker": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\DevMode.cs",
               "RelativeDocumentMoniker": "DevMode.cs",
@@ -146,7 +123,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "LspClient.cs",
               "DocumentMoniker": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\LspClient.cs",
               "RelativeDocumentMoniker": "LspClient.cs",
@@ -158,20 +135,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "FileOperations.cs",
               "DocumentMoniker": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\FileOperations.cs",
               "RelativeDocumentMoniker": "FileOperations.cs",
               "ToolTip": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\FileOperations.cs",
               "RelativeToolTip": "FileOperations.cs",
-              "ViewState": "AgIAAG4AAAAAAAAAAAAgwAUAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAP4AAAAAAAAAAAAAAAUAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T06:01:45.589Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-06T06:01:45.589Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "FindReplaceForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\FindReplaceForm.cs",
               "RelativeDocumentMoniker": "FindReplaceForm.cs",
@@ -179,6 +155,30 @@
               "RelativeToolTip": "FindReplaceForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-14T05:46:23.925Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "package-lock.json",
+              "DocumentMoniker": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\package-lock.json",
+              "RelativeDocumentMoniker": "package-lock.json",
+              "ToolTip": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\package-lock.json",
+              "RelativeToolTip": "package-lock.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-14T05:59:14.969Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "package.json",
+              "DocumentMoniker": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\package.json",
+              "RelativeDocumentMoniker": "package.json",
+              "ToolTip": "C:\\Users\\acd07\\Documents\\Projects\\College Project\\Swift_Edit\\package.json",
+              "RelativeToolTip": "package.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-14T05:58:45.6Z"
             },
             {
               "$type": "Document",
